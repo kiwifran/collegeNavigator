@@ -16,7 +16,8 @@ class App extends Component {
     this.state = {
       university: '4bf58dd8d48988d1ae941735',
       college: '4bf58dd8d48988d1a2941735',
-      trade: '4bf58dd8d48988d1ad941735'
+      trade: '4bf58dd8d48988d1ad941735',
+      schoolsList: []
     }
   }
 
@@ -43,14 +44,33 @@ class App extends Component {
 
       console.log(schoolsList)
 
+      this.setState({
+        schoolsList
+      })
     })
   }  
 
+  moreInfo(id) {
+    console.log(id);
+  }
+
   render() {
+    
     return (
       <HashRouter>
         <Nav />
         <button onClick={this.handleClick}>Get School List</button>
+
+        {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
+          return (
+            <div key={school.id} className="result">
+              <p className="resultName">{school.name}</p>
+              <p className="resultAddress">{school.location.address} - {school.location.city}, {school.location.country}</p>
+
+              <button onClick={() => this.moreInfo(school.id)}>More Info</button>
+            </div>)
+
+        }) : null}
 
         <Switch>
           <Route path='/notes' component={Notes} />
