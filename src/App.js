@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import Footer from "./components/Footer"
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
 
@@ -54,6 +55,7 @@ class App extends Component {
         <Switch>
           <Route path='/notes' component={Notes} />
         </Switch>
+      <Footer />
       </HashRouter>
     )
   }
