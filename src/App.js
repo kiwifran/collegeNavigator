@@ -19,7 +19,7 @@ class App extends Component {
       // college: '4bf58dd8d48988d1a2941735',
       // trade: '4bf58dd8d48988d1ad941735',
       userInstitute: '',
-      userInput: ''
+      userInput: '',
       university: '4bf58dd8d48988d1ae941735',
       college: '4bf58dd8d48988d1a2941735',
       trade: '4bf58dd8d48988d1ad941735',
@@ -39,7 +39,7 @@ class App extends Component {
 
         // categoryID hardcoded currently for university
         categoryId: this.state.userInstitute,
-        radius: 250000,
+        radius: 25000,
         intent: 'checkin',
         limit: 50,
         // query: 'university'
@@ -90,8 +90,6 @@ class App extends Component {
         <Nav />
 
         <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
-
-        <button onClick={this.handleClick}>Get School List</button>
 
         {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
           return (
