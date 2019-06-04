@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Footer from "./components/Footer"
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import Search from './components/Search.js';
 
 import './styles/style.scss';
 
@@ -14,6 +15,11 @@ class App extends Component {
     super();
 
     this.state = {
+      // university: '4bf58dd8d48988d1ae941735',
+      // college: '4bf58dd8d48988d1a2941735',
+      // trade: '4bf58dd8d48988d1ad941735',
+      userInstitute: '',
+      userInput: ''
       university: '4bf58dd8d48988d1ae941735',
       college: '4bf58dd8d48988d1a2941735',
       trade: '4bf58dd8d48988d1ad941735',
@@ -29,26 +35,49 @@ class App extends Component {
         client_id: 'JYPGSEYBVO44BBH553GNVMI1OCUCDFTFZUS2H0X5JLMCMOVY',
         client_secret: 'XBVDWZV2LUQS3RUWTMJJQVJMKZY5HACXHKCGT4ZXVHHXX5K3',
         v: 20190101,
-        near: 'Toronto',
+        near: this.state.userInput,
 
         // categoryID hardcoded currently for university
-        categoryId: this.state.university,
+        categoryId: this.state.userInstitute,
         radius: 250000,
         intent: 'checkin',
         limit: 50,
-        query: 'university'
+        // query: 'university'
       }
     }).then(result => {
       // this returns an array of 50 schools
+      const regex = /centre|center|park|building|pool|hall|office of le president|division of|department/i
       const schoolsList = result.data.response.venues
+      const filteredSchoolList = [];
 
-      console.log(schoolsList)
+      schoolsList.forEach(key => {
+        const name = key.categories[0].shortName
+        if ((name === 'University' || name === 'Community College' || name === 'Trade School') && !(regex.test(key.name))) {
+          filteredSchoolList.push(key)
+        }
+      })
+      console.log(filteredSchoolList)
 
       this.setState({
         schoolsList
       })
     })
-  }  
+  }
+  
+  handleChange = (event) => {
+    this.setState({
+      userInput: event.currentTarget.value
+    })
+  }
+
+  getInstitute = (event) => {
+    console.log(event.target.getAttribute('value'))
+    this.setState({
+      userInstitute: event.target.getAttribute('value')
+    })
+  }
+
+
 
   moreInfo(id) {
     console.log(id);
@@ -59,6 +88,9 @@ class App extends Component {
     return (
       <HashRouter>
         <Nav />
+
+        <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
+
         <button onClick={this.handleClick}>Get School List</button>
 
         {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
