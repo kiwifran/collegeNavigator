@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { HashRouter, Route, Switch } from 'react-router-dom';
 
-import './App.css';
+import './styles/style.scss';
 
 import Nav from './components/Nav.js';
 import Search from './components/Search.js';
