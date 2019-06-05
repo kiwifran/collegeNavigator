@@ -176,8 +176,13 @@ class App extends Component {
   //     modal.classList.remove("close");
   //   }
   // }
+<<<<<<< Updated upstream
   handleCloseClick = () => {
     this.setState = ({
+=======
+  handleCloseClick=()=>{
+    this.setState({
+>>>>>>> Stashed changes
       isModalOpen: false,
     })
     // not sure do we need to setState here
@@ -188,21 +193,27 @@ class App extends Component {
 
   }
 
-  moreInfo(id) {
+  moreInfo = (id) => {
     console.log(id);
     axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
       params: {
         // THIS IS ANDREW'S API KEY 
+        // client_id: 'H5KTLRAURYRNV350DJHQNDMORMYO0GN3KP12FFUMTXWI2XCO',
+        // client_secret: 'XIFGNZS4EZHSNJD2U45HSDMBUGTW4TEF5RKK3BZBW3V4R5NB',
+
         //then it's Frankie's
         // client_id: 'JYPGSEYBVO44BBH553GNVMI1OCUCDFTFZUS2H0X5JLMCMOVY',
-        client_id: 'H5KTLRAURYRNV350DJHQNDMORMYO0GN3KP12FFUMTXWI2XCO',
         // client_secret: 'XBVDWZV2LUQS3RUWTMJJQVJMKZY5HACXHKCGT4ZXVHHXX5K3',
-        client_secret: 'XIFGNZS4EZHSNJD2U45HSDMBUGTW4TEF5RKK3BZBW3V4R5NB',
+
+        //Jasmine
+        client_id: 'CJ4XSVLTY1JQ3SPHZV00JRFHCFAIXO5Y1HAASCOPGXG3URXV',
+        client_secret: 'WUABEMQMIZBR2LSKFURNG4NY2IF10CDAPAX0QSWWYGFGV2ZP',
         v: 20190101,
       }
     }).then(res => {
-      console.log(res.data.response.venue);
+      // console.log(res.data.response.venue);
       const schoolMoreInfo = res.data.response.venue;
+
       this.setState({
         // schoolPhotoUrl  :`${schoolDetails.bestPhoto.prefix}500x500${schoolDetails.bestPhoto.suffix}`,
         // schoolName :schoolDetails.name,
@@ -211,7 +222,10 @@ class App extends Component {
         isModalOpen: true
 
       })
+<<<<<<< Updated upstream
 
+=======
+>>>>>>> Stashed changes
     }).catch((error) => {
       // Error
       if (error.response) {
@@ -260,15 +274,25 @@ class App extends Component {
               />
             )
           }) : null}
+          
         </div>
+<<<<<<< Updated upstream
 
         <AddSchool
           addInstitution={this.addInstitution}
         />
+=======
+          <AddSchool 
+            addInstitution={this.addInstitution}
+          />
+>>>>>>> Stashed changes
 
         <Switch>
           <Route path='/notes' component={Notes} />
         </Switch>
+        {!(this.isInfoEmpty())
+          ? this.displayDetails()
+          : null}
         <Footer />
       </HashRouter>
     )
