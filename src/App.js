@@ -15,14 +15,11 @@ class App extends Component {
     super();
 
     this.state = {
+      userInstitute: '',
+      userInput: '',
       // university: '4bf58dd8d48988d1ae941735',
       // college: '4bf58dd8d48988d1a2941735',
       // trade: '4bf58dd8d48988d1ad941735',
-      userInstitute: '',
-      userInput: '',
-      university: '4bf58dd8d48988d1ae941735',
-      college: '4bf58dd8d48988d1a2941735',
-      trade: '4bf58dd8d48988d1ad941735',
       schoolsList: []
     }
   }
@@ -71,7 +68,6 @@ class App extends Component {
   }
 
   getInstitute = (event) => {
-    console.log(event.target.getAttribute('value'))
     this.setState({
       userInstitute: event.target.getAttribute('value')
     })

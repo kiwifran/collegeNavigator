@@ -1,0 +1,31 @@
+[type='radio'] {
+    display: none;
+}
+
+.radioButtons {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.radioButton {
+    text-align: center;
+    border: 1px solid black;
+    transition: 0.1s;
+    background: #416bff;
+    box-shadow: 0 5px #999;
+}
+
+label {
+    display: block;
+    width: 150px;
+}
+
+.selected {
+    // transform: scale(0.98);
+    transform: translateY(2px);
+    box-shadow: 0 2px #666;
+    background: #b1bc2b;
+}
+
+
+
