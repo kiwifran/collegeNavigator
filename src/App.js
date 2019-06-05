@@ -23,8 +23,8 @@ class App extends Component {
       college: '4bf58dd8d48988d1a2941735',
       trade: '4bf58dd8d48988d1ad941735',
       schoolsList: [],
-      schoolMoreInfo:{},
-      isModalOpen:false,
+      schoolMoreInfo: {},
+      isModalOpen: false,
       // schoolPhotoUrl:"",
       // schoolName:"",
       // schoolAddress:"",
@@ -88,7 +88,7 @@ class App extends Component {
       console.log(error.config);
     });
   }
-  
+
   handleChange = (event) => {
     this.setState({
       userInput: event.currentTarget.value
@@ -101,13 +101,13 @@ class App extends Component {
     })
   }
 
-  isInfoEmpty=()=> {
-  for (let key in this.state.schoolMoreInfo) {
+  isInfoEmpty = () => {
+    for (let key in this.state.schoolMoreInfo) {
       return false;
+    }
+    return true;
   }
-  return true;
-  }
-  displayDetails=()=>{
+  displayDetails = () => {
     const { bestPhoto, name, contact, location, description, url } = this.state.schoolMoreInfo;
     console.log(bestPhoto);
     return (
@@ -115,7 +115,7 @@ class App extends Component {
         <div className="detailsOverlay"></div>
         <div className="detailsModal">
           <div className="detailsFlex">
-            <button onClick={this.handleCloseClick}className="closeButton">
+            <button onClick={this.handleCloseClick} className="closeButton">
               <i className="fas fa-times"></i>
             </button>
             <div className="bookmarkOff">
@@ -159,11 +159,11 @@ class App extends Component {
                 ? <a href={url}>Visit Website </a>
                 : null}
             </div>
-  {/* end of wrappers */}
+            {/* end of wrappers */}
           </div>
         </div>
       </div>
-      
+
     )
   }
   // openClose=(value)=>{
@@ -176,7 +176,7 @@ class App extends Component {
   //     modal.classList.remove("close");
   //   }
   // }
-  handleCloseClick=()=>{
+  handleCloseClick = () => {
     this.setState = ({
       isModalOpen: false,
     })
@@ -184,13 +184,13 @@ class App extends Component {
     // const modal = document.querySelector(".modalWrapper");
     // modal.classList.add("close");
     console.log('clicked!');
-  
-    
+
+
   }
 
   moreInfo(id) {
     console.log(id);
-    axios.get(`https://api.foursquare.com/v2/venues/${id}`,{
+    axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
       params: {
         // THIS IS ANDREW'S API KEY 
         //then it's Frankie's
@@ -207,14 +207,31 @@ class App extends Component {
         // schoolPhotoUrl  :`${schoolDetails.bestPhoto.prefix}500x500${schoolDetails.bestPhoto.suffix}`,
         // schoolName :schoolDetails.name,
         // schoolAddress: schoolDetails.location.formattedAddress,
-        schoolMoreInfo:schoolMoreInfo,
-        isModalOpen:true
-        
+        schoolMoreInfo: schoolMoreInfo,
+        isModalOpen: true
+
       })
-    
+
     }).catch((error) => {
-      console.log(error);
-    })}
+      // Error
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
+  }
 
   addInstitution(schoolInfo) {
     // schoolInfo is an object containing a name, address and desciption
@@ -227,7 +244,7 @@ class App extends Component {
     return (
       <HashRouter>
         <Nav />
-        <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
+        <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute} />
 
         <div className="schoolsList container">
           {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
@@ -241,11 +258,11 @@ class App extends Component {
                 country={school.location.country}
                 moreInfo={this.moreInfo}
               />
-              )
+            )
           }) : null}
         </div>
 
-        <AddSchool 
+        <AddSchool
           addInstitution={this.addInstitution}
         />
 
