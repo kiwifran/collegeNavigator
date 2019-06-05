@@ -148,6 +148,21 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 [type='radio'] {
   display: none; }
 
+.searchContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
 .radioButtons {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -157,9 +172,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .radioButton {
   text-align: center;
   border: 1px solid black;
-  -webkit-transition: 0.1s;
-  -o-transition: 0.1s;
-  transition: 0.1s;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
   background: #416bff;
   -webkit-box-shadow: 0 5px #999;
   box-shadow: 0 5px #999; }

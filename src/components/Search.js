@@ -35,11 +35,11 @@ class Search extends Component {
 
     render() {
         return (
-            <div>
+            <div className='searchContainer'>
                 <div className='radioButtons'>
                     {this.state.university ?
                         <div className='radioButton selected'>
-                            <input type='radio' name='institution' id='university' value='4bf58dd8d48988d1ae941735'></input>
+                            <input type='radio' name='institution' id='university' value='4bf58dd8d48988d1ae941735' selected></input>
                             <label htmlFor="university">University</label>
                         </div>
                         :
@@ -50,7 +50,7 @@ class Search extends Component {
 
                     {this.state.college ?
                         <div className='radioButton selected'>
-                            <input type='radio' name='institution' id='college' value='4bf58dd8d48988d1a2941735'></input>
+                            <input type='radio' name='institution' id='college' value='4bf58dd8d48988d1a2941735' selected></input>
                             <label htmlFor="college">College</label>
                         </div>
                         :
@@ -61,7 +61,7 @@ class Search extends Component {
 
                     {this.state.tradeSchool ?
                         <div className='radioButton selected'>
-                            <input type='radio' name='institution' id='tradeSchool' value='4bf58dd8d48988d1ad941735'></input>
+                            <input type='radio' name='institution' id='tradeSchool' value='4bf58dd8d48988d1ad941735' selected></input>
                             <label htmlFor="tradeSchool">Trade School</label>
                         </div>
                         :
