@@ -15,14 +15,8 @@ class App extends Component {
     super();
 
     this.state = {
-      // university: '4bf58dd8d48988d1ae941735',
-      // college: '4bf58dd8d48988d1a2941735',
-      // trade: '4bf58dd8d48988d1ad941735',
       userInstitute: '',
       userInput: '',
-      university: '4bf58dd8d48988d1ae941735',
-      college: '4bf58dd8d48988d1a2941735',
-      trade: '4bf58dd8d48988d1ad941735',
       schoolsList: []
     }
   }
@@ -61,7 +55,25 @@ class App extends Component {
       this.setState({
         schoolsList
       })
-    })
+    }).catch((error) => {
+      // Error
+      if (error.response) {
+        // The request was made and the server responded with a status code
+        // that falls out of the range of 2xx
+        console.log(error.response.data);
+        console.log(error.response.status);
+        console.log(error.response.headers);
+      } else if (error.request) {
+        // The request was made but no response was received
+        // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
+        // http.ClientRequest in node.js
+        console.log(error.request);
+      } else {
+        // Something happened in setting up the request that triggered an Error
+        console.log('Error', error.message);
+      }
+      console.log(error.config);
+    });
   }
   
   handleChange = (event) => {
@@ -71,13 +83,10 @@ class App extends Component {
   }
 
   getInstitute = (event) => {
-    console.log(event.target.getAttribute('value'))
     this.setState({
       userInstitute: event.target.getAttribute('value')
     })
   }
-
-
 
   moreInfo(id) {
     console.log(id);
