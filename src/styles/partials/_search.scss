@@ -1,0 +1,37 @@
+[type='radio'] {
+    display: none;
+}
+
+.searchContainer {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.radioButtons {
+    display: flex;
+    margin-bottom: 10px;
+}
+
+.radioButton {
+    text-align: center;
+    border: 1px solid black;
+    transition: 0.2s;
+    background: #416bff;
+    box-shadow: 0 5px #999;
+}
+
+label {
+    display: block;
+    width: 150px;
+}
+
+.selected {
+    transform: translateY(3px);
+    box-shadow: 0 2px #666;
+    background: #b1bc2b;
+}
+
+
+

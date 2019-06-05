@@ -1,5 +1,7 @@
 @import "./partials/setup";
+@import "./partials/basicElements";
 @import "./partials/results";
+<<<<<<< HEAD
 <<<<<<< Updated upstream
 
 body {
@@ -24,6 +26,14 @@ ul {
     width: 90%;
     margin: 0 auto;
 >>>>>>> Stashed changes
+=======
+@import "./partials/details";
+@import "./partials/search";
+
+
+body {
+    background: white;
+>>>>>>> master
 }
 
 li {
