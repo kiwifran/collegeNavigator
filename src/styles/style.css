@@ -137,11 +137,19 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden; }
 
+.schoolsList {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
 .result {
   border: 1px solid black;
-  width: 50%;
-  margin: 0 auto;
-  text-align: center; }
+  text-align: center;
+  width: 30%;
+  margin: 1rem 0.5rem;
+  padding: 10px; }
   .resultName {
     font-weight: 700; }
 
@@ -191,5 +199,202 @@ label {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
-body {
+.nav {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 15px 0; }
+  .navList {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex; }
+  .navItem {
+    margin-right: 20px; }
+    .navItem:last-of-type {
+      margin-right: 0; }
+  .navLink {
+    text-transform: uppercase;
+    font-size: 25px; }
+
+.inputSchoolForm {
+  border: 1px black solid;
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column; }
+
+.inputSchoolName, .inputSchoolAddress, .inputSchoolDescription {
+  display: block; }
+
+.inputSchoolSubmit {
+  display: block;
+  width: 100px;
+  padding: 5px;
+  -ms-flex-item-align: end;
+  align-self: flex-end; }
+
+.inputFieldContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin: 10px 0; }
+  .inputFieldContainer label {
+    width: 20%;
+    text-align: right;
+    padding-right: 20px; }
+  .inputFieldContainer input,
+  .inputFieldContainer textarea {
+    width: 80%;
+    padding: 4px 5px; }
+  .inputFieldContainer textarea {
+    height: 100px;
+    resize: none; }
+
+img {
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  display: box; }
+
+.detailsOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6); }
+
+.detailsModal {
+  position: relative;
+  display: block;
+  width: 600px;
+  max-width: 100%;
+  height: 400px;
+  max-height: 100%;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  -webkit-transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+  padding: 3rem;
   background: white; }
+
+.detailsFlex {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: horizontal;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: row;
+  flex-direction: row;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  -ms-flex-line-pack: center;
+  align-content: center;
+  text-align: left;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap; }
+
+.close {
+  display: none; }
+
+.closeButton {
+  position: absolute;
+  right: -50px;
+  top: -50px;
+  font-size: 40px;
+  padding: 0;
+  background: none;
+  border: none; }
+  .closeButton:hover {
+    color: red; }
+
+.bookmarkOff {
+  position: absolute;
+  right: 15px;
+  top: 15px;
+  font-size: 30px; }
+  .bookmarkOff:hover {
+    color: blue; }
+
+.imgWrapper {
+  width: 40%; }
+
+.smallInfoWrapper {
+  width: 51%; }
+
+.descriptionWrapper {
+  width: 80%;
+  margin-top: 1rem; }
+
+[type='radio'] {
+  display: none; }
+
+.searchContainer {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  -webkit-box-pack: center;
+  -ms-flex-pack: center;
+  justify-content: center;
+  -webkit-box-align: center;
+  -ms-flex-align: center;
+  align-items: center; }
+
+.radioButtons {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  margin-bottom: 10px; }
+
+.radioButton {
+  text-align: center;
+  border: 1px solid black;
+  -webkit-transition: 0.2s;
+  -o-transition: 0.2s;
+  transition: 0.2s;
+  background: #416bff;
+  -webkit-box-shadow: 0 5px #999;
+  box-shadow: 0 5px #999; }
+
+label {
+  display: block;
+  width: 150px; }
+
+.selected {
+  -webkit-transform: translateY(3px);
+  -ms-transform: translateY(3px);
+  transform: translateY(3px);
+  -webkit-box-shadow: 0 2px #666;
+  box-shadow: 0 2px #666;
+  background: #b1bc2b; }
+
+.container {
+  max-width: 1260px;
+  width: 90%;
+  margin: 0 auto; }
+
+body {
+  background: #fcfcfc; }
+
+ul {
+  margin: 0;
+  padding: 0; }
+
+li {
+  list-style: none; }
