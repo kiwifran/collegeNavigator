@@ -1,9 +1,15 @@
+.schoolsList {
+  display: flex;
+  flex-wrap: wrap;
+}
+
 .result {
   border: 1px solid black;
-  width: 50%;
-  margin: 0 auto;
-
   text-align: center;
+
+  width: 30%;
+  margin: 1rem 0.5rem;
+  padding: 10px;
 
   &Name {
     font-weight: 700;

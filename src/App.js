@@ -8,7 +8,8 @@ import './styles/style.scss';
 
 import Nav from './components/Nav.js';
 import Notes from './components/Notes.js';
-import Axios from 'axios';
+import School from './components/School.js';
+import AddSchool from './components/AddSchool.js'
 
 
 class App extends Component {
@@ -189,7 +190,7 @@ class App extends Component {
 
   moreInfo(id) {
     console.log(id);
-    Axios.get(`https://api.foursquare.com/v2/venues/${id}`,{
+    axios.get(`https://api.foursquare.com/v2/venues/${id}`,{
       params: {
         // THIS IS ANDREW'S API KEY 
         //then it's Frankie's
@@ -213,34 +214,45 @@ class App extends Component {
     
     }).catch((error) => {
       console.log(error);
+    })}
 
-    })
+  addInstitution(schoolInfo) {
+    // schoolInfo is an object containing a name, address and desciption
+    console.log(schoolInfo);
+
+    // pass the info into firebase here
   }
-  componentDidUpdate (prevProps, prevState) {
-  }
+
   render() {
-    
     return (
       <HashRouter>
         <Nav />
         <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
 
-        {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
-          return (
-            <div key={school.id} className="result">
-              <p className="resultName">{school.name}</p>
-              <p className="resultAddress">{school.location.address} - {school.location.city}, {school.location.country}</p>
+        <div className="schoolsList container">
+          {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
+            return (
+              <School
+                key={school.id}
+                id={school.id}
+                schoolName={school.name}
+                address={school.location.address}
+                city={school.location.city}
+                country={school.location.country}
+                moreInfo={this.moreInfo}
+              />
+              )
+          }) : null}
+        </div>
 
-              <button onClick={() => this.moreInfo(school.id)}>More Info</button>
-            </div>)
-        }) : null}
-        {!(this.isInfoEmpty())
-        ?this.displayDetails()
-        :null}
+        <AddSchool 
+          addInstitution={this.addInstitution}
+        />
+
         <Switch>
           <Route path='/notes' component={Notes} />
         </Switch>
-      <Footer />
+        <Footer />
       </HashRouter>
     )
   }

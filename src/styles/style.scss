@@ -1,11 +1,41 @@
 @import "./partials/setup";
 @import "./partials/basicElements";
 @import "./partials/results";
+<<<<<<< HEAD
+<<<<<<< Updated upstream
+
+body {
+    background: coral;
+=======
+@import "./partials/search";
+@import "./partials/nav";
+@import "./partials/addSchool";
+
+
+body {
+    background: #fcfcfc;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1260px;
+    width: 90%;
+    margin: 0 auto;
+>>>>>>> Stashed changes
+=======
 @import "./partials/details";
 @import "./partials/search";
 
 
 body {
     background: white;
+>>>>>>> master
 }
 
+li {
+    list-style: none;
+}
