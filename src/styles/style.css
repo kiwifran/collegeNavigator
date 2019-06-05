@@ -184,12 +184,12 @@ label {
   width: 150px; }
 
 .selected {
-  -webkit-transform: translateY(2px);
-  -ms-transform: translateY(2px);
-  transform: translateY(2px);
+  -webkit-transform: translateY(3px);
+  -ms-transform: translateY(3px);
+  transform: translateY(3px);
   -webkit-box-shadow: 0 2px #666;
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
 body {
-  background: coral; }
+  background: white; }

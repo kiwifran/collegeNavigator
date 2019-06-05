@@ -88,8 +88,6 @@ class App extends Component {
     })
   }
 
-
-
   moreInfo(id) {
     console.log(id);
   }
