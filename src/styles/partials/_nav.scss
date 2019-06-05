@@ -1,0 +1,24 @@
+.nav {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 0;
+  
+  &List {
+    display: flex;
+  }
+  
+  &Item {
+    margin-right: 20px;
+  
+    &:last-of-type {
+      margin-right: 0;
+    }
+  }
+  
+  &Link {
+    text-transform: uppercase;
+    font-size: 25px;
+  }  
+}
+
+

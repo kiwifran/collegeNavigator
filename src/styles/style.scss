@@ -1,7 +1,31 @@
 @import "./partials/setup";
 @import "./partials/results";
+<<<<<<< Updated upstream
 
 body {
     background: coral;
+=======
+@import "./partials/search";
+@import "./partials/nav";
+@import "./partials/addSchool";
+
+
+body {
+    background: #fcfcfc;
 }
 
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    max-width: 1260px;
+    width: 90%;
+    margin: 0 auto;
+>>>>>>> Stashed changes
+}
+
+li {
+    list-style: none;
+}

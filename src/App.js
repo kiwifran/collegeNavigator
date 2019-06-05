@@ -8,6 +8,8 @@ import './styles/style.scss';
 
 import Nav from './components/Nav.js';
 import Notes from './components/Notes.js';
+import School from './components/School.js';
+import AddSchool from './components/AddSchool.js'
 
 
 class App extends Component {
@@ -83,24 +85,39 @@ class App extends Component {
     console.log(id);
   }
 
+  addInstitution(schoolInfo) {
+    // schoolInfo is an object containing a name, address and desciption
+    console.log(schoolInfo);
+
+    // pass the info into firebase here
+  }
+
   render() {
-    
     return (
       <HashRouter>
         <Nav />
 
         <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
 
-        {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
-          return (
-            <div key={school.id} className="result">
-              <p className="resultName">{school.name}</p>
-              <p className="resultAddress">{school.location.address} - {school.location.city}, {school.location.country}</p>
+        <div className="schoolsList container">
+          {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
+            return (
+              <School
+                key={school.id}
+                id={school.id}
+                schoolName={school.name}
+                address={school.location.address}
+                city={school.location.city}
+                country={school.location.country}
+                moreInfo={this.moreInfo}
+              />
+              )
+          }) : null}
+        </div>
 
-              <button onClick={() => this.moreInfo(school.id)}>More Info</button>
-            </div>)
-
-        }) : null}
+        <AddSchool 
+          addInstitution={this.addInstitution}
+        />
 
         <Switch>
           <Route path='/notes' component={Notes} />
