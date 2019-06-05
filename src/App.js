@@ -53,7 +53,7 @@ class App extends Component {
       }
     }).then(result => {
       // this returns an array of 50 schools
-      const regex = /centre|center|park|building|pool|hall|office of le president|division of|department/i
+      const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public/i
       const schoolsList = result.data.response.venues
       const filteredSchoolList = [];
 
