@@ -8,6 +8,7 @@ import './styles/style.scss';
 
 import Nav from './components/Nav.js';
 import Notes from './components/Notes.js';
+import Axios from 'axios';
 
 
 class App extends Component {
@@ -23,7 +24,14 @@ class App extends Component {
       university: '4bf58dd8d48988d1ae941735',
       college: '4bf58dd8d48988d1a2941735',
       trade: '4bf58dd8d48988d1ad941735',
-      schoolsList: []
+      schoolsList: [],
+      schoolMoreInfo:{},
+      isModalOpen:false,
+      // schoolPhotoUrl:"",
+      // schoolName:"",
+      // schoolAddress:"",
+      // schoolDescription:"",
+      // schoolWebsite:""
     }
   }
 
@@ -76,19 +84,128 @@ class App extends Component {
       userInstitute: event.target.getAttribute('value')
     })
   }
+  isInfoEmpty=()=> {
+  for (let key in this.state.schoolMoreInfo) {
+      return false;
+  }
+  return true;
+  }
+  displayDetails=()=>{
+    const { bestPhoto, name, contact, location, description, url } = this.state.schoolMoreInfo;
+    console.log(bestPhoto);
+    return (
+      <div className="modalWrapper">
+        <div className="detailsOverlay"></div>
+        <div className="detailsModal">
+          <div className="detailsFlex">
+            <button onClick={this.handleCloseClick}className="closeButton">
+              <i className="fas fa-times"></i>
+            </button>
+            <div className="bookmarkOff">
+              <i className="far fa-bookmark"></i>
+            </div>
+            {bestPhoto !== undefined
+              ? <div className="imgWrapper">
+                {/* since I see some photos are not as large as the size of 500x500 I changed it to 400 */}
+                <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`picture of ${name}`} />
+              </div>
+              : null}
+            <div className="smallInfoWrapper">
+              <p>{name}</p>
+              <p>{location.formattedAddress}</p>
+              {(contact.twitter !== undefined && contact.facebook !== undefined)
+                ? <div className="contacts">
+                  <p>{contact.twitter}</p>
+                  <p>{contact.facebook}</p>
+                  <p>{contact.formattedPhone}</p>
+                </div>
+                : (contact.twitter === undefined && contact.facebook !== undefined)
+                  ? <div className="contacts">
+                    <p>{contact.facebook}</p>
+                    <p>{contact.formattedPhone}</p>
+                  </div>
+                  : (contact.twitter !== undefined && contact.facebook === undefined)
+                    ? <div className="contacts">
+                      <p>{contact.twitter}</p>
+                      <p>{contact.formattedPhone}</p>
+                    </div>
+                    : <div className="contacts">
+                      <p>{contact.formattedPhone}</p>
+                    </div>}
 
+            </div>
+            <div className="descriptionWrapper">
+              {description !== undefined
+                ? <p>{description}</p>
+                : null}
+              {url !== undefined
+                ? <a href={url}>Visit Website </a>
+                : null}
+            </div>
+  {/* end of wrappers */}
+          </div>
+        </div>
+      </div>
+      
+    )
+  }
+  // openClose=(value)=>{
+  //   const modal = document.querySelector(".modalWrapper");
 
+  //   if(value===false) {
+  //     modal.classList.add("close");
 
+  //   }else {
+  //     modal.classList.remove("close");
+  //   }
+  // }
+  handleCloseClick=()=>{
+    this.setState = ({
+      isModalOpen: false,
+    })
+    // not sure do we need to setState here
+    // const modal = document.querySelector(".modalWrapper");
+    // modal.classList.add("close");
+    console.log('clicked!');
+  
+    
+  }
   moreInfo(id) {
     console.log(id);
-  }
+    Axios.get(`https://api.foursquare.com/v2/venues/${id}`,{
+      params: {
+        // THIS IS ANDREW'S API KEY 
+        //then it's Frankie's
+        // client_id: 'JYPGSEYBVO44BBH553GNVMI1OCUCDFTFZUS2H0X5JLMCMOVY',
+        client_id: 'H5KTLRAURYRNV350DJHQNDMORMYO0GN3KP12FFUMTXWI2XCO',
+        // client_secret: 'XBVDWZV2LUQS3RUWTMJJQVJMKZY5HACXHKCGT4ZXVHHXX5K3',
+        client_secret: 'XIFGNZS4EZHSNJD2U45HSDMBUGTW4TEF5RKK3BZBW3V4R5NB',
+        v: 20190101,
+      }
+    }).then(res => {
+      console.log(res.data.response.venue);
+      const schoolMoreInfo = res.data.response.venue;
+      this.setState({
+        // schoolPhotoUrl  :`${schoolDetails.bestPhoto.prefix}500x500${schoolDetails.bestPhoto.suffix}`,
+        // schoolName :schoolDetails.name,
+        // schoolAddress: schoolDetails.location.formattedAddress,
+        schoolMoreInfo:schoolMoreInfo,
+        isModalOpen:true
+        
+      })
+    
+    }).catch((error) => {
+      console.log(error);
 
+    })
+  }
+  componentDidUpdate (prevProps, prevState) {
+  }
   render() {
     
     return (
       <HashRouter>
         <Nav />
-
         <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute}/>
 
         {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
@@ -99,9 +216,10 @@ class App extends Component {
 
               <button onClick={() => this.moreInfo(school.id)}>More Info</button>
             </div>)
-
         }) : null}
-
+        {!(this.isInfoEmpty())
+        ?this.displayDetails()
+        :null}
         <Switch>
           <Route path='/notes' component={Notes} />
         </Switch>
