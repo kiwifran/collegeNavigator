@@ -118,9 +118,7 @@ class App extends Component {
             <button onClick={this.handleCloseClick} className="closeButton">
               <i className="fas fa-times"></i>
             </button>
-            <div className="bookmarkOff">
-              <i className="far fa-bookmark"></i>
-            </div>
+           
             {bestPhoto !== undefined
               ? <div className="imgWrapper">
                 {/* since I see some photos are not as large as the size of 500x500 I changed it to 400 */}
