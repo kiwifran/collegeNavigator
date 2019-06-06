@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-
+import firebase from "firebase";
 class AddSchool extends Component {
   constructor() {
     super();
@@ -10,20 +10,29 @@ class AddSchool extends Component {
       description: ''
     }
   }
-
+  
   onChange = e => {
     this.setState({
       [e.target.name]: e.target.value
     })
   }
-
+  onSubmit = e=>{
+    e.preventDefault();
+    if (this.state.name !== "" && this.state.address !== "" && /^\s*$/.test(this.state.name) === false && /^\s*$/.test(this.state.address) === false){
+      const dbRef = firebase.database().ref();
+      dbRef.push(this.state);
+      this.setState({
+        name:"",
+        address:"",
+        description:""
+      })
+    }else {
+      alert("check your input please🙁")
+    }
+  }
   render() {
     return (
-      <form className="inputSchoolForm" onSubmit={(e) => {
-        this.props.addInstitution(this.state)
-        e.preventDefault();
-        }}>
-
+      <form className="inputSchoolForm" onSubmit={this.onSubmit}>
         <div className="inputFieldContainer">
           <label htmlFor="inputSchoolName">Name of Institution:</label>
           <input 
