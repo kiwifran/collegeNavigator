@@ -221,7 +221,9 @@ class App extends Component {
         />
 
         <Switch>
-          <Route path='/notes' component={Notes} />
+          <Route path='/notes' render={() => {return (<Notes 
+            bookmarkList={this.state.bookmarkList} />)}} 
+          />
         </Switch>
         <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
         <Footer />
