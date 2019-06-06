@@ -1,6 +1,35 @@
 import React, { Component } from 'react'
+import AddSchool from './AddSchool.js'
 
 class Notes extends Component {
+  constructor() {
+    super();
+    this.state = {
+      bookmarkList: [],
+      
+    }
+  }
+
+  componentDidMount() {
+    const dbRef = firebase.database().ref();
+    dbRef.on('value', (response) => {
+      const data = response.val();
+      const updateBookmark = [];
+      for (let item in data) {
+        updateBookmark.push({
+          key: item,
+          name: data[item].name,
+          address: data[item].address,
+          id: data[item].id
+        })
+      }
+      this.setState({
+        bookmarkList: updateBookmark
+      })
+    })
+    // console.log(this.state.bookmarkList)
+  }
+
   render() {
     return (
       <div className="noteContainer">
@@ -21,6 +50,8 @@ class Notes extends Component {
             )
           })}
         </ul>
+
+        <AddSchool />
       </div>
     )
   }
