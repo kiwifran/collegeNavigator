@@ -35,7 +35,7 @@ class Search extends Component {
 
     render() {
         return (
-            <div className='searchContainer'>
+            <div className='searchContainer wrapper'>
                 <div className='radioButtons'>
                     {this.state.university ?
                         <div className='radioButton selected'>

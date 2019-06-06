@@ -137,6 +137,10 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   clip: rect(0 0 0);
   overflow: hidden; }
 
+.wrapper {
+  width: 80%;
+  margin: 0 auto; }
+
 .schoolsList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -150,7 +154,8 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   position: relative;
   width: 30%;
   margin: 1rem 0.5rem;
-  padding: 10px; }
+  padding: 10px;
+  background: #073330; }
   .resultName {
     font-weight: 700; }
 
@@ -160,7 +165,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   top: 10px;
   font-size: 20px; }
   .bookmarkOff:hover {
-    color: blue; }
+    color: #b1bc2b; }
 
 [type='radio'] {
   display: none; }
@@ -237,7 +242,8 @@ label {
   -webkit-box-orient: vertical;
   -webkit-box-direction: normal;
   -ms-flex-direction: column;
-  flex-direction: column; }
+  flex-direction: column;
+  background: #073330; }
 
 .inputSchoolName, .inputSchoolAddress, .inputSchoolDescription {
   display: block; }
@@ -391,11 +397,22 @@ label {
   margin: 0 auto; }
 
 body {
-  background: #fcfcfc; }
+  background: #416bff;
+  color: aliceblue;
+  font-family: "Barlow", sans-serif; }
 
 ul {
   margin: 0;
   padding: 0; }
 
+h1,
+h2,
+h3 {
+  font-family: "Offside", cursive; }
+
 li {
   list-style: none; }
+
+a {
+  text-decoration: none;
+  color: aliceblue; }

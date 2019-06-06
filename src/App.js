@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import Footer from "./components/Footer"
 import { HashRouter, Route, Switch } from 'react-router-dom';
 import axios from 'axios';
+import firebase from './components/firebase';
 import Search from './components/Search.js';
 import SchoolDetails from "./components/SchoolDetails.js"
 import './styles/style.scss';
@@ -24,6 +25,10 @@ class App extends Component {
       trade: '4bf58dd8d48988d1ad941735',
       schoolsList: [],
       schoolMoreInfo: {},
+      bookmarkName: '',
+      bookmarkAddress: '',
+      bookmarkId: '',
+      bookmarkList: []
       // schoolPhotoUrl:"",
       // schoolName:"",
       // schoolAddress:"",
@@ -32,7 +37,7 @@ class App extends Component {
 
     }
   }
-
+  
   handleClick = () => {
     axios.get('https://api.foursquare.com/v2/venues/search', {
       params: {
@@ -65,7 +70,7 @@ class App extends Component {
       console.log(filteredSchoolList)
 
       this.setState({
-        schoolsList: filteredSchoolList
+        schoolsList: filteredSchoolList,
       })
     }).catch((error) => {
       // Error
@@ -158,34 +163,72 @@ class App extends Component {
     // pass the info into firebase here
   }
 
+
+  // pull bookmarked item's name, address and id from school component into parent state
+  setBookmarkState = (bookmarkName, bookmarkAddress, bookmarkId) => {
+    this.setState({
+      bookmarkName,
+      bookmarkAddress,
+      bookmarkId
+    })
+  // push each bookmarked item into firebase
+    const dbRef = firebase.database().ref();
+    dbRef.push({
+      name: bookmarkName,
+      address: bookmarkAddress,
+      id: bookmarkId
+    });
+  }
+  // if new data pushed to firebase, create array holding all the new data
+  // set the data into the bookmarkList state
+  // will use this state to add the notes
+  componentDidMount() {
+    const dbRef = firebase.database().ref();
+    dbRef.on('value', (response) => {
+      const data = response.val();
+      const updateBookmark = [];
+      for (let item in data) {
+        updateBookmark.push({
+          key: item,
+          name: data[item].name,
+          address: data[item].address,
+          id: data[item].id
+        })
+      }
+      this.setState({
+        bookmarkList: updateBookmark
+      })
+    })
+  }
+  removeNote = (key) => {
+    const dbRef = firebase.database().ref(key);
+    dbRef.remove();
+  }
+
   render() {
     return (
       <HashRouter>
         <Nav />
         <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute} />
 
-        <div className="schoolsList container">
-          {this.state.schoolsList.length > 0 ? this.state.schoolsList.map(school => {
-            return (
-              <School
-                key={school.id}
-                id={school.id}
-                schoolName={school.name}
-                address={school.location.address}
-                city={school.location.city}
-                country={school.location.country}
-                moreInfo={this.moreInfo}
-              />
-            )
-          }) : null}
-          
-        </div>
-          <AddSchool 
-            addInstitution={this.addInstitution}
-          />
+        <School 
+          schoolsList={this.state.schoolsList}
+          moreInfo={this.moreInfo}
+          bookmarkName={this.state.bookmarkName}
+          bookmarkAddress={this.state.bookmarkAddress}
+          bookmarkId={this.state.bookmarkId}
+          setBookmarkState={this.setBookmarkState}
+        />
+
+        <AddSchool 
+          addInstitution={this.addInstitution}  
+        />
 
         <Switch>
-          <Route path='/notes' component={Notes} />
+          <Route path='/notes' render={() => {return (<Notes 
+            bookmarkList={this.state.bookmarkList}
+            removeNote={this.removeNote} />)}} 
+          />
         </Switch>
         <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
         <Footer />

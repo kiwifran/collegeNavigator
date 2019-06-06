@@ -18,7 +18,7 @@
     text-align: center;
     border: 1px solid black;
     transition: 0.2s;
-    background: #416bff;
+    background: $primaryColor;
     box-shadow: 0 5px #999;
 }
 
@@ -30,7 +30,7 @@ label {
 .selected {
     transform: translateY(3px);
     box-shadow: 0 2px #666;
-    background: #b1bc2b;
+    background: $activeColor;
 }
 
 

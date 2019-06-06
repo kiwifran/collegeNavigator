@@ -14,7 +14,9 @@
 }
 
 body {
-    background: #fcfcfc;
+    background: $primaryColor;
+    color: $fontColor;
+    font-family: $bodyFont;
 }
 
 ul {
@@ -22,6 +24,17 @@ ul {
     padding: 0;
 }
 
+h1,
+h2,
+h3 {
+    font-family: $headerFont;
+}
+
 li {
     list-style: none;
+}
+
+a {
+    text-decoration: none;
+    color: $fontColor;
 }
