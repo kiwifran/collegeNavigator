@@ -5,6 +5,15 @@ img {
     border-radius: 10px;
     display: box;
 }
+
+.modalWrapper.open {
+    display: block;
+}
+
+.modalWrapper.close {
+    display: none
+}
+
 //adapted from codepen https://codepen.io/chriscoyier/pen/MeJWoM
 .detailsOverlay {
     position: fixed;
@@ -34,9 +43,9 @@ img {
     @include flex(row, space-between, center, left);
     flex-wrap:wrap;
 }
-.close {
-    display: none;
-}
+// .close {
+//     display: none;
+// }
 .closeButton {
     position: absolute;
     right:-50px;
