@@ -60,7 +60,7 @@ class SchoolDetails extends Component{
                                 ? <p>{description}</p>
                                 : null}
                             {url !== undefined
-                                ? <a href={url}>Visit Website </a>
+                                ? <a target="_blank" href={url}>Visit Website </a>
                                 : null}
                         </div>
                         {/* end of wrappers */}

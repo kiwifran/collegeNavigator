@@ -12,6 +12,13 @@ $activeColor: #b1bc2b;
 $headerFont: 'Offside', cursive;
 $bodyFont: 'Barlow', sans-serif;
 
+@mixin flex ($flex-direction, $justify-content, $align-items, $text-align) {
+    display:flex;
+    flex-direction: $flex-direction;
+    justify-content: $justify-content;
+    align-content: $align-items;
+    text-align: $text-align;
+}
 .wrapper {
     width: 80%;
     margin: 0 auto;
