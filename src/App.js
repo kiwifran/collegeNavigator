@@ -156,12 +156,6 @@ class App extends Component {
     });
   }
 
-  addInstitution(schoolInfo) {
-    // schoolInfo is an object containing a name, address and desciption
-    console.log(schoolInfo);
-
-    // pass the info into firebase here
-  }
 
 
   // pull bookmarked item's name, address and id from school component into parent state
@@ -220,11 +214,10 @@ class App extends Component {
           setBookmarkState={this.setBookmarkState}
         />
 
-        <AddSchool 
-          addInstitution={this.addInstitution}  
-        />
-
+        {/* <AddSchool/> */}
         <Switch>
+          <Route path="/addSchool" component={AddSchool} />
+
           <Route path='/notes' render={() => {return (<Notes 
             bookmarkList={this.state.bookmarkList}
             removeNote={this.removeNote} />)}} 
