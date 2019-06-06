@@ -37,7 +37,7 @@ class App extends Component {
 
     }
   }
-  
+
   handleClick = () => {
     axios.get('https://api.foursquare.com/v2/venues/search', {
       params: {
@@ -105,7 +105,7 @@ class App extends Component {
     })
   }
 
-  
+
   moreInfo = (id) => {
     console.log(id);
     axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
@@ -165,12 +165,29 @@ class App extends Component {
 
 
   // pull bookmarked item's name, address and id from school component into parent state
-  setBookmarkState = (bookmarkName, bookmarkAddress, bookmarkId) => {
-    this.setState({
-      bookmarkName,
-      bookmarkAddress,
-      bookmarkId
-    })
+  setBookmarkState = (id) => {
+    console.log(id)
+    // dbRef.once('value', (response) => {
+    //   const data = response.val()
+    //   console.log(data)
+    // })
+    // this.setState({
+    //   bookmarkName,
+    //   bookmarkAddress,
+    //   bookmarkId
+    // })
+    // push each bookmarked item into firebase
+
+    this.state.schoolsList.map((school) => {
+      if (school.id === id) {
+        const dbRef = firebase.database().ref();
+        dbRef.push({
+          name: school.name,
+          address: school.location.address,
+          id: school.id
+        })
+      }
+    });
   }
   // if new data pushed to firebase, create array holding all the new data
   // set the data into the bookmarkList state
@@ -192,6 +209,7 @@ class App extends Component {
         bookmarkList: updateBookmark
       })
     })
+    // console.log(this.state.bookmarkList)
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -214,9 +232,13 @@ class App extends Component {
     return (
       <HashRouter>
         <Nav />
-        <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute} />
+        <Search
+          onClick={this.handleClick}
+          onChange={this.handleChange}
+          getInstitute={this.getInstitute}
+        />
 
-        <School 
+        <School
           schoolsList={this.state.schoolsList}
           moreInfo={this.moreInfo}
           bookmarkName={this.state.bookmarkName}
@@ -225,17 +247,23 @@ class App extends Component {
           setBookmarkState={this.setBookmarkState}
         />
 
-        <AddSchool 
-          addInstitution={this.addInstitution}  
+        <AddSchool
+          addInstitution={this.addInstitution}
         />
 
         <Switch>
-          <Route path='/notes' render={() => {return (<Notes 
-            bookmarkList={this.state.bookmarkList}
-            removeNote={this.removeNote} />)}} 
+          <Route path='/notes' render={() => {
+            return (<Notes
+              bookmarkList={this.state.bookmarkList}
+              removeNote={this.removeNote} />)
+          }}
           />
         </Switch>
-        <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
+
+        <SchoolDetails
+          schoolMoreInfo={this.state.schoolMoreInfo}
+        />
+
         <Footer />
       </HashRouter>
     )
