@@ -30,6 +30,12 @@ class Notes extends Component {
     })
     // console.log(this.state.bookmarkList)
   }
+  editNote = (key) => {
+    const dbRef = firebase.database().ref(key);
+    const userComment = prompt('other comments?');
+    dbRef.child('note').set(userComment);
+
+  }
 
   removeNote = (key) => {
     const dbRef = firebase.database().ref(key);
@@ -47,7 +53,7 @@ class Notes extends Component {
               <li key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
-                <button>
+                <button onClick={()=>{this.editNote(item.key)}}>
                   <i className="fas fa-pen"></i>Edit
                 </button>
                 <button onClick={() => { this.removeNote(item.key) }}>
