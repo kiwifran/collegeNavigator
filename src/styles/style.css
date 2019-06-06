@@ -147,11 +147,20 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
 .result {
   border: 1px solid black;
   text-align: center;
+  position: relative;
   width: 30%;
   margin: 1rem 0.5rem;
   padding: 10px; }
   .resultName {
     font-weight: 700; }
+
+.bookmarkOff {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  font-size: 20px; }
+  .bookmarkOff:hover {
+    color: blue; }
 
 [type='radio'] {
   display: none; }
@@ -319,14 +328,6 @@ img {
   border: none; }
   .closeButton:hover {
     color: red; }
-
-.bookmarkOff {
-  position: absolute;
-  right: 15px;
-  top: 15px;
-  font-size: 30px; }
-  .bookmarkOff:hover {
-    color: blue; }
 
 .imgWrapper {
   width: 40%; }
