@@ -1,4 +1,9 @@
 import React, { Component } from 'react';
+import axios from 'axios';
+import firebase from './firebase.js';
+import School from './School.js';
+import SchoolDetails from "./SchoolDetails.js"
+
 
 class Search extends Component {
     constructor() {
@@ -9,15 +14,21 @@ class Search extends Component {
             tradeSchool: false,
             userInstitute: '',
             userInput: '',
-            university: '4bf58dd8d48988d1ae941735',
-            college: '4bf58dd8d48988d1a2941735',
-            trade: '4bf58dd8d48988d1ad941735',
-            schoolsList: []
+            universityID: '4bf58dd8d48988d1ae941735',
+            collegeID: '4bf58dd8d48988d1a2941735',
+            tradeID: '4bf58dd8d48988d1ad941735',
+            schoolsList: [],
+            selectSchoolId: "",
         }
     }
-
+    userSelectSchoolId=(id)=>{
+        console.log('search', id);
+        this.setState({
+            selectSchoolId:id,
+        })
+    }
     // calls the API
-    handleClick = () => {
+    apiCall = () => {
         axios.get('https://api.foursquare.com/v2/venues/search', {
             params: {
 
@@ -87,16 +98,6 @@ class Search extends Component {
     // bookmarks into firebase the selected school
     setBookmarkState = (id) => {
         console.log(id)
-        // dbRef.once('value', (response) => {
-        //   const data = response.val()
-        //   console.log(data)
-        // })
-        // this.setState({
-        //   bookmarkName,
-        //   bookmarkAddress,
-        //   bookmarkId
-        // })
-        // push each bookmarked item into firebase
 
         this.state.schoolsList.map((school) => {
             if (school.id === id) {
@@ -110,36 +111,35 @@ class Search extends Component {
         });
     }
 
-    // NEED TO RENAME AND REFACTOR EVERYTHING BELOW HERE!!!!
     // ALL THIS IS FOR RADIO BUTTONS 
     handleClick = (event) => {
         if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1ae941735') {
             this.setState({
-                university: true,
-                college: false,
-                tradeSchool: false
+                universityID: true,
+                collegeID: false,
+                tradeSchoolID: false
             })
         } else if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1a2941735') {
             this.setState({
-                university: false,
-                college: true,
-                tradeSchool: false
+                universityID: false,
+                collegeID: true,
+                tradeSchoolID: false
             })
         } else if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1ad941735') {
             this.setState({
-                university: false,
-                college: false,
-                tradeSchool: true
+                universityID: false,
+                collegeID: false,
+                tradeSchoolID: true
             })
         }
-        this.props.getInstitute(event)
+        this.getInstitute(event)
     }
 
     render() {
         return (
             <div className='searchContainer wrapper'>
                 <div className='radioButtons'>
-                    {this.state.university ?
+                    {this.state.universityID ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='university' value='4bf58dd8d48988d1ae941735' selected></input>
                             <label htmlFor="university">University</label>
@@ -150,7 +150,7 @@ class Search extends Component {
                             <label htmlFor="university">University</label>
                         </div>}
 
-                    {this.state.college ?
+                    {this.state.collegeID ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='college' value='4bf58dd8d48988d1a2941735' selected></input>
                             <label htmlFor="college">College</label>
@@ -161,7 +161,7 @@ class Search extends Component {
                             <label htmlFor="college">College</label>
                         </div>}
 
-                    {this.state.tradeSchool ?
+                    {this.state.tradeSchoolID ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='tradeSchool' value='4bf58dd8d48988d1ad941735' selected></input>
                             <label htmlFor="tradeSchool">Trade School</label>
@@ -172,8 +172,19 @@ class Search extends Component {
                             <label htmlFor="tradeSchool">Trade School</label>
                         </div>}
                 </div>
-                <input type="text" name="search" id="search" onChange={this.props.onChange} />
-                <button onClick={this.props.onClick}>Get School List</button>
+                <input type="text" name="search" id="search" onChange={this.handleChange} />
+                <button onClick={this.apiCall}>Get School List</button>
+
+                <School
+                    schoolsList={this.state.schoolsList}
+                    setBookmarkState={this.setBookmarkState}
+                    userSelectSchoolId={this.userSelectSchoolId}
+                />
+
+                <SchoolDetails
+                    schoolId={this.state.selectSchoolId}
+                />
+
             </div>
         )
     }

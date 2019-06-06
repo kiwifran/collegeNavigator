@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import firebase from './firebase.js'
 import AddSchool from './AddSchool.js'
 
 class Notes extends Component {
@@ -30,12 +31,18 @@ class Notes extends Component {
     // console.log(this.state.bookmarkList)
   }
 
+  removeNote = (key) => {
+    const dbRef = firebase.database().ref(key);
+    dbRef.remove();
+  }
+
+
   render() {
     return (
       <div className="noteContainer">
         <h2>NOTES</h2>
         <ul className="notes">
-          {this.props.bookmarkList.map((item) => {
+          {this.state.bookmarkList.map((item) => {
             return(
               <li key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
@@ -43,7 +50,7 @@ class Notes extends Component {
                 <button>
                   <i className="fas fa-pen"></i>Edit
                 </button>
-                <button onClick={() => { this.props.removeNote(item.key) }}>
+                <button onClick={() => { this.removeNote(item.key) }}>
                   <i className="fas fa-trash-alt"></i>Delete
                 </button>
               </li>

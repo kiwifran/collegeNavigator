@@ -1,17 +1,20 @@
 import React, {Component, Fragment} from 'react';
+import axios from 'axios';
+
 class SchoolDetails extends Component{
     constructor(props){
         super(props);
         this.state={
             isModalOpen: false,
+            schoolMoreInfo: {}
         }	
     }
     
     // MORE INFO NOT CONNECTED 
     // THIS WON'T WORK BECAUSE THE ID IS BEING PASSED FROM SCHOOL COMPONENT WHICH IS INCEPTION LAYERS DEEP
-    moreInfo = (id) => {
-        console.log(id);
-        axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
+    moreInfo = () => {
+        console.log('school details', this.props.schoolId);
+        axios.get(`https://api.foursquare.com/v2/venues/${this.props.schoolId}`, {
             params: {
                 // THIS IS ANDREW'S API KEY 
                 // client_id: 'H5KTLRAURYRNV350DJHQNDMORMYO0GN3KP12FFUMTXWI2XCO',
@@ -27,6 +30,7 @@ class SchoolDetails extends Component{
                 v: 20190101,
             }
         }).then(res => {
+            console.log(res)
             // console.log(res.data.response.venue);
             const schoolMoreInfo = res.data.response.venue;
 
@@ -61,13 +65,13 @@ class SchoolDetails extends Component{
 
     // EVERYTHING BELOW HERE WAS ORIGINAL
     isInfoEmpty = () => {
-        for (let key in this.props.schoolMoreInfo) {
+        for (let key in this.state.schoolMoreInfo) {
             return false;
         }
         return true;
     }
     displayDetails = () => {
-        const { bestPhoto, name, contact, location, description, url } = this.props.schoolMoreInfo;
+        const { bestPhoto, name, contact, location, description, url } = this.state.schoolMoreInfo;
         console.log(bestPhoto);
         return (
                 <Fragment>
