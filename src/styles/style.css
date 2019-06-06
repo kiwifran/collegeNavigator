@@ -278,6 +278,12 @@ img {
   border-radius: 10px;
   display: box; }
 
+.modalWrapper.open {
+  display: block; }
+
+.modalWrapper.close {
+  display: none; }
+
 .detailsOverlay {
   position: fixed;
   top: 0;
@@ -302,7 +308,7 @@ img {
   -ms-transform: translate(-50%, -50%);
   transform: translate(-50%, -50%);
   padding: 3rem;
-  background: white; }
+  background: #073330; }
 
 .detailsFlex {
   display: -webkit-box;
@@ -320,9 +326,6 @@ img {
   text-align: left;
   -ms-flex-wrap: wrap;
   flex-wrap: wrap; }
-
-.close {
-  display: none; }
 
 .closeButton {
   position: absolute;

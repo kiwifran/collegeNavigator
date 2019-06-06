@@ -37,7 +37,7 @@ img {
     top: 50%;
     transform: translate(-50%, -50%);
     padding:3rem;
-    background: white;
+    background: $secondaryColor;
 }
 .detailsFlex {
     @include flex(row, space-between, center, left);
