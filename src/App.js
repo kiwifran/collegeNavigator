@@ -200,6 +200,10 @@ class App extends Component {
       })
     })
   }
+  removeNote = (key) => {
+    const dbRef = firebase.database().ref(key);
+    dbRef.remove();
+  }
 
   render() {
     return (
@@ -222,7 +226,8 @@ class App extends Component {
 
         <Switch>
           <Route path='/notes' render={() => {return (<Notes 
-            bookmarkList={this.state.bookmarkList} />)}} 
+            bookmarkList={this.state.bookmarkList}
+            removeNote={this.removeNote} />)}} 
           />
         </Switch>
         <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
