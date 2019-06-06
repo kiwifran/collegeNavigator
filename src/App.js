@@ -37,7 +37,7 @@ class App extends Component {
 
     }
   }
-  
+
   handleClick = () => {
     axios.get('https://api.foursquare.com/v2/venues/search', {
       params: {
@@ -105,7 +105,7 @@ class App extends Component {
     })
   }
 
-  
+
   moreInfo = (id) => {
     console.log(id);
     axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
@@ -171,7 +171,7 @@ class App extends Component {
       bookmarkAddress,
       bookmarkId
     })
-  // push each bookmarked item into firebase
+    // push each bookmarked item into firebase
     const dbRef = firebase.database().ref();
     dbRef.push({
       name: bookmarkName,
@@ -199,6 +199,7 @@ class App extends Component {
         bookmarkList: updateBookmark
       })
     })
+    console.log(this.state.bookmarkList)
   }
   removeNote = (key) => {
     const dbRef = firebase.database().ref(key);
@@ -209,9 +210,13 @@ class App extends Component {
     return (
       <HashRouter>
         <Nav />
-        <Search onClick={this.handleClick} onChange={this.handleChange} getInstitute={this.getInstitute} />
+        <Search
+          onClick={this.handleClick}
+          onChange={this.handleChange}
+          getInstitute={this.getInstitute}
+        />
 
-        <School 
+        <School
           schoolsList={this.state.schoolsList}
           moreInfo={this.moreInfo}
           bookmarkName={this.state.bookmarkName}
@@ -220,17 +225,23 @@ class App extends Component {
           setBookmarkState={this.setBookmarkState}
         />
 
-        <AddSchool 
-          addInstitution={this.addInstitution}  
+        <AddSchool
+          addInstitution={this.addInstitution}
         />
 
         <Switch>
-          <Route path='/notes' render={() => {return (<Notes 
-            bookmarkList={this.state.bookmarkList}
-            removeNote={this.removeNote} />)}} 
+          <Route path='/notes' render={() => {
+            return (<Notes
+              bookmarkList={this.state.bookmarkList}
+              removeNote={this.removeNote} />)
+          }}
           />
         </Switch>
-        <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
+
+        <SchoolDetails
+          schoolMoreInfo={this.state.schoolMoreInfo}
+        />
+        
         <Footer />
       </HashRouter>
     )

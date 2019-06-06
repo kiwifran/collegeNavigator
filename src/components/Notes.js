@@ -13,10 +13,10 @@ class Notes extends Component {
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
                 <button>
-                  <i class="fas fa-pen"></i>Edit
+                  <i className="fas fa-pen"></i>Edit
                 </button>
                 <button onClick={() => { this.props.removeNote(item.key) }}>
-                  <i class="fas fa-trash-alt"></i>Delete
+                  <i className="fas fa-trash-alt"></i>Delete
                 </button>
               </li>
             )
