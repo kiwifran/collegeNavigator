@@ -14,9 +14,6 @@ class Search extends Component {
             tradeSchool: false,
             userInstitute: '',
             userInput: '',
-            universityID: '4bf58dd8d48988d1ae941735',
-            collegeID: '4bf58dd8d48988d1a2941735',
-            tradeID: '4bf58dd8d48988d1ad941735',
             schoolsList: [],
             selectSchoolId: "",
         }
@@ -115,21 +112,21 @@ class Search extends Component {
     handleClick = (event) => {
         if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1ae941735') {
             this.setState({
-                universityID: true,
-                collegeID: false,
-                tradeSchoolID: false
+                university: true,
+                college: false,
+                tradeSchool: false
             })
         } else if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1a2941735') {
             this.setState({
-                universityID: false,
-                collegeID: true,
-                tradeSchoolID: false
+                university: false,
+                college: true,
+                tradeSchool: false
             })
         } else if (event.currentTarget.getAttribute('value') === '4bf58dd8d48988d1ad941735') {
             this.setState({
-                universityID: false,
-                collegeID: false,
-                tradeSchoolID: true
+                university: false,
+                college: false,
+                tradeSchool: true
             })
         }
         this.getInstitute(event)
@@ -139,7 +136,7 @@ class Search extends Component {
         return (
             <div className='searchContainer wrapper'>
                 <div className='radioButtons'>
-                    {this.state.universityID ?
+                    {this.state.university ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='university' value='4bf58dd8d48988d1ae941735' selected></input>
                             <label htmlFor="university">University</label>
@@ -150,7 +147,7 @@ class Search extends Component {
                             <label htmlFor="university">University</label>
                         </div>}
 
-                    {this.state.collegeID ?
+                    {this.state.college ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='college' value='4bf58dd8d48988d1a2941735' selected></input>
                             <label htmlFor="college">College</label>
@@ -161,7 +158,7 @@ class Search extends Component {
                             <label htmlFor="college">College</label>
                         </div>}
 
-                    {this.state.tradeSchoolID ?
+                    {this.state.tradeSchool ?
                         <div className='radioButton selected'>
                             <input type='radio' name='institution' id='tradeSchool' value='4bf58dd8d48988d1ad941735' selected></input>
                             <label htmlFor="tradeSchool">Trade School</label>
