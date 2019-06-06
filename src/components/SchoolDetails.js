@@ -1,18 +1,7 @@
 import React, {Component, Fragment} from 'react';
 
 class SchoolDetails extends Component{
-    constructor(props){
-        super(props);
-        this.state={
-            isModalOpen: false,
-        }	
-    }
-    // closeClick=()=>{
-    //     this.setState({
-    //         imsmo
-    //     })
-    // }
-    
+  
     // MORE INFO NOT CONNECTED 
     // THIS WON'T WORK BECAUSE THE ID IS BEING PASSED FROM SCHOOL COMPONENT WHICH IS INCEPTION LAYERS DEEP
     
@@ -23,6 +12,7 @@ class SchoolDetails extends Component{
         }
         return true;
     }
+    
     displayDetails = () => {
         const { bestPhoto, name, contact, location, description, url } = this.props.schoolMoreInfo;
         console.log(bestPhoto);
@@ -32,7 +22,7 @@ class SchoolDetails extends Component{
 
                 <div className="detailsModal">
                     <div className="detailsFlex">
-                        <button onClick={this.handleCloseClick} className="closeButton">
+                        <button onClick={this.props.closeMe} className="closeButton">
                             <i className="fas fa-times"></i>
                         </button>
                         {bestPhoto !== undefined
@@ -80,36 +70,10 @@ class SchoolDetails extends Component{
 
         )
     }
-    // openClose=(value)=>{
-    //   const modal = document.querySelector(".modalWrapper");
 
-    //   if(value===false) {
-    //     modal.classList.add("close");
-
-    //   }else {
-    //     modal.classList.remove("close");
-    //   }
-    // }
-    handleCloseClick = () => {
-        this.setState({
-            isModalOpen: false,
-        })
-        // not sure do we need to setState here
-        // const modal = document.querySelector(".modalWrapper");
-        // modal.classList.add("close");
-        console.log('clicked!');
-
-
-    }
-
-    componentDidMount(){
-
-    }
-    componentDidUpdate(prevProps, prevState) {
-    }
     render(){
         return(
-            <div className="modalWrapper">
+            <div className={`modalWrapper ${this.props.modalStatus}`}>            
             {!(this.isInfoEmpty())
                 ? this.displayDetails()
                 : null}

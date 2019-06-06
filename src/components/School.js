@@ -9,12 +9,19 @@ class School extends Component {
       bookmarked: false,
       schoolMoreInfo:{},
       isModalOpen: false,
+      modalStatus: 'close'
 
     }
   }
 
   addNote = (id) => {
     this.props.setBookmarkState(id)
+  }
+
+  closeMe = () => {
+    this.setState({
+      modalStatus: 'close'
+    })
   }
   
   moreInfo = (id) => {
@@ -43,7 +50,7 @@ class School extends Component {
         // schoolName :schoolDetails.name,
         // schoolAddress: schoolDetails.location.formattedAddress,
         schoolMoreInfo: schoolMoreInfo,
-        isModalOpen: true
+        modalStatus: 'open'
 
       })
     }).catch((error) => {
@@ -90,7 +97,11 @@ class School extends Component {
           )
         }) : null}
       </div>
-      <SchoolDetails schoolMoreInfo={this.state.schoolMoreInfo}/>
+      <SchoolDetails 
+        schoolMoreInfo={this.state.schoolMoreInfo}
+        modalStatus={this.state.modalStatus}
+        closeMe={this.closeMe}
+        />
       </Fragment>
     )
   }
