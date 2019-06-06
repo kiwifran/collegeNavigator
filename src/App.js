@@ -165,18 +165,28 @@ class App extends Component {
 
 
   // pull bookmarked item's name, address and id from school component into parent state
-  setBookmarkState = (bookmarkName, bookmarkAddress, bookmarkId) => {
-    this.setState({
-      bookmarkName,
-      bookmarkAddress,
-      bookmarkId
-    })
+  setBookmarkState = (id) => {
+    console.log(id)
+    // dbRef.once('value', (response) => {
+    //   const data = response.val()
+    //   console.log(data)
+    // })
+    // this.setState({
+    //   bookmarkName,
+    //   bookmarkAddress,
+    //   bookmarkId
+    // })
     // push each bookmarked item into firebase
-    const dbRef = firebase.database().ref();
-    dbRef.push({
-      name: bookmarkName,
-      address: bookmarkAddress,
-      id: bookmarkId
+
+    this.state.schoolsList.map((school) => {
+      if (school.id === id) {
+        const dbRef = firebase.database().ref();
+        dbRef.push({
+          name: school.name,
+          address: school.location.address,
+          id: school.id
+        })
+      }
     });
   }
   // if new data pushed to firebase, create array holding all the new data
@@ -199,7 +209,7 @@ class App extends Component {
         bookmarkList: updateBookmark
       })
     })
-    console.log(this.state.bookmarkList)
+    // console.log(this.state.bookmarkList)
   }
   removeNote = (key) => {
     const dbRef = firebase.database().ref(key);
@@ -241,7 +251,7 @@ class App extends Component {
         <SchoolDetails
           schoolMoreInfo={this.state.schoolMoreInfo}
         />
-        
+
         <Footer />
       </HashRouter>
     )

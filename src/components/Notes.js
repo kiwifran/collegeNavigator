@@ -7,7 +7,6 @@ class Notes extends Component {
         <h2>NOTES</h2>
         <ul className="notes">
           {this.props.bookmarkList.map((item) => {
-            console.log(item); 
             return(
               <li key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
