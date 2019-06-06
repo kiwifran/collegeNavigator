@@ -1,7 +1,5 @@
 import firebase from 'firebase';
 
-<script src="https://www.gstatic.com/firebasejs/6.1.0/firebase-app.js"></script>
-
 
 const firebaseConfig = {
   apiKey: "AIzaSyA4yDbpMJo_81wiX8tvikLe7fkrVeJuo4w",
