@@ -8,7 +8,6 @@ class School extends Component {
     this.state = {
       bookmarked: false,
       schoolMoreInfo:{},
-      isModalOpen: false,
       modalStatus: 'close'
 
     }
