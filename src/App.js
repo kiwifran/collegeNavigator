@@ -199,9 +199,9 @@ class App extends Component {
       // push each bookmarked item into firebase
       const dbRef = firebase.database().ref();
       dbRef.push({
-        name: bookmarkName,
-        address: bookmarkAddress,
-        id: bookmarkId
+        name: this.state.bookmarkName,
+        address: this.state.bookmarkAddress,
+        id: this.state.bookmarkId
       });
     }
   }
