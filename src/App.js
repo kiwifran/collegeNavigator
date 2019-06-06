@@ -165,7 +165,6 @@ class App extends Component {
 
 
   // pull bookmarked item's name, address and id from school component into parent state
-<<<<<<< HEAD
   setBookmarkState = (id) => {
     console.log(id)
     // dbRef.once('value', (response) => {
@@ -189,14 +188,6 @@ class App extends Component {
         })
       }
     });
-=======
-  setBookmarkState = (bookmarkName, bookmarkAddress, bookmarkId) => {
-    this.setState({
-      bookmarkName,
-      bookmarkAddress,
-      bookmarkId
-    })
->>>>>>> master
   }
   // if new data pushed to firebase, create array holding all the new data
   // set the data into the bookmarkList state
