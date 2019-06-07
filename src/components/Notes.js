@@ -12,9 +12,6 @@ class Notes extends Component {
       userAddress: '',
       modalOpen: 'close',
       selectedId: '',
-      inputTextName: '',
-      inputTextAddress: '',
-      inputTextNote: ''
     }
   }
 
@@ -48,9 +45,10 @@ class Notes extends Component {
     this.setState({
       modalOpen: 'open',
       selectedId: key,
-      inputTextName: found.name,
-      inputTextAddress: found.address,
-      inputTextNote: found.note
+      userName: found.name,
+      userAddress: found.address,
+      userNote: found.note
+
     })
   }
   handleSubmit=(event)=> {
@@ -106,13 +104,13 @@ class Notes extends Component {
             </button>
             <form action="" className="editForm" onSubmit={this.handleSubmit}>
               <label htmlFor="name">Name of Institution:</label>
-              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} placeholder={this.state.inputTextName}/>
+              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} />
 
               <label htmlFor="address">Address:</label>
-              <input type="text" id="address" name="userAddress" placeholder={this.state.inputTextAddress} onChange={this.handleChange} value={this.state.userAddress}/>
+              <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress}/>
 
               <label htmlFor="addNote" >Add Note</label>
-              <textarea onChange={this.handleChange} value={this.state.userNote} placeholder={this.state.inputTextNote} name="userNote"></textarea>
+              <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote"></textarea>
               <input type="submit" value="enter"/>
             </form>
           </div>
