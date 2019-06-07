@@ -1,11 +1,6 @@
 import React, {Component, Fragment} from 'react';
 
 class SchoolDetails extends Component{
-  
-    // MORE INFO NOT CONNECTED 
-    // THIS WON'T WORK BECAUSE THE ID IS BEING PASSED FROM SCHOOL COMPONENT WHICH IS INCEPTION LAYERS DEEP
-    
-    // EVERYTHING BELOW HERE WAS ORIGINAL
     isInfoEmpty = () => {
         for (let key in this.props.schoolMoreInfo) {
             return false;
@@ -15,7 +10,7 @@ class SchoolDetails extends Component{
     
     displayDetails = () => {
         const { bestPhoto, name, contact, location, description, url } = this.props.schoolMoreInfo;
-        console.log(bestPhoto);
+        // console.log(bestPhoto);
         return (
                 <Fragment>
                 <div className="detailsOverlay"></div>
