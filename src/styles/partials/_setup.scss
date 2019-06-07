@@ -4,11 +4,11 @@ article,aside,details,figcaption,figure,footer,header,hgroup,nav,section,summary
 
 .visuallyHidden:not(:focus):not(:active) { position: absolute; width: 1px; height: 1px; margin: -1px;border: 0;padding: 0;white-space: nowrap;clip-path: inset(100%);clip: rect(00 0 0);overflow: hidden;}
 
-$white: aliceblue;
+$white: #f0f8ff;
 $primaryColor: #416bff;
 $secondaryColor: #073330;
 $activeColor: #b1bc2b;
-$black:#173129;
+$black:#0f201b;
 
 $headerFont: 'Offside', cursive;
 $bodyFont: 'Barlow', sans-serif;
@@ -17,12 +17,12 @@ $bodyFont: 'Barlow', sans-serif;
     display:flex;
     flex-direction: $flex-direction;
     justify-content: $justify-content;
-    align-content: $align-items;
+    align-items: $align-items;
     text-align: $text-align;
 }
 .wrapper {
-    width: 80%;
     margin: 0 auto;
+    padding:0 5%;
 }
 fieldset {
     border:none;
