@@ -174,8 +174,8 @@ fieldset {
   background: transparent;
   border: none; }
 
-[name='institution'] {
-  display: none; }
+.saved {
+  color: #b1bc2b; }
 
 .searchContainer {
   display: -webkit-box;
@@ -198,7 +198,7 @@ fieldset {
   display: flex;
   margin-bottom: 10px; }
 
-.radioButton {
+.radioButtonLabel {
   text-align: center;
   border: 1px solid black;
   -webkit-transition: 0.2s;
@@ -206,19 +206,20 @@ fieldset {
   transition: 0.2s;
   background: #416bff;
   -webkit-box-shadow: 0 5px #999;
-  box-shadow: 0 5px #999; }
-
-label {
+  box-shadow: 0 5px #999;
   display: block;
   width: 150px; }
 
-.selected {
+.radioButtonDot:checked + label {
   -webkit-transform: translateY(3px);
   -ms-transform: translateY(3px);
   transform: translateY(3px);
   -webkit-box-shadow: 0 2px #666;
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
+
+.radioButtonDot {
+  display: none; }
 
 .nav {
   display: -webkit-box;
@@ -366,9 +367,6 @@ img {
   width: 80%;
   margin-top: 1rem; }
 
-[name='institution'] {
-  display: none; }
-
 .searchContainer {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -390,7 +388,7 @@ img {
   display: flex;
   margin-bottom: 10px; }
 
-.radioButton {
+.radioButtonLabel {
   text-align: center;
   border: 1px solid black;
   -webkit-transition: 0.2s;
@@ -398,13 +396,11 @@ img {
   transition: 0.2s;
   background: #416bff;
   -webkit-box-shadow: 0 5px #999;
-  box-shadow: 0 5px #999; }
-
-label {
+  box-shadow: 0 5px #999;
   display: block;
   width: 150px; }
 
-.selected {
+.radioButtonDot:checked + label {
   -webkit-transform: translateY(3px);
   -ms-transform: translateY(3px);
   transform: translateY(3px);
@@ -412,6 +408,12 @@ label {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
+<<<<<<< HEAD
+.radioButtonDot {
+  display: none; }
+
+=======
+>>>>>>> 054b88918aabc1e136c528850dd27dcc217c53f0
 .container {
   max-width: 1260px;
   width: 90%;
