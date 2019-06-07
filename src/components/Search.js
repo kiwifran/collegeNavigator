@@ -3,6 +3,7 @@ import axios from 'axios';
 import firebase from './firebase.js';
 import School from './School.js';
 import SchoolDetails from './SchoolDetails.js';
+import jump from 'jump.js'
 
 class Search extends Component {
   constructor() {
@@ -105,6 +106,10 @@ class Search extends Component {
     this.apiCall();
 
     e.preventDefault();
+    jump('.schoolsList', {
+      duration: 1000,
+      a11y: true
+    })
   };
 
   render() {
