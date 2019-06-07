@@ -36,7 +36,6 @@ class Notes extends Component {
         bookmarkList: updateBookmark
       })
     })
-    // console.log(this.state.bookmarkList)
   }
   handleChange = (event) => {
     this.setState({
@@ -46,7 +45,6 @@ class Notes extends Component {
 
   editNote = (key) => {
     const found = this.state.bookmarkList.find(item => item.key == key);
-    console.log(found);
     this.setState({
       modalOpen: 'open',
       selectedId: key,
@@ -98,7 +96,7 @@ class Notes extends Component {
       <div className="noteContainer">
         <h2>NOTES</h2>
         <button onClick={this.handleScroll} className="addSign">
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
           <div class="detailsOverlay"></div>
@@ -121,7 +119,6 @@ class Notes extends Component {
         </div>
         <ul className="notes">
           {this.state.bookmarkList.map((item) => {
-            console.log(item);
             return(
               <div key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
