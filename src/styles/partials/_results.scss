@@ -16,7 +16,8 @@
     font-weight: 700;
   }
 }
-.bookmarkOff {
+
+.bookmarkPosition {
     position: absolute;
     right:10px;
     top:10px;
@@ -24,4 +25,9 @@
     &:hover {
         color: $activeColor;
     }
+}
+
+.bookmark {
+  background: transparent;
+  border: none;
 }

@@ -44,13 +44,15 @@ class Search extends Component {
             }
         }).then(result => {
             // this returns an array of 50 schools
-            const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public/i
+            const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i
             const schoolsList = result.data.response.venues
             const filteredSchoolList = [];
 
+            console.log(schoolsList)
+
             schoolsList.forEach(key => {
                 const name = key.categories[0].shortName
-                if ((name === 'University' || name === 'Community College' || name === 'Trade School') && !(regex.test(key.name))) {
+                if ((name === 'University' || name === 'Community College' || name === 'Trade School') && !(regex.test(key.name)) && (key.location.address !== undefined)) {
                     filteredSchoolList.push(key)
                 }
             })

@@ -1,5 +1,7 @@
 import React, { Component } from 'react'
 import firebase from "firebase";
+import uuid from 'uuid'
+
 class AddSchool extends Component {
   constructor() {
     super();
@@ -9,12 +11,14 @@ class AddSchool extends Component {
       address: '',
       note: '',
       category:'',
+      id: ''
     }
   }
   
   onChange = e => {
     this.setState({
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      id: uuid.v4()
     })
   }
   onSubmit = e=>{
@@ -26,7 +30,8 @@ class AddSchool extends Component {
         name:"",
         address:"",
         note:"",
-        category:''
+        category:'',
+        id: ''
       })
     }else {
       alert("check your input please🙁")

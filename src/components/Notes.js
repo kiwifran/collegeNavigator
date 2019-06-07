@@ -72,7 +72,7 @@ class Notes extends Component {
       <div className="noteContainer">
         <h2>NOTES</h2>
         <button onClick={this.handleScroll}className="addSign">
-          <i class="fas fa-plus"></i>
+          <i className="fas fa-plus"></i>
         </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
           <button onClick={this.closeModal}>

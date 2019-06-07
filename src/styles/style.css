@@ -162,13 +162,17 @@ fieldset {
   .resultName {
     font-weight: 700; }
 
-.bookmarkOff {
+.bookmarkPosition {
   position: absolute;
   right: 10px;
   top: 10px;
   font-size: 20px; }
-  .bookmarkOff:hover {
+  .bookmarkPosition:hover {
     color: #b1bc2b; }
+
+.bookmark {
+  background: transparent;
+  border: none; }
 
 [name='institution'] {
   display: none; }
