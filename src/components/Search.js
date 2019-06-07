@@ -161,7 +161,7 @@ class Search extends Component {
               </label>
             </div>
 
-            <label htmlFor="search">Schools Near:</label>
+            <label classNamhtmlFor="search">Schools Near:</label>
             <input
               type="text"
               name="userInput"

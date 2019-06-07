@@ -24,10 +24,33 @@ $bodyFont: 'Barlow', sans-serif;
     background-color: $backgroundColor;
     color:$fontColor;
 }
+
+fieldset {
+    border:none;
+}
+body {
+    background: $white;
+    color: $white;
+    font-family: $bodyFont;
+}
+
+ul {
+    margin: 0;
+    padding: 0;
+}
+
+h1 {
+    font-family: $headerFont;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
 .wrapper {
     margin: 0 auto;
     padding:0 5%;
-}
-fieldset {
-    border:none;
 }
