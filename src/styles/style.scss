@@ -6,34 +6,5 @@
 @import "./partials/details";
 @import "./partials/search";
 
-.container {
-    max-width: 1260px;
-    width: 90%;
-    margin: 0 auto;
-}
 
-body {
-    background: $white;
-    color: $white;
-    font-family: $bodyFont;
-}
 
-ul {
-    margin: 0;
-    padding: 0;
-}
-
-h1,
-h2,
-h3 {
-    font-family: $headerFont;
-}
-
-li {
-    list-style: none;
-}
-
-a {
-    text-decoration: none;
-    color:$white;
-}
