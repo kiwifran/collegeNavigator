@@ -220,9 +220,6 @@ label {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
-.detailsModal {
-  display: none; }
-
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -281,6 +278,17 @@ label {
   .inputFieldContainer textarea {
     height: 100px;
     resize: none; }
+
+.editForm {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #073330; }
 
 img {
   width: 100%;
@@ -403,9 +411,6 @@ label {
   -webkit-box-shadow: 0 2px #666;
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
-
-.detailsModal {
-  display: none; }
 
 .container {
   max-width: 1260px;

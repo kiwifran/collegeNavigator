@@ -8,8 +8,13 @@ class Notes extends Component {
     this.state = {
       bookmarkList: [],
       userNote: '',
+      userName: '',
+      userAddress: '',
       modalOpen: 'close',
-      selectedId: ''
+      selectedId: '',
+      inputTextName: '',
+      inputTextAddress: '',
+      inputTextNote: ''
     }
   }
 
@@ -23,7 +28,8 @@ class Notes extends Component {
           key: item,
           name: data[item].name,
           address: data[item].address,
-          id: data[item].id
+          id: data[item].id,
+          note: data[item].note
         })
       }
       this.setState({
@@ -34,20 +40,40 @@ class Notes extends Component {
   }
   handleChange = (event) => {
     this.setState({
-      userNote: event.currentTarget.value
+      [event.target.name]: event.target.value
     })
   }
+
   editNote = (key) => {
+    const found = this.state.bookmarkList.find(item => item.key == key);
+    console.log(found);
     this.setState({
       modalOpen: 'open',
-      selectedId: key
+      selectedId: key,
+      inputTextName: found.name,
+      inputTextAddress: found.address,
+      inputTextNote: found.note
     })
   }
-  handleSubmit=()=> {
+  handleSubmit=(event)=> {
+    event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
-    dbRef.child('note').set(this.state.userNote);
+
+    if (this.state.userName !== ''){
+      dbRef.child('name').set(this.state.userName);
+    } 
+    if (this.state.userAddress !== '')  {
+      dbRef.child('address').set(this.state.userAddress);
+    }
+    if (this.state.userNote !== ''){
+      dbRef.child('note').set(this.state.userNote);
+    }
+    this.closeModal();
+
     this.setState({
-      userNote:''
+      userNote:'',
+      userAddress:'',
+      userName: ''
     })
   }
 
@@ -71,25 +97,36 @@ class Notes extends Component {
     return (
       <div className="noteContainer">
         <h2>NOTES</h2>
-        <button onClick={this.handleScroll}className="addSign">
-          <i className="fas fa-plus"></i>
+        <button onClick={this.handleScroll} className="addSign">
+          <i class="fas fa-plus"></i>
         </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
-          <button onClick={this.closeModal}>
-            <i className="fas fa-times"></i>
-          </button>
-          <form action="" onSubmit={this.handleSubmit}>
-            <label htmlFor="addNote" >Add Note</label>
-            <textarea onChange={this.handleChange} value={this.state.userNote} placeholder="enter a comment"></textarea>
-            <input type="submit" value="enter"/>
-          </form>
+          <div class="detailsOverlay"></div>
+          <div className="detailsModal">
+            <button onClick={this.closeModal} className="closeButton">
+              <i className="fas fa-times"></i>
+            </button>
+            <form action="" className="editForm" onSubmit={this.handleSubmit}>
+              <label htmlFor="name">Name of Institution:</label>
+              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} placeholder={this.state.inputTextName}/>
+
+              <label htmlFor="address">Address:</label>
+              <input type="text" id="address" name="userAddress" placeholder={this.state.inputTextAddress} onChange={this.handleChange} value={this.state.userAddress}/>
+
+              <label htmlFor="addNote" >Add Note</label>
+              <textarea onChange={this.handleChange} value={this.state.userNote} placeholder={this.state.inputTextNote} name="userNote"></textarea>
+              <input type="submit" value="enter"/>
+            </form>
+          </div>
         </div>
         <ul className="notes">
           {this.state.bookmarkList.map((item) => {
+            console.log(item);
             return(
-              <li key={item.key}>    
+              <div key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
+                <p className="note"> Note: {item.note}</p>
 
                 <button onClick={() => { this.editNote(item.key) }}>
                   <i className="fas fa-pen"></i>Edit
@@ -97,7 +134,7 @@ class Notes extends Component {
                 <button onClick={() => { this.removeNote(item.key) }}>
                   <i className="fas fa-trash-alt"></i>Delete
                 </button>
-              </li>
+              </div>
             )
           })}
         </ul>
