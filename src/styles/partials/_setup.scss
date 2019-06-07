@@ -20,6 +20,10 @@ $bodyFont: 'Barlow', sans-serif;
     align-items: $align-items;
     text-align: $text-align;
 }
+@mixin color($backgroundColor, $fontColor){
+    background-color: $backgroundColor;
+    color:$fontColor;
+}
 .wrapper {
     margin: 0 auto;
     padding:0 5%;

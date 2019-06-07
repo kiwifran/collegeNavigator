@@ -109,9 +109,9 @@ class Search extends Component {
 
   render() {
     return (
-      <div>
+      <div className="searchContainer">
         <form onSubmit={this.handleSubmit}>
-          <div className="searchContainer">
+          <div className="smallWrapper" >
             <div className="radioButtons">
               <input
                 type="radio"

@@ -1,4 +1,5 @@
 .searchContainer {
+    background-image:linear-gradient( to bottom, #fff0 80%, white), url("../assets/searchBackground.jpg");
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -7,7 +8,11 @@
     background-position: center center;
     background-size: cover;
 }
-
+.smallWrapper {
+    padding:80px;
+    border-radius: 10px;
+    background-color:rgba(0, 0, 0, 0.45)
+}
 .radioButtons {
     display: flex;
     margin-bottom: 10px;

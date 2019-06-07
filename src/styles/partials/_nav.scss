@@ -1,10 +1,8 @@
-header {
-  background-image: url("../assets/searchBackground.jpg");
 
-}
 .nav {
   @include flex(flex, space-between, center, center);
-  background-color: #b0bc2b86;
+  background-color: $secondaryColor;
+      color:$white;
   &List {
     width:20%;
     @include flex(flex, space-between, center, center);
