@@ -1,8 +1,12 @@
 .searchContainer {
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    background-image: url("../assets/searchBackground.jpg");
+    background-position: center center;
+    background-size: cover;
 }
 
 .radioButtons {
