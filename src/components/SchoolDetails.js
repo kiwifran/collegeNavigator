@@ -10,7 +10,6 @@ class SchoolDetails extends Component{
     
     displayDetails = () => {
         const { bestPhoto, name, contact, location, description, url } = this.props.schoolMoreInfo;
-        // console.log(bestPhoto);
         return (
                 <Fragment>
                 <div className="detailsOverlay"></div>

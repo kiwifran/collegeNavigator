@@ -17,7 +17,6 @@ class Bookmark extends Component {
     }
 
     removeBookmark = () => {
-        console.log('remove')
         const dbRef = firebase.database().ref();
         dbRef.once('value', (response) => {
             const data = response.val();
@@ -29,8 +28,6 @@ class Bookmark extends Component {
                     id: data[item].id
                 })
             }
-
-            console.log(bookmarkArray)
 
             bookmarkArray.map((school) => {
                 if (school.id === this.props.bookmarkId) {
