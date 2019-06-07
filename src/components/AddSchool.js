@@ -7,7 +7,7 @@ class AddSchool extends Component {
     this.state ={
       name: '',
       address: '',
-      description: ''
+      note: ''
     }
   }
   
@@ -24,7 +24,7 @@ class AddSchool extends Component {
       this.setState({
         name:"",
         address:"",
-        description:""
+        note:""
       })
     }else {
       alert("check your input please🙁")
@@ -60,13 +60,13 @@ class AddSchool extends Component {
         </div>
 
         <div className="inputFieldContainer">
-          <label htmlFor="inputSchoolDescription">Description:</label>
+          <label htmlFor="inputSchoolDescription">Note:</label>
           <textarea 
             id="inputSchoolDescription" 
             placeholder="Description" 
             className="inputSchoolDescription"
-            name="description"
-            value={this.state.description}
+            name="note"
+            value={this.state.note}
             onChange={this.onChange}
           ></textarea>
         </div>

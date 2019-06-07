@@ -7,7 +7,9 @@ class Notes extends Component {
     super();
     this.state = {
       bookmarkList: [],
-      
+      userNote: '',
+      modalOpen: 'close',
+      selectedId: ''
     }
   }
 
@@ -30,11 +32,23 @@ class Notes extends Component {
     })
     // console.log(this.state.bookmarkList)
   }
+  handleChange = (event) => {
+    this.setState({
+      userNote: event.currentTarget.value
+    })
+  }
   editNote = (key) => {
-    const dbRef = firebase.database().ref(key);
-    const userComment = prompt('other comments?');
-    dbRef.child('note').set(userComment);
-
+    this.setState({
+      modalOpen: 'open',
+      selectedId: key
+    })
+  }
+  handleSubmit=()=> {
+    const dbRef = firebase.database().ref(this.state.selectedId);
+    dbRef.child('note').set(this.state.userNote);
+    this.setState({
+      userNote:''
+    })
   }
 
   removeNote = (key) => {
@@ -42,18 +56,35 @@ class Notes extends Component {
     dbRef.remove();
   }
 
+  closeModal = () => {
+    this.setState({
+      modalOpen: 'close'
+    })
+  }
 
   render() {
     return (
       <div className="noteContainer">
         <h2>NOTES</h2>
+        
+        <div className={`modalWrapper ${this.state.modalOpen}`}>
+          <button onClick={this.closeModal}>
+            <i className="fas fa-times"></i>
+          </button>
+          <form action="" onSubmit={this.handleSubmit}>
+            <label htmlFor="addNote" >Add Note</label>
+            <textarea onChange={this.handleChange} value={this.state.userNote} placeholder="enter a comment"></textarea>
+            <input type="submit" value="enter"/>
+          </form>
+        </div>
         <ul className="notes">
           {this.state.bookmarkList.map((item) => {
             return(
               <li key={item.key}>    
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
-                <button onClick={()=>{this.editNote(item.key)}}>
+
+                <button onClick={() => { this.editNote(item.key) }}>
                   <i className="fas fa-pen"></i>Edit
                 </button>
                 <button onClick={() => { this.removeNote(item.key) }}>

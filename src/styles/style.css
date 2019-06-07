@@ -213,6 +213,9 @@ label {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
+.detailsModal {
+  display: none; }
+
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -393,6 +396,9 @@ label {
   -webkit-box-shadow: 0 2px #666;
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
+
+.detailsModal {
+  display: none; }
 
 .container {
   max-width: 1260px;
