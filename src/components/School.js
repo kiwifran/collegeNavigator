@@ -1,5 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import SchoolDetails from "./SchoolDetails.js"
+import Bookmark from './Bookmark.js'
 import axios from 'axios';
 
 class School extends Component {
@@ -102,8 +103,9 @@ class School extends Component {
               <p className="resultName">{schoolName}</p>
               <p className="resultAddress">{address} - {city}</p>
               <p className="resultCountry">{country}</p>
-              <div className="bookmarkOff">
-                <button onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button>
+              <div className="bookmarkPosition">
+                {/* <button className='bookmark' onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button> */}
+                <Bookmark bookmarkId={id} onClick={this.addNote}/>
               </div>
               <button onClick={() => this.moreInfo(id)}>More Info</button>
             </div>
