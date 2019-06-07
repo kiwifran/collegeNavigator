@@ -141,6 +141,9 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   width: 80%;
   margin: 0 auto; }
 
+fieldset {
+  border: none; }
+
 .schoolsList {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -167,7 +170,7 @@ legend, button::-moz-focus-inner, input::-moz-focus-inner {
   .bookmarkOff:hover {
     color: #b1bc2b; }
 
-[type='radio'] {
+[name='institution'] {
   display: none; }
 
 .searchContainer {
@@ -351,7 +354,7 @@ img {
   width: 80%;
   margin-top: 1rem; }
 
-[type='radio'] {
+[name='institution'] {
   display: none; }
 
 .searchContainer {
