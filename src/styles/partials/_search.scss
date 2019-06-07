@@ -1,5 +1,5 @@
 .searchContainer {
-    background-image:linear-gradient( to bottom, #fff0 80%, white), url("../assets/searchBackground.jpg");
+    background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -9,29 +9,36 @@
     background-size: cover;
 }
 .smallWrapper {
-    padding:80px;
+    padding:120px 100px;
     border-radius: 10px;
-    background-color:rgba(0, 0, 0, 0.45)
+    background-color:rgba(0, 0, 0, 0.38)
 }
 .radioButtons {
-    display: flex;
+    @include flex(row, space-between, center, center);
+    width:100%;
     margin-bottom: 10px;
+    padding:20px;
+    
 }
 
 .radioButtonLabel {
+    @include color($secondaryColor, $white);
+    width:150px;
+    padding:8px 10px;
     text-align: center;
-    border: 1px solid black;
+    border:1px solid $white;
+    border-radius: 2px;
     transition: 0.2s;
-    background: $primaryColor;
     box-shadow: 0 5px #999;
     display: block;
-    width: 150px;
+    font-size: 20px;
+    font-weight: 700;
 }
 
 .radioButtonDot:checked + label {
     transform: translateY(3px);
     box-shadow: 0 2px #666;
-    background: $activeColor;
+    @include color($activeColor, $black);
 }
 
 .radioButtonDot {
