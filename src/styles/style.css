@@ -178,6 +178,7 @@ fieldset {
   color: #b1bc2b; }
 
 .searchContainer {
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -190,7 +191,10 @@ fieldset {
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  background-image: url("../assets/searchBackground.jpg");
+  background-position: center center;
+  background-size: cover; }
 
 .radioButtons {
   display: -webkit-box;
@@ -228,7 +232,8 @@ fieldset {
   -webkit-box-pack: justify;
   -ms-flex-pack: justify;
   justify-content: space-between;
-  padding: 15px 0; }
+  padding: 15px 0;
+  background-color: #b0bc2b86; }
   .navList {
     display: -webkit-box;
     display: -ms-flexbox;
@@ -368,6 +373,7 @@ img {
   margin-top: 1rem; }
 
 .searchContainer {
+  min-height: 100vh;
   display: -webkit-box;
   display: -ms-flexbox;
   display: flex;
@@ -380,7 +386,10 @@ img {
   justify-content: center;
   -webkit-box-align: center;
   -ms-flex-align: center;
-  align-items: center; }
+  align-items: center;
+  background-image: url("../assets/searchBackground.jpg");
+  background-position: center center;
+  background-size: cover; }
 
 .radioButtons {
   display: -webkit-box;
@@ -408,19 +417,16 @@ img {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
-<<<<<<< HEAD
 .radioButtonDot {
   display: none; }
 
-=======
->>>>>>> 054b88918aabc1e136c528850dd27dcc217c53f0
 .container {
   max-width: 1260px;
   width: 90%;
   margin: 0 auto; }
 
 body {
-  background: #416bff;
+  background: aliceblue;
   color: aliceblue;
   font-family: "Barlow", sans-serif; }
 
@@ -438,4 +444,4 @@ li {
 
 a {
   text-decoration: none;
-  color: aliceblue; }
+  color: #173129; }
