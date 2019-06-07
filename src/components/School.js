@@ -92,9 +92,8 @@ class School extends Component {
     return (
       <Fragment>
 
-      
       <div className="schoolsList container" aria-live="polite">
-        {this.props.schoolsList.length ? this.props.schoolsList.map(school => {
+        {Array.isArray(this.props.schoolsList) ? this.props.schoolsList.map(school => {
           const { id, name: schoolName, location } = school;
           const { address, city, country } = location;
 
@@ -110,7 +109,10 @@ class School extends Component {
               <button onClick={() => this.moreInfo(id)}>More Info</button>
             </div>
           )
-        }) : null}
+        }) : 
+          <div className="result">
+            <p className="resultName">No Results To Display</p>
+          </div>}
       </div>
 
       <SchoolDetails 
