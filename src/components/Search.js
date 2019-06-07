@@ -46,8 +46,6 @@ class Search extends Component {
           }
         });
 
-        console.log(filteredSchoolList);
-
         this.setState({
           schoolsList: filteredSchoolList
         });
@@ -75,8 +73,6 @@ class Search extends Component {
 
   // bookmarks into firebase the selected school
   setBookmarkState = id => {
-    console.log(id);
-
     this.state.schoolsList.map(school => {
       if (school.id === id) {
         const dbRef = firebase.database().ref();
