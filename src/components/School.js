@@ -8,8 +8,13 @@ class School extends Component {
     this.state = {
       bookmarked: false,
       schoolMoreInfo:{},
-      modalStatus: 'close'
+      modalStatus: 'close',
+      clientID: ['JYPGSEYBVO44BBH553GNVMI1OCUCDFTFZUS2H0X5JLMCMOVY', 'FIQECXQNZC4NEV00SFTF3535BMLFZSUW2XXHXEERFGTTCJDG', 'CJ4XSVLTY1JQ3SPHZV00JRFHCFAIXO5Y1HAASCOPGXG3URXV', 'MATE2LSJXUO3JS3LXR1NMMTSUE1PGF15ADCMGRUA23UCVVDM', 'QZIM15RPPGTGIA5QB0NA3ZMK3UUOSR1GU12SJLQG1MOYRNPA', 'NJZBAFQGJBCPNIDWS2FJ4OC1SCXB34QCAFPVJDDBKU2GANFO', 'VGQEXUC1OBLYR2OGNSCLDDA0Z3V1XYT35BVUR5KXOZ2SER5A', 'WWHHWA0S4GFHODY54K2FZS5XP1YROPRBPDRVG31MUMNGKDMM'],
 
+      clientSecret: ['XBVDWZV2LUQS3RUWTMJJQVJMKZY5HACXHKCGT4ZXVHHXX5K3', 'EQZ42P3U5DO5PVOQVKG4AQFEDUAPVQ4ZTIOEDDLMER2EJFJX', 'WUABEMQMIZBR2LSKFURNG4NY2IF10CDAPAX0QSWWYGFGV2ZP', 'SZRKDMSYSFHU23FQLJR4VXRLHBBQQC1MLJCKSACB5A2EVGPS', 'VUM2WEQ55KAX3405NTCPFR145DKCD3FUS5YM0GWNJYXEJGA2', 'HBFVKQJJDP4HLH0F4DG15DMXRV1GMOMH0LTIFSMFMYYLGNFB', '3TNU5JJ4EPOKSBEHMLUXJTXBUJTFNRYG5EO203ITHUAHOO5C', 'DV2P4N505ZWOEGEZQUCDQ0FV5OJ3HDW1RVL44VQQYCNC13QW'],
+
+      keyCounter: 0,
+      moreInfoID: null
     }
   }
 
@@ -23,25 +28,22 @@ class School extends Component {
     })
   }
   
+  // make API call for more info
   moreInfo = (id) => {
+
+    // stores the ID in the event this moreInfo function needs to be called again from increased key count
+    this.setState({
+      moreInfoID: id
+    })
+
     axios.get(`https://api.foursquare.com/v2/venues/${id}`, {
       params: {
-        // THIS IS ANDREW'S API KEY 
-        // client_id: 'H5KTLRAURYRNV350DJHQNDMORMYO0GN3KP12FFUMTXWI2XCO',
-        // client_secret: 'XIFGNZS4EZHSNJD2U45HSDMBUGTW4TEF5RKK3BZBW3V4R5NB',
-
-        //then it's Frankie's
-        // client_id: 'JYPGSEYBVO44BBH553GNVMI1OCUCDFTFZUS2H0X5JLMCMOVY',
-        // client_secret: 'XBVDWZV2LUQS3RUWTMJJQVJMKZY5HACXHKCGT4ZXVHHXX5K3',
-
-        //Jasmine
-        client_id: 'CJ4XSVLTY1JQ3SPHZV00JRFHCFAIXO5Y1HAASCOPGXG3URXV',
-        client_secret: 'WUABEMQMIZBR2LSKFURNG4NY2IF10CDAPAX0QSWWYGFGV2ZP',
+        // gets the id and secret from the state
+        client_id: this.state.clientID[this.state.keyCounter],
+        client_secret: this.state.clientSecret[this.state.keyCounter],
         v: 20190101,
       }
     }).then(res => {
-      console.log(res)
-      // console.log(res.data.response.venue);
       const schoolMoreInfo = res.data.response.venue;
 
       this.setState({
@@ -53,6 +55,18 @@ class School extends Component {
 
       })
     }).catch((error) => {
+      // if the response error is status 429
+      if (error.response.status === 429) {
+        // increase the key counter by one step
+        this.setState({
+          keyCounter: this.state.keyCounter + 1
+        }, () => {
+
+            // call the more info function again using the key new key count in state
+            this.moreInfo(this.state.moreInfoID)
+        })
+      }
+
       // Error
       if (error.response) {
         // The request was made and the server responded with a status code
@@ -96,11 +110,13 @@ class School extends Component {
           )
         }) : null}
       </div>
+
       <SchoolDetails 
         schoolMoreInfo={this.state.schoolMoreInfo}
         modalStatus={this.state.modalStatus}
         closeMe={this.closeMe}
-        />
+      />
+
       </Fragment>
     )
   }
