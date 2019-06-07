@@ -103,7 +103,7 @@ class Search extends Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <div>
         <form onSubmit={this.handleSubmit}>
           <div className="searchContainer">
             <div className="radioButtons">

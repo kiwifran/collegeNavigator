@@ -1,15 +1,19 @@
+header {
+  background-image: url("../assets/searchBackground.jpg");
+
+}
 .nav {
-  display: flex;
-  justify-content: space-between;
-  padding: 15px 0;
+  @include flex(flex, space-between, center, center);
   background-color: #b0bc2b86;
   &List {
-    display: flex;
+    width:20%;
+    @include flex(flex, space-between, center, center);
   }
-  
+  h1 {
+    font-size: 30px;
+  }
   &Item {
     margin-right: 20px;
-  
     &:last-of-type {
       margin-right: 0;
     }
