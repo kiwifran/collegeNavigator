@@ -13,8 +13,8 @@
 }
 
 body {
-    background: $primaryColor;
-    color: $fontColor;
+    background: $white;
+    color: $white;
     font-family: $bodyFont;
 }
 
@@ -35,5 +35,5 @@ li {
 
 a {
     text-decoration: none;
-    color: $fontColor;
+    color:$black;;
 }
