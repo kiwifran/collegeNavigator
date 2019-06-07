@@ -7,7 +7,8 @@ class AddSchool extends Component {
     this.state ={
       name: '',
       address: '',
-      note: ''
+      note: '',
+      category:'',
     }
   }
   
@@ -18,13 +19,14 @@ class AddSchool extends Component {
   }
   onSubmit = e=>{
     e.preventDefault();
-    if (this.state.name !== "" && this.state.address !== "" && /^\s*$/.test(this.state.name) === false && /^\s*$/.test(this.state.address) === false){
+    if (this.state.name !== "" && this.state.address !== "" && /^\s*$/.test(this.state.name) === false && /^\s*$/.test(this.state.address) === false &&this.state.category!==""){
       const dbRef = firebase.database().ref();
       dbRef.push(this.state);
       this.setState({
         name:"",
         address:"",
-        note:""
+        note:"",
+        category:''
       })
     }else {
       alert("check your input please🙁")
@@ -58,13 +60,21 @@ class AddSchool extends Component {
             onChange={this.onChange}
           />
         </div>
-
+        <fieldset className="inputFieldContainer">
+          <legend>Category:</legend>
+          <label htmlFor="college">College</label>
+          <input type="radio" name="category" id="college" value="college" onChange={this.onChange} checked={(this.state.category === 'college')} />
+          <label htmlFor="university">University</label>
+          <input type="radio" name="category" id="university" value="university" onChange={this.onChange} checked={(this.state.category === 'university')}/>
+          <label htmlFor="tradeSchool">Trade School</label>
+          <input type="radio" name="category" id="tradeSchool" value="tradeSchool" onChange={this.onChange} checked={(this.state.category === 'tradeSchool')}/>
+        </fieldset>
         <div className="inputFieldContainer">
-          <label htmlFor="inputSchoolDescription">Note:</label>
+          <label htmlFor="inputSchoolNote">Note:</label>
           <textarea 
-            id="inputSchoolDescription" 
-            placeholder="Description" 
-            className="inputSchoolDescription"
+            id="inputSchoolNote" 
+            placeholder="Note" 
+            className="inputSchoolNote"
             name="note"
             value={this.state.note}
             onChange={this.onChange}

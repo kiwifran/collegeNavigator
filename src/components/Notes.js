@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import firebase from './firebase.js'
 import AddSchool from './AddSchool.js'
-
+import jump from 'jump.js'
 class Notes extends Component {
   constructor() {
     super();
@@ -61,12 +61,19 @@ class Notes extends Component {
       modalOpen: 'close'
     })
   }
-
+  handleScroll=()=>{
+    jump('.inputSchoolForm', {
+      duration: 1000,
+      a11y: true
+    })
+  }
   render() {
     return (
       <div className="noteContainer">
         <h2>NOTES</h2>
-        
+        <button onClick={this.handleScroll}className="addSign">
+          <i class="fas fa-plus"></i>
+        </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
           <button onClick={this.closeModal}>
             <i className="fas fa-times"></i>
