@@ -103,10 +103,10 @@ class School extends Component {
               <p className="resultName">{schoolName}</p>
               <p className="resultAddress">{address} - {city}</p>
               <p className="resultCountry">{country}</p>
-              <div className="bookmarkPosition">
+              
                 {/* <button className='bookmark' onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button> */}
-                <Bookmark bookmarkId={id} onClick={this.addNote}/>
-              </div>
+                <Bookmark bookmarkId={id} addNote={this.addNote}/>
+              
               <button onClick={() => this.moreInfo(id)}>More Info</button>
             </div>
           )
