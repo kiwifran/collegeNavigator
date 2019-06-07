@@ -29,7 +29,7 @@ class Bookmark extends Component {
                 })
             }
 
-            bookmarkArray.map((school) => {
+            bookmarkArray.forEach((school) => {
                 if (school.id === this.props.bookmarkId) {
                     this.setState({
                         isSaved: false
@@ -54,7 +54,7 @@ class Bookmark extends Component {
             }
 
             if (bookmarkArray !== null && bookmarkArray.length > 0) {
-                bookmarkArray.map((school) => {
+                bookmarkArray.forEach((school) => {
                     if (school.id === this.props.bookmarkId) {
                         this.setState({
                             isSaved: true

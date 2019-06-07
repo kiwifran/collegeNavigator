@@ -44,7 +44,7 @@ class Notes extends Component {
   }
 
   editNote = (key) => {
-    const found = this.state.bookmarkList.find(item => item.key == key);
+    const found = this.state.bookmarkList.find(item => item.key === key);
     this.setState({
       modalOpen: 'open',
       selectedId: key,
@@ -99,7 +99,7 @@ class Notes extends Component {
           <i className="fas fa-plus"></i>
         </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
-          <div class="detailsOverlay"></div>
+          <div className="detailsOverlay"></div>
           <div className="detailsModal">
             <button onClick={this.closeModal} className="closeButton">
               <i className="fas fa-times"></i>

@@ -22,7 +22,7 @@ class SchoolDetails extends Component{
                         {bestPhoto !== undefined
                             ? <div className="imgWrapper">
                                 {/* since I see some photos are not as large as the size of 500x500 I changed it to 400 */}
-                                <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`picture of ${name}`} />
+                                <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`${name}`} />
                             </div>
                             : null}
                         <div className="smallInfoWrapper">
@@ -54,7 +54,7 @@ class SchoolDetails extends Component{
                                 ? <p>{description}</p>
                                 : null}
                             {url !== undefined
-                                ? <a target="_blank" href={url}>Visit Website </a>
+                                ? <a target="_blank" rel="noopener noreferrer" href={url}>Visit Website </a>
                                 : null}
                         </div>
                         {/* end of wrappers */}

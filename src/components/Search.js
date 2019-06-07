@@ -67,13 +67,19 @@ class Search extends Component {
           // Something happened in setting up the request that triggered an Error
           console.log('Error', error.message);
         }
-        console.log(error.config);
+
+        // handle error if no results are returned
+        if (error.response.status === 400) {  
+          this.setState({
+            schoolsList: ''
+          })
+        }
       });
   };
 
   // bookmarks into firebase the selected school
   setBookmarkState = id => {
-    this.state.schoolsList.map(school => {
+    this.state.schoolsList.forEach(school => {
       if (school.id === id) {
         const dbRef = firebase.database().ref();
         dbRef.push({
@@ -113,6 +119,7 @@ class Search extends Component {
                 id="university"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1ae941735"
+                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
               />
@@ -126,6 +133,7 @@ class Search extends Component {
                 id="college"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1a2941735"
+                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
               />
@@ -139,6 +147,7 @@ class Search extends Component {
                 id="trade"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1ad941735"
+                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
               />
