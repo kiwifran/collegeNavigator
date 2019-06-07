@@ -25,22 +25,22 @@ class Bookmark extends Component {
 
             for (let item in data) {
                 bookmarkArray.push({
-                    dbKey: data.key,
+                    dbKey: item,
                     id: data[item].id
                 })
             }
 
             console.log(bookmarkArray)
 
-            // bookmarkArray.map((school) => {
-            //     if (school.id === this.props.bookmarkId) {
-            //         this.setState({
-            //             isSaved: false
-            //         })
-            //         const dbRemove = firebase.database().ref();
-            //         dbRemove.child(school.key).remove();
-            //     }
-            // })
+            bookmarkArray.map((school) => {
+                if (school.id === this.props.bookmarkId) {
+                    this.setState({
+                        isSaved: false
+                    })
+                    const dbRemove = firebase.database().ref(school.dbKey)
+                    dbRemove.remove()
+                }
+            })
         })
     }
 
@@ -86,7 +86,7 @@ class Bookmark extends Component {
                     </button >
                     :
                     <button className='bookmark' onClick={this.saveBookmark}>
-                        <i className="far fa-bookmark"></i>
+                        <i className="far fa-bookmark saved"></i>
                     </button >
                 }
             </div>

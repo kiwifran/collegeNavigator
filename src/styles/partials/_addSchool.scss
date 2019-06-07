@@ -44,3 +44,10 @@
     resize: none;
   }
 }
+
+.editForm{
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background: $secondaryColor;
+}

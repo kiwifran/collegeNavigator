@@ -218,9 +218,12 @@ fieldset {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
+<<<<<<< HEAD
 .radioButtonDot {
   display: none; }
 
+=======
+>>>>>>> 054b88918aabc1e136c528850dd27dcc217c53f0
 .nav {
   display: -webkit-box;
   display: -ms-flexbox;
@@ -279,6 +282,17 @@ fieldset {
   .inputFieldContainer textarea {
     height: 100px;
     resize: none; }
+
+.editForm {
+  padding: 10px;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  background: #073330; }
 
 img {
   width: 100%;
@@ -397,9 +411,12 @@ img {
   box-shadow: 0 2px #666;
   background: #b1bc2b; }
 
+<<<<<<< HEAD
 .radioButtonDot {
   display: none; }
 
+=======
+>>>>>>> 054b88918aabc1e136c528850dd27dcc217c53f0
 .container {
   max-width: 1260px;
   width: 90%;
