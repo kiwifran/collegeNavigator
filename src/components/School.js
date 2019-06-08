@@ -124,10 +124,10 @@ class School extends Component {
     return (
       <Fragment>
 
-      <div className="wrapper schoolResults" aria-live="polite">
+        <div className="schoolResults wrapper" aria-live="polite">
         {this.state.schoolsList.length > 0 ?
-          <div className="schoolsListSearchInput">
-            <label htmlFor="schoolsListSearch">Search</label>
+            <div className="schoolsListSearchInput singleContent">
+            <label htmlFor="schoolsListSearch">Filter Search:</label>
             <input
               type="text"
               placeholder="search"

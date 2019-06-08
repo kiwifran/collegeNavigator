@@ -107,6 +107,7 @@ class Search extends Component {
     e.preventDefault();
     jump('.schoolResults', {
       duration: 1000,
+      offset: -50,
       a11y: true
     })
   };
