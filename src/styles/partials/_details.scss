@@ -29,7 +29,6 @@ img {
     display: block;
     width: 600px;
     max-width: 100%;
-    height: 400px;
     max-height: 100%;
     position: fixed;
     z-index: 1000;
@@ -38,6 +37,19 @@ img {
     transform: translate(-50%, -50%);
     padding:3rem;
     background: $secondaryColor;
+}
+.smallInfoWrapper p {
+    line-height: 1.5;
+    &:first-child{
+        line-height: 1.2;
+        font-weight: 600;
+        font-size: 1.2rem;
+    }
+}
+.smallInfoWrapper .contacts p {
+    font-size: 1rem;
+    font-weight: 100;
+    line-height: 1.5;
 }
 .detailsFlex {
     @include flex(row, space-between, center, left);
