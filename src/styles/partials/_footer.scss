@@ -1,5 +1,13 @@
 footer {
+  @include color($black, $primaryColor); 
   text-align: center;
   margin-top: 20px;
-  padding: 10px 0;
+  padding: 5px 0;
+  a {
+    color:inherit;
+    &:hover,
+    &:focus {
+      color: $white;
+    }
+  }
 }

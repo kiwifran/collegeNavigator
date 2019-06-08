@@ -8,7 +8,7 @@ $white: #f0f8ff;
 $primaryColor: #416bff;
 $secondaryColor: #073330;
 $activeColor: #b1bc2b;
-$black:#0f201b;
+$black:#0d1b17;
 
 $headerFont: 'Offside', cursive;
 $bodyFont: 'Barlow', sans-serif;
@@ -24,13 +24,14 @@ $bodyFont: 'Barlow', sans-serif;
     background-color: $backgroundColor;
     color:$fontColor;
 }
-
+html {
+    font-size: 125%;
+}
 fieldset {
     border:none;
 }
 body {
-    background: $white;
-    color: $white;
+    @include color($white, $white);
     font-family: $bodyFont;
 }
 
@@ -38,13 +39,16 @@ ul {
     margin: 0;
     padding: 0;
 }
-
-h1 {
-    font-family: $headerFont;
-}
-
 li {
     list-style: none;
+}
+
+h1,
+h2 {
+    font-family: $headerFont;
+}
+p {
+    margin: 0;
 }
 
 a {
@@ -53,4 +57,26 @@ a {
 .wrapper {
     margin: 0 auto;
     padding:0 5%;
+}
+.singleContent {
+    padding: 32px 22px;
+    border: 1px solid black;
+    border-radius: 10px;
+    background: rgb(27,65,56);
+    background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
+}
+[type="submit"],
+.detailsButton,
+button,
+.inputSchoolSubmit {
+    border:none;
+}
+[type="submit"],
+.detailsButton,
+.inputSchoolSubmit{
+    width:40%;
+    margin-top: 20px;
+    padding: 10px 7px;
+    border-radius: 2px;
+    
 }

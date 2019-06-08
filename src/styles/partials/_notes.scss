@@ -1,0 +1,53 @@
+.noteContainer {
+    background-image: url(../assets/notesBackground.jpg);
+    background-repeat: tile;
+    background-position: left top;
+    padding-top: 20px;
+    h2 {
+        margin-top: 0;
+        text-align: center;
+        color: $black;
+    }
+}
+.addSign {
+    @include color(inherit, $black);
+    display: block;
+    margin: 1rem auto;
+    font-size: 40px;
+    &:hover{
+        color:$primaryColor;
+    }
+}
+.notes {
+    @include flex(row, space-between, start, center);
+    flex-wrap:wrap;
+    
+}
+.singleNote {
+    width:47%;
+    margin-bottom: 1.5rem;
+    p {
+        margin-bottom: 0.7rem;
+        word-wrap:break-word;
+    }
+    button {
+        width: 25%;
+        padding: 3px 2px;
+        margin:20px;
+        border:none;
+        border-radius: 2px;
+        @include color($activeColor, $black);
+        font-weight: 600;
+        &:hover{
+            @include color($white, $primaryColor);
+        }
+    }
+    i {
+        margin: 5px;
+    }
+}
+.schoolName {
+    margin-bottom: 15px;
+    font-size: 23px;
+    font-weight: 700;
+}
