@@ -65,14 +65,60 @@ class AddSchool extends Component {
             onChange={this.onChange}
           />
         </div>
-        <fieldset className="inputFieldContainer">
-          <legend>Category:</legend>
+        <fieldset className="inputFieldContainerRadio">
+          <legend className="visuallyHidden">Category:</legend>
+
+          {/* <div className="radioButtons">
+            <input
+              type="radio"
+              name="category"
+              id="university"
+              className="radioButtonDot"
+              value="4bf58dd8d48988d1ae941735"
+              required
+              onChange={this.onChange}
+              checked={(this.state.category === 'university')}
+            />
+            <label className="radioButtonLabel" htmlFor="university">
+              University
+              </label>
+
+            <input
+              type="radio"
+              name="category"
+              id="college"
+              className="radioButtonDot"
+              value="4bf58dd8d48988d1a2941735"
+              required
+              onChange={this.onChange}
+              checked={(this.state.category === 'college')}
+            />
+            <label className="radioButtonLabel" htmlFor="college">
+              College
+              </label>
+
+            <input
+              type="radio"
+              name="category"
+              id="tradeSchool"
+              className="radioButtonDot"
+              value="4bf58dd8d48988d1ad941735"
+              required
+              onChange={this.onChange}
+              checked={(this.state.category === 'tradeSchool')}
+            />
+            <label className="radioButtonLabel" htmlFor="trade">
+              Trade School
+              </label>
+          </div> */}
+
+          
+          <input className="radioButtonDot" type="radio" name="category" id="college" value="college" onChange={this.onChange} checked={(this.state.category === 'college')} />
           <label htmlFor="college">College</label>
-          <input type="radio" name="category" id="college" value="college" onChange={this.onChange} checked={(this.state.category === 'college')} />
+          <input className="radioButtonDot" type="radio" name="category" id="university" value="university" onChange={this.onChange} checked={(this.state.category === 'university')}/>
           <label htmlFor="university">University</label>
-          <input type="radio" name="category" id="university" value="university" onChange={this.onChange} checked={(this.state.category === 'university')}/>
+          <input className="radioButtonDot" type="radio" name="category" id="tradeSchool" value="tradeSchool" onChange={this.onChange} checked={(this.state.category === 'tradeSchool')}/>
           <label htmlFor="tradeSchool">Trade School</label>
-          <input type="radio" name="category" id="tradeSchool" value="tradeSchool" onChange={this.onChange} checked={(this.state.category === 'tradeSchool')}/>
         </fieldset>
         <div className="inputFieldContainer">
           <label htmlFor="inputSchoolNote">Note:</label>

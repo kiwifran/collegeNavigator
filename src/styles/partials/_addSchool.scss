@@ -41,6 +41,23 @@
     height: 100px;
     resize: none;
   }
+
+  &Radio{
+  display: block;
+  text-align: right;
+  
+  legend{
+    display:none;
+  }
+    .radioButtonDot + label {
+      width: 26.5%;
+      text-align: center;
+      padding:8px 10px;
+      border: 1px solid $white;
+      display: inline-block;
+      font-weight: 700;
+    }
+  }
 }
 
 .editForm{
