@@ -36,7 +36,15 @@ img {
     top: 50%;
     transform: translate(-50%, -50%);
     padding:3rem;
-    background: $secondaryColor;
+    border-radius: 10px;
+    background: rgb(27,65,56);
+    background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
+    a {
+        &:hover,
+        &:focus {
+            color:$primaryColor;
+        }
+    }
 }
 .smallInfoWrapper p {
     line-height: 1.5;

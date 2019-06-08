@@ -28,25 +28,16 @@ class SchoolDetails extends Component{
                         <div className="smallInfoWrapper">
                             <p>{name}</p>
                             <p>{location.formattedAddress}</p>
-                            {(contact.twitter !== undefined && contact.facebook !== undefined)
-                                ? <div className="contacts">
-                                    <p>{contact.twitter}</p>
-                                    <p>{contact.facebook}</p>
-                                    <p>{contact.formattedPhone}</p>
-                                </div>
-                                : (contact.twitter === undefined && contact.facebook !== undefined)
-                                    ? <div className="contacts">
-                                        <p>{contact.facebook}</p>
-                                        <p>{contact.formattedPhone}</p>
-                                    </div>
-                                    : (contact.twitter !== undefined && contact.facebook === undefined)
-                                        ? <div className="contacts">
-                                            <p>{contact.twitter}</p>
-                                            <p>{contact.formattedPhone}</p>
-                                        </div>
-                                        : <div className="contacts">
-                                            <p>{contact.formattedPhone}</p>
-                                        </div>}
+                                {contact.twitter
+                                ? <p><span><a target="_blank" rel="noopener noreferrer"  href={`https://twitter.com/${contact.twitter}`}><i class="fab fa-twitter"></i></a></span> {contact.twitter}</p>
+                                :null}
+                                {contact.facebook
+                                ? <p><span><a target="_blank" rel="noopener noreferrer" href={`https://www.facebook.com/${contact.facebook}`}><i class="fab fa-facebook"></i></a></span> {contact.facebook}</p>
+                                :null}
+                                {contact.formattedAddress
+                                ? <p><span><i class="fas fa-phone"></i></span> {contact.formattedPhone}</p>
+                                :null}
+
 
                         </div>
                         <div className="descriptionWrapper">

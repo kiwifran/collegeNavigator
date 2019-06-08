@@ -55,8 +55,6 @@
 .userInput {
     @include color($white, $black);
     margin-left: 20px;
-    border:none;
-    border-radius: 2px;
 }
 
 .schoolsListSearchInput {
