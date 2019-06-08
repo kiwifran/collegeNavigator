@@ -64,19 +64,26 @@ a {
     border-radius: 10px;
     background: rgb(27,65,56);
     background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
+    min-height: 280px;
 }
-[type="submit"],
-.detailsButton,
-button,
-.inputSchoolSubmit {
-    border:none;
+.searchContainer .singleContent{
+    position: relative;
 }
-[type="submit"],
-.detailsButton,
-.inputSchoolSubmit{
-    width:40%;
-    margin-top: 20px;
-    padding: 10px 7px;
-    border-radius: 2px;
-    
+.searchContainer .detailsButton {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+.generalButton {
+        width:40%;
+        margin-top: 20px;
+        padding: 10px 7px;
+        border:none;
+        border-radius: 2px;
+        @include color($activeColor, $black);
+        font-weight: 600;
+        &:hover{
+            @include color($white, $primaryColor);
+        }
 }

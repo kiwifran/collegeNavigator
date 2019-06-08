@@ -1,4 +1,4 @@
-.searchContainer form{
+.searchForm{
     @include flex(column, center, center, center);
     background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
     padding-top: 2rem;
@@ -9,10 +9,8 @@
 .smallWrapper {
     padding:120px 100px;
     border-radius: 10px;
-    background-color:rgba(0, 0, 0, 0.38);
-    [type="submit"] {
-        @include color($activeColor, $white);
-    }
+
+    background-color:rgba(0, 0, 0, 0.6);
 }
 .radioButtons {
     @include flex(row, space-between, center, center);
@@ -59,4 +57,17 @@
     margin-left: 20px;
     border:none;
     border-radius: 2px;
+}
+
+.schoolsListSearchInput {
+    min-height: auto;
+    width: 50%;
+    margin: 0 auto;
+    @include flex(column, center, center, center)
+}
+
+.schoolsListSearch {
+    margin: 15px auto;
+    text-align: center;
+    width: 80%;
 }

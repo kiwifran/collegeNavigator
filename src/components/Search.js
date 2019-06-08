@@ -105,8 +105,9 @@ class Search extends Component {
     this.apiCall();
 
     e.preventDefault();
-    jump('.schoolsList', {
+    jump('.schoolResults', {
       duration: 1000,
+      offset: -50,
       a11y: true
     })
   };
@@ -114,7 +115,7 @@ class Search extends Component {
   render() {
     return (
       <div className="searchContainer">
-        <form onSubmit={this.handleSubmit}>
+        <form onSubmit={this.handleSubmit} className="searchForm">
           <div className="smallWrapper" >
             <div className="radioButtons">
               <input
@@ -173,7 +174,7 @@ class Search extends Component {
             <label htmlFor="submit" className="visuallyHidden">
               Submit Search
             </label>
-            <input type="submit" id="submit" value="Get Schools List" />
+            <input className="generalButton" type="submit" id="submit" value="Get Schools List" />
           </div>
         </form>
 

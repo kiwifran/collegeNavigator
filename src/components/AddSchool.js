@@ -136,7 +136,7 @@ class AddSchool extends Component {
         <input 
           type="submit" 
           id="inputSchoolSubmit" 
-          className="inputSchoolSubmit" 
+          className="inputSchoolSubmit generalButton" 
           value="Save" 
         />
       </form>
