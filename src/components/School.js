@@ -92,13 +92,13 @@ class School extends Component {
     return (
       <Fragment>
 
-      <div className="schoolsList container" aria-live="polite">
+      <div className="schoolsList wrapper" aria-live="polite">
         {Array.isArray(this.props.schoolsList) ? this.props.schoolsList.map(school => {
           const { id, name: schoolName, location } = school;
           const { address, city, country } = location;
 
           return (
-            <div key={id} className="result">
+            <div key={id} className="result singleContent">
               <p className="resultName">{schoolName}</p>
               <p className="resultAddress">{address} - {city}</p>
               <p className="resultCountry">{country}</p>
@@ -106,11 +106,11 @@ class School extends Component {
                 {/* <button className='bookmark' onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button> */}
                 <Bookmark bookmarkId={id} addNote={this.addNote}/>
               
-              <button onClick={() => this.moreInfo(id)}>More Info</button>
+              <button className="detailsButton" onClick={() => this.moreInfo(id)}>More Info</button>
             </div>
           )
         }) : 
-          <div className="result">
+          <div className="noResult">
             <p className="resultName">No Results To Display</p>
           </div>}
       </div>

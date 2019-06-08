@@ -1,13 +1,10 @@
 .inputSchool {
   &Form {
-    border: 1px black solid;
-    padding: 10px;
-
     display: flex;
     flex-direction: column;
-    background: $secondaryColor;
+    border: 1px black solid;
+    padding: 20px;    
   }
-
   &Name,
   &Address,
   &Description {
@@ -15,14 +12,20 @@
   }
 
   &Submit {
-    display: block;
-    width: 100px;
-
-    padding: 5px;
     align-self: flex-end;
+    @include color($activeColor, $black);
+        font-weight: 600;
+        &:hover{
+            @include color($white, $primaryColor);
+        }
   }
 }
-
+.inputSchoolForm   [type="text"], 
+.inputSchoolForm textarea{
+  border: none;
+  border-radius: 2px;
+  
+}
 .inputFieldContainer {
   display: flex;
   margin: 10px 0;

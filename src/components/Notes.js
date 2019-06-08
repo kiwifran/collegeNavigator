@@ -91,7 +91,7 @@ class Notes extends Component {
   }
   render() {
     return (
-      <div className="noteContainer">
+      <div className="noteContainer wrapper">
         <h2>NOTES</h2>
         <button onClick={this.handleScroll} className="addSign">
           <i className="fas fa-plus"></i>
@@ -115,10 +115,10 @@ class Notes extends Component {
             </form>
           </div>
         </div>
-        <ul className="notes">
+        <div className="notes">
           {this.state.bookmarkList.map((item) => {
             return(
-              <div key={item.key}>    
+              <div key={item.key} className="singleNote singleContent">    
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
                 <p className="note"> Note: {item.note}</p>
@@ -132,7 +132,7 @@ class Notes extends Component {
               </div>
             )
           })}
-        </ul>
+        </div>
 
         <AddSchool />
       </div>
