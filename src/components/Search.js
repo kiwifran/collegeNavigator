@@ -2,7 +2,8 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from './firebase.js';
 import School from './School.js';
-import jump from 'jump.js'
+import jump from 'jump.js';
+import swal from 'sweetalert';
 
 class Search extends Component {
   constructor() {
@@ -107,17 +108,26 @@ class Search extends Component {
   // handle submit of form
   handleSubmit = e => {
     // requires error handling of things not selected
-
-    // need regex test for blank spaces before calling api
-
-    this.apiCall();
-
     e.preventDefault();
-    jump('.schoolResults', {
-      duration: 1000,
-      offset: -50,
-      a11y: true
-    })
+    console.log('submitted')
+    console.log(this.state.userInput);
+    console.log(this.state.institution.length);
+    if (this.state.institution.length === 0 || this.state.userInput.length === 0) {
+      swal({
+        title: "oops",
+        text: "please make sure all fields are entered",
+        icon: "warning",
+      });
+
+    } else {
+      this.apiCall();
+
+      jump('.schoolResults', {
+        duration: 1000,
+        offset: -50,
+        a11y: true
+      })
+    }
   };
 
   render() {
@@ -132,7 +142,6 @@ class Search extends Component {
                 id="university"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1ae941735"
-                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
               />
@@ -146,7 +155,6 @@ class Search extends Component {
                 id="college"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1a2941735"
-                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
               />
@@ -160,7 +168,6 @@ class Search extends Component {
                 id="trade"
                 className="radioButtonDot"
                 value="4bf58dd8d48988d1ad941735"
-                required
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
               />

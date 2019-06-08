@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import firebase from "firebase";
-import uuid from 'uuid'
+import uuid from 'uuid';
+import swal from 'sweetalert';
+
 
 class AddSchool extends Component {
   constructor() {
@@ -34,7 +36,11 @@ class AddSchool extends Component {
         id: ''
       })
     }else {
-      alert("check your input please🙁")
+      swal({
+        title: "oops",
+        text: "please enter required fields",
+        icon: "warning",
+      });
     }
   }
   render() {
@@ -121,7 +127,7 @@ class AddSchool extends Component {
           <label htmlFor="tradeSchool">Trade School</label>
         </fieldset>
         <div className="inputFieldContainer">
-          <label htmlFor="inputSchoolNote">Note:</label>
+          <label htmlFor="inputSchoolNote">Note (optional):</label>
           <textarea 
             id="inputSchoolNote" 
             placeholder="Note" 
