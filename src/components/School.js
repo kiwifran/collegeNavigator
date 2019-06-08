@@ -93,6 +93,8 @@ class School extends Component {
       <Fragment>
 
       <div className="schoolsList wrapper" aria-live="polite">
+      
+
         {Array.isArray(this.props.schoolsList) ? this.props.schoolsList.map(school => {
           const { id, name: schoolName, location } = school;
           const { address, city, country } = location;

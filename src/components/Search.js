@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from './firebase.js';
 import School from './School.js';
-import SchoolDetails from './SchoolDetails.js';
 import jump from 'jump.js'
 
 class Search extends Component {
@@ -184,7 +183,6 @@ class Search extends Component {
           userSelectSchoolId={this.userSelectSchoolId}
         />
 
-        <SchoolDetails schoolId={this.state.selectSchoolId} />
       </div>
     );
   }
