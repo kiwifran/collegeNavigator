@@ -8,6 +8,16 @@
   margin: 1rem 0.5rem;
   text-align: center;
 }
+
+.noResult {
+  @include flex(column, center, center, center);
+  text-transform: uppercase;
+  
+  .resultName {
+    font-size: 40px;
+  }
+}
+
 .result {
   width: 30%;
   position: relative;

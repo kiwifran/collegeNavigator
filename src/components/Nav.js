@@ -8,7 +8,7 @@ function Nav() {
         <NavLink to="/" className="navLink"><h1>College Navigator</h1></NavLink>
           <ul className="navList">
             <li className="navItem"><NavLink to="/" className="navLink">Search</NavLink></li>
-            <li className="navItem"><NavLink to="/notes" className="navLink">Notes</NavLink></li>
+            <li className="navItem"><NavLink to="/notes" className="navLink">Bookmarks</NavLink></li>
           </ul>
         </nav>
     </header>
