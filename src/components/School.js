@@ -112,7 +112,7 @@ class School extends Component {
             </div>
           )
         }) : 
-          <div className="noResult">
+          <div className="noResult singleContent">
             <p className="resultName">No Results To Display</p>
           </div>}
       </div>

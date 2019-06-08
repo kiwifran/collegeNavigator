@@ -111,7 +111,7 @@ class Notes extends Component {
 
               <label htmlFor="addNote" >Add Note</label>
               <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote"></textarea>
-              <input type="submit" value="enter"/>
+              <input className="addNoteButton" type="submit" value="enter"/>
             </form>
           </div>
         </div>
