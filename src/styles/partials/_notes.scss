@@ -8,13 +8,7 @@
         text-align: center;
         color: $black;
     }
-    .addNoteButton {
-        @include color($activeColor, $black);
-        font-weight: 600;
-        &:hover{
-            @include color($white, $primaryColor);
-        }
-    }
+
 }
 .addSign {
     @include color(inherit, $black);
@@ -41,13 +35,7 @@
         width: 25%;
         padding: 3px 2px;
         margin:20px;
-        border:none;
-        border-radius: 2px;
-        @include color($activeColor, $black);
-        font-weight: 600;
-        &:hover{
-            @include color($white, $primaryColor);
-        }
+
     }
     i {
         margin: 5px;

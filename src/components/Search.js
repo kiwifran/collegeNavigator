@@ -173,7 +173,7 @@ class Search extends Component {
             <label htmlFor="submit" className="visuallyHidden">
               Submit Search
             </label>
-            <input type="submit" id="submit" value="Get Schools List" />
+            <input className="generalButton" type="submit" id="submit" value="Get Schools List" />
           </div>
         </form>
 

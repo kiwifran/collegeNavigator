@@ -111,7 +111,7 @@ class Notes extends Component {
 
               <label htmlFor="addNote" >Add Note</label>
               <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote"></textarea>
-              <input className="addNoteButton" type="submit" value="enter"/>
+              <input className="generalButton" type="submit" value="enter"/>
             </form>
           </div>
         </div>
@@ -123,10 +123,10 @@ class Notes extends Component {
                 <p className="address"> Address: {item.address}</p>
                 <p className="note"> Note: {item.note}</p>
 
-                <button onClick={() => { this.editNote(item.key) }}>
+                <button className="generalButton" onClick={() => { this.editNote(item.key) }}>
                   <i className="fas fa-pen"></i>Edit
                 </button>
-                <button onClick={() => { this.removeNote(item.key) }}>
+                <button className="generalButton" onClick={() => { this.removeNote(item.key) }}>
                   <i className="fas fa-trash-alt"></i>Delete
                 </button>
               </div>

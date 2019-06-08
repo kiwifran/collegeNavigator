@@ -43,9 +43,7 @@ img {
     @include flex(row, space-between, center, left);
     flex-wrap:wrap;
 }
-// .close {
-//     display: none;
-// }
+
 .closeButton {
     position: absolute;
     right:15px;

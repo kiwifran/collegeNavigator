@@ -21,13 +21,7 @@
   width:60%;
   margin:0 auto;
 }
-.detailsButton {
-  @include color($activeColor, $black);
-  font-weight: bolder;
-  &:hover{
-            @include color($white, $primaryColor);
-        }
-}
+
 .bookmarkPosition {
     position: absolute;
     right:6px;
