@@ -64,6 +64,16 @@ a {
     border-radius: 10px;
     background: rgb(27,65,56);
     background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
+    min-height: 280px;
+}
+.searchContainer .singleContent{
+    position: relative;
+}
+.searchContainer .detailsButton {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
 }
 .generalButton {
         width:40%;
