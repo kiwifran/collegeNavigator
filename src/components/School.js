@@ -57,13 +57,10 @@ class School extends Component {
       const schoolMoreInfo = res.data.response.venue;
 
       this.setState({
-        // schoolPhotoUrl  :`${schoolDetails.bestPhoto.prefix}500x500${schoolDetails.bestPhoto.suffix}`,
-        // schoolName :schoolDetails.name,
-        // schoolAddress: schoolDetails.location.formattedAddress,
         schoolMoreInfo: schoolMoreInfo,
         modalStatus: 'open'
-
       })
+      
     }).catch((error) => {
       // if the response error is status 429
       if (error.response.status === 429) {
@@ -158,9 +155,9 @@ class School extends Component {
               <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
               </div>
             )
-            }) : 
+            }) :
             <div className="noResult singleContent">
-              <p className="resultName">No Results To Display</p>
+              <p className="resultName">{this.props.schoolsList}</p>
             </div>
           }
         </div>

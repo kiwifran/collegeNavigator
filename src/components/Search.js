@@ -71,7 +71,13 @@ class Search extends Component {
         // handle error if no results are returned
         if (error.response.status === 400) {  
           this.setState({
-            schoolsList: ''
+            schoolsList: `We're sorry.  There are zero results for your search.`
+          })
+
+        // if the user ends up somehow making more 950 calls a day
+        } else if (error.response.status === 429) {
+          this.setState({
+            schoolsList: 'You have exceeded your daily limit of searches. You should probably go outside...'
           })
         }
       });
@@ -101,6 +107,8 @@ class Search extends Component {
   // handle submit of form
   handleSubmit = e => {
     // requires error handling of things not selected
+
+    // need regex test for blank spaces before calling api
 
     this.apiCall();
 
