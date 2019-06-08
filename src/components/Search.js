@@ -119,14 +119,8 @@ class Search extends Component {
         icon: "warning",
       });
 
-<<<<<<< Updated upstream
-    // need regex test for blank spaces before calling api
-
-    this.apiCall();
-=======
     } else {
       this.apiCall();
->>>>>>> Stashed changes
 
       jump('.schoolResults', {
         duration: 1000,
