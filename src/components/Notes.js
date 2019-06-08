@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import firebase from './firebase.js'
 import AddSchool from './AddSchool.js'
 import jump from 'jump.js'
+import { CircleArrow as ScrollUpButton } from "react-scroll-up-button"; //Add this line Here
 class Notes extends Component {
   constructor() {
     super();
@@ -132,6 +133,18 @@ class Notes extends Component {
               </div>
             )
           })}
+          <ScrollUpButton 
+            AnimationDuration={500}
+            ShowAtPosition={350}
+            style={{
+              fill:`#073330`,
+              height: 30,
+              width: 30,
+              right: 15,
+              border: `3px solid #073330`,
+              background: `rgba(255, 255, 255, 0.548)`,
+              }}
+          />
         </div>
 
         <AddSchool />

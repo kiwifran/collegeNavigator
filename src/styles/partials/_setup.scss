@@ -53,6 +53,7 @@ p {
 
 a {
     text-decoration: none;
+    color:inherit;
 }
 .wrapper {
     margin: 0 auto;
@@ -86,4 +87,9 @@ a {
         &:hover{
             @include color($white, $primaryColor);
         }
+}
+[type="text"],
+textarea {
+    border:none;
+    border-radius: 2px;
 }

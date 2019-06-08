@@ -2,6 +2,8 @@ import React, { Component, Fragment } from 'react'
 import SchoolDetails from "./SchoolDetails.js"
 import Bookmark from './Bookmark.js'
 import axios from 'axios';
+import { CircleArrow as ScrollUpButton } from "react-scroll-up-button"; //Add this line Here
+
 
 class School extends Component {
   constructor() {
@@ -122,6 +124,18 @@ class School extends Component {
       <Fragment>
 
         <div className="schoolResults wrapper" aria-live="polite">
+          <ScrollUpButton
+            AnimationDuration={500}
+            ShowAtPosition={350}
+            style={{
+              fill: `#073330`,
+              height: 30,
+              width: 30,
+              right: 15,
+              border: `3px solid #073330`,
+              background: `rgba(255, 255, 255, 0.548)`,
+            }}
+          />
         {this.state.schoolsList.length > 0 ?
             <div className="schoolsListSearchInput singleContent">
             <label htmlFor="schoolsListSearch">Filter Search:</label>
