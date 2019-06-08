@@ -120,13 +120,22 @@ class Search extends Component {
       });
 
     } else {
-      this.apiCall();
+      if (/^\s*$/.test(this.state.userInput) === false) {
+        this.apiCall();
+   
+        jump('.schoolResults', {
+          duration: 1000,
+          offset: -50,
+          a11y: true
+        })
+      } else {
+        swal({
+          title: "oops",
+          text: "please enter a search",
+          icon: "warning",
+        });
+      }
 
-      jump('.schoolResults', {
-        duration: 1000,
-        offset: -50,
-        a11y: true
-      })
     }
   };
 
