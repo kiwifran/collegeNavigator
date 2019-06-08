@@ -8,6 +8,7 @@
         text-align: center;
         color: $black;
     }
+
 }
 .addSign {
     @include color(inherit, $black);
@@ -19,12 +20,13 @@
     }
 }
 .notes {
-    @include flex(row, space-between, start, center);
-    flex-wrap:wrap;
-    
+    display: grid;
+    text-align: center;
+    grid-column-gap: 10px;
+    grid-row-gap: 15px;
+    grid-template-columns: 1fr 1fr;
 }
 .singleNote {
-    width:47%;
     margin-bottom: 1.5rem;
     p {
         margin-bottom: 0.7rem;
@@ -34,13 +36,7 @@
         width: 25%;
         padding: 3px 2px;
         margin:20px;
-        border:none;
-        border-radius: 2px;
-        @include color($activeColor, $black);
-        font-weight: 600;
-        &:hover{
-            @include color($white, $primaryColor);
-        }
+
     }
     i {
         margin: 5px;

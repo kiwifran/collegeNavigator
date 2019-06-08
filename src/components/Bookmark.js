@@ -80,11 +80,11 @@ class Bookmark extends Component {
                 {this.state.isSaved ?
                     <button className='bookmark' onClick={this.removeBookmark}>
                         <i className="fas fa-bookmark saved"></i>
-                    </button >
+                    </button>
                     :
                     <button className='bookmark' onClick={this.saveBookmark}>
                         <i className="far fa-bookmark saved"></i>
-                    </button >
+                    </button>
                 }
             </div>
         )

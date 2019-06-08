@@ -9,10 +9,9 @@
 .smallWrapper {
     padding:120px 100px;
     border-radius: 10px;
+
     background-color:rgba(0, 0, 0, 0.6);
-    [type="submit"] {
-        @include color($activeColor, $white);
-    }
+
 }
 .radioButtons {
     @include flex(row, space-between, center, center);

@@ -155,15 +155,16 @@ class School extends Component {
                   {/* <button className='bookmark' onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button> */}
                   <Bookmark bookmarkId={id} addNote={this.addNote}/>
                 
-                <button className="detailsButton" onClick={() => this.moreInfo(id)}>More Info</button>
+              <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
               </div>
             )
             }) : 
-            <div className="noResult">
+            <div className="noResult singleContent">
               <p className="resultName">No Results To Display</p>
             </div>
           }
         </div>
+
       </div>
 
       <SchoolDetails 
