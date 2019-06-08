@@ -1,4 +1,4 @@
-.searchContainer form{
+.searchForm{
     @include flex(column, center, center, center);
     background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
     padding-top: 2rem;
@@ -9,7 +9,7 @@
 .smallWrapper {
     padding:120px 100px;
     border-radius: 10px;
-    background-color:rgba(0, 0, 0, 0.38);
+    background-color:rgba(0, 0, 0, 0.6);
     [type="submit"] {
         @include color($activeColor, $white);
     }
