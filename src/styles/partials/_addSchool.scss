@@ -51,6 +51,8 @@
       border: 1px solid $white;
       display: inline-block;
       font-weight: 700;
+      box-shadow: 0 5px #999;
+      transition: 0.2s;
     }
   }
 }

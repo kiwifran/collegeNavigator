@@ -5,10 +5,10 @@ function Nav() {
   return (
     <header>
         <nav className="nav wrapper">
-        <NavLink to="/" className="navLink"><h1>College Navigator</h1></NavLink>
+        <NavLink to="/" className="navLink" tabIndex='1'><h1>College Navigator</h1></NavLink>
           <ul className="navList">
-            <li className="navItem"><NavLink to="/" className="navLink">Search</NavLink></li>
-            <li className="navItem"><NavLink to="/notes" className="navLink">Bookmarks</NavLink></li>
+            <li className="navItem"><NavLink to="/" className="navLink" tabIndex='2'>Search</NavLink></li>
+            <li className="navItem"><NavLink to="/notes" className="navLink" tabIndex='3'>Bookmarks</NavLink></li>
           </ul>
         </nav>
     </header>

@@ -152,6 +152,7 @@ class Search extends Component {
                 value="4bf58dd8d48988d1ae941735"
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
+                tabIndex='4'
               />
               <label className="radioButtonLabel" htmlFor="university">
                 University
@@ -165,6 +166,7 @@ class Search extends Component {
                 value="4bf58dd8d48988d1a2941735"
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
+                tabIndex='5'
               />
               <label className="radioButtonLabel" htmlFor="college">
                 College
@@ -178,6 +180,7 @@ class Search extends Component {
                 value="4bf58dd8d48988d1ad941735"
                 onChange={this.handleChange}
                 checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
+                tabIndex='6'
               />
               <label className="radioButtonLabel" htmlFor="trade">
                 Trade School
