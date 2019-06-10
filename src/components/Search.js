@@ -1,9 +1,10 @@
-import React, { Component } from 'react';
+import React, { Component, Fragment } from 'react';
 import axios from 'axios';
 import firebase from './firebase.js';
-import School from './School.js';
 import jump from 'jump.js';
 import swal from 'sweetalert';
+
+import School from './School.js';
 
 class Search extends Component {
   constructor() {
@@ -32,7 +33,8 @@ class Search extends Component {
         }
       })
       .then(result => {
-        const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i;
+        // RegEx test to filter out undesirable items returned in search
+        const RegEx = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i;
         const schoolsList = result.data.response.venues;
         
         // filter out only relevant information from the API
@@ -41,7 +43,7 @@ class Search extends Component {
 
           return (
             (name === 'University' || name === 'Community College' || name === 'Trade School') &&
-            !regex.test(key.name) &&
+            !RegEx.test(key.name) &&
             key.location.address !== undefined
           )
         })
@@ -91,7 +93,8 @@ class Search extends Component {
         dbRef.push({
           name: school.name,
           address: school.location.address,
-          id: school.id
+          id: school.id,
+          category: school.categories[0].name
         });
       }
     });
@@ -134,12 +137,12 @@ class Search extends Component {
           icon: "warning",
         });
       }
-
     }
   };
 
   render() {
     return (
+<<<<<<< HEAD
       <div className="searchContainer">
         <form onSubmit={this.handleSubmit} className="searchForm">
           <div className="smallWrapper" >
@@ -170,47 +173,85 @@ class Search extends Component {
               />
               <label className="radioButtonLabel" htmlFor="college">
                 College
+=======
+      <Fragment>
+        <div className="searchContainer">
+          <form onSubmit={this.handleSubmit} className="searchForm wrapper">
+            <div className="smallWrapper" >
+              <div className="radioButtons">
+                <input
+                  type="radio"
+                  name="institution"
+                  id="university"
+                  className="radioButtonDot"
+                  value="4bf58dd8d48988d1ae941735"
+                  onChange={this.handleChange}
+                  checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
+                />
+                <label className="radioButtonLabel" htmlFor="university">
+                  University
               </label>
 
+                <input
+                  type="radio"
+                  name="institution"
+                  id="college"
+                  className="radioButtonDot"
+                  value="4bf58dd8d48988d1a2941735"
+                  onChange={this.handleChange}
+                  checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
+                />
+                <label className="radioButtonLabel" htmlFor="college">
+                  College
+              </label>
+
+                <input
+                  type="radio"
+                  name="institution"
+                  id="trade"
+                  className="radioButtonDot"
+                  value="4bf58dd8d48988d1ad941735"
+                  onChange={this.handleChange}
+                  checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
+                />
+                <label className="radioButtonLabel" htmlFor="trade">
+                  Trade School
+>>>>>>> master
+              </label>
+              </div>
+
+              <label className="userInputLabel" htmlFor="search">Schools Near:</label>
               <input
-                type="radio"
-                name="institution"
-                id="trade"
-                className="radioButtonDot"
-                value="4bf58dd8d48988d1ad941735"
+                className="userInput"
+                type="text"
+                name="userInput"
+                id="search"
                 onChange={this.handleChange}
+<<<<<<< HEAD
                 checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
                 tabIndex='6'
+=======
+                value={this.state.userInput}
+>>>>>>> master
               />
-              <label className="radioButtonLabel" htmlFor="trade">
-                Trade School
-              </label>
-            </div>
 
-            <label className="userInputLabel" htmlFor="search">Schools Near:</label>
-            <input 
-              className="userInput"
-              type="text"
-              name="userInput"
-              id="search"
-              onChange={this.handleChange}
-              value={this.state.userInput}
-            />
-
-            <label htmlFor="submit" className="visuallyHidden">
-              Submit Search
+              <label htmlFor="submit" className="visuallyHidden">
+                Submit Search
             </label>
-            <input className="generalButton" type="submit" id="submit" value="Get Schools List" />
-          </div>
-        </form>
+              <input className="generalButton" type="submit" id="submit" value="Get Schools List" />
+            </div>
+          </form>
 
+          
+
+        </div>
         <School
           schoolsList={this.state.schoolsList}
           setBookmarkState={this.setBookmarkState}
           userSelectSchoolId={this.userSelectSchoolId}
         />
+      </Fragment>
 
-      </div>
     );
   }
 }

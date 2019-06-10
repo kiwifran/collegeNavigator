@@ -1,10 +1,22 @@
-.searchForm{
-    @include flex(column, center, center, center);
+.searchContainer {
     background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
-    padding-top: 2rem;
-    min-height: 100vh;
     background-position: center center;
     background-size: cover;
+    .singleContent{
+        position: relative;
+    }
+    .detailsButton {
+    position: absolute;
+    bottom: 0;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    }
+}
+.searchForm{
+    @include flex(column, center, center, center);
+    padding-top: 2rem;
+    min-height: 100vh;
+    
 }
 .smallWrapper {
     padding:120px 100px;
@@ -32,13 +44,11 @@
     font-size: 20px;
     font-weight: 700;
 }
-
 .radioButtonDot:checked + label {
     transform: translateY(3px);
     box-shadow: 0 2px #666;
     @include color($activeColor, $black);
 }
-
 .radioButtonDot {
     position: absolute;
     right: 100%;
@@ -49,15 +59,10 @@
     margin-top: 20px;
     font-size: 25px;
 }
-.userInput,
-.userInput::placeholder {
-    font-family: $bodyFont;
-}
 .userInput {
     @include color($white, $black);
     margin-left: 20px;
 }
-
 .schoolsListSearchInput {
     min-height: auto;
     width: 50%;

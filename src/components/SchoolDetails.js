@@ -8,70 +8,79 @@ function SchoolDetails(props) {
     return true;
   };
 
+  // display details function
   const displayDetails = () => {
     const { bestPhoto, name, contact, location, description, url } = props.schoolMoreInfo;
+
+    console.log(contact)
+
     return (
       <Fragment>
         <div className="detailsOverlay" />
 
         <div className="detailsModal">
           <div className="detailsFlex">
+
+            {/* close modal button */}
             <button onClick={props.closeMe} className="closeButton">
-              <i className="fas fa-times" />
+              <i className="fas fa-times" aria-label="close modal"/>
             </button>
+
+            {/* display a photo if available */}
             {bestPhoto !== undefined ? (
               <div className="imgWrapper">
                 {/* since I see some photos are not as large as the size of 500x500 I changed it to 400 */}
                 <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`${name}`} />
               </div>
             ) : null}
+
             <div className="smallInfoWrapper">
               <p>{name}</p>
               <p>{location.formattedAddress}</p>
-              {contact.twitter ? (
-                <p>
-                  <span>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={`https://twitter.com/${contact.twitter}`}
-                    >
-                      <i class="fab fa-twitter" />
-                    </a>
-                  </span>{' '}
-                  {contact.twitter}
-                </p>
-              ) : null}
+              
+              {/* display facebook link if available */}
               {contact.facebook ? (
-                <p>
-                  <span>
-                    <a
-                      target="_blank"
-                      rel="noopener noreferrer"
-                      href={`https://www.facebook.com/${contact.facebook}`}
-                    >
-                      <i class="fab fa-facebook" />
-                    </a>
-                  </span>{' '}
-                  {contact.facebook}
-                </p>
+                <p><a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://www.facebook.com/${contact.facebook}`}
+                  >
+                    <i className="fab fa-facebook" aria-label="Go to facebook" /> {contact.facebookName}
+                </a></p>
               ) : null}
+              
+              {/* display twitter link if available */}
+              {contact.twitter ? (
+                <p><a
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    href={`https://twitter.com/${contact.twitter}`}
+                  >
+                    <i className="fab fa-twitter" aria-label="Go to twitter" /> @{contact.twitter}
+                </a></p>
+              ) : null}
+
+              {/* display website link if available */}
+              {url !== undefined ? (
+                <p><a target="_blank" rel="noopener noreferrer" href={url}>
+                  <i className="fas fa-link" aria-label="Go to website" /> Website
+                </a></p>
+              ) : null}
+
+              {/* display address if available */}
               {contact.formattedAddress ? (
                 <p>
                   <span>
-                    <i class="fas fa-phone" />
+                    <i className="fas fa-phone" />
                   </span>{' '}
                   {contact.formattedPhone}
                 </p>
               ) : null}
             </div>
+
+            {/* display description if available */}
             <div className="descriptionWrapper">
               {description !== undefined ? <p>{description}</p> : null}
-              {url !== undefined ? (
-                <a target="_blank" rel="noopener noreferrer" href={url}>
-                  Visit Website{' '}
-                </a>
-              ) : null}
             </div>
             {/* end of wrappers */}
           </div>
