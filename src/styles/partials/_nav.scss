@@ -22,6 +22,9 @@
     font-size: 25px;
   }  
 }
+.hiddenNavList {
+  display: none;
+}
 
 @media (max-width:1260px) {
   .nav .wrapper {
@@ -45,9 +48,33 @@
     font-size: 25px;
     }
     .navList {
-      width: 35%;
+      display: none;
     }
-    .navLink {
+  }
+  .hiddenNavList {
+    @include flex(row,space-between,center,center);
+    width: 15%;
+    i {
+      font-size: 30px;
+    }
+  }
+}
+@media (max-width:550px) {
+  .hiddenNavList {
+    i {
+      font-size: 22px;
+    }
+  }
+}
+@media (max-width:400px) {
+  .nav .wrapper {
+    h1 {
+    font-size: 20px;
+    }
+  }
+  .hiddenNavList {
+    width: 20%;
+    i {
       font-size: 18px;
     }
   }
