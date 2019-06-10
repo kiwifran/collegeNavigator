@@ -93,7 +93,8 @@ class Search extends Component {
         dbRef.push({
           name: school.name,
           address: school.location.address,
-          id: school.id
+          id: school.id,
+          category: school.categories[0].name
         });
       }
     });
