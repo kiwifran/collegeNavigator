@@ -142,38 +142,6 @@ class Search extends Component {
 
   render() {
     return (
-<<<<<<< HEAD
-      <div className="searchContainer">
-        <form onSubmit={this.handleSubmit} className="searchForm">
-          <div className="smallWrapper" >
-            <div className="radioButtons">
-              <input
-                type="radio"
-                name="institution"
-                id="university"
-                className="radioButtonDot"
-                value="4bf58dd8d48988d1ae941735"
-                onChange={this.handleChange}
-                checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
-                tabIndex='4'
-              />
-              <label className="radioButtonLabel" htmlFor="university">
-                University
-              </label>
-
-              <input
-                type="radio"
-                name="institution"
-                id="college"
-                className="radioButtonDot"
-                value="4bf58dd8d48988d1a2941735"
-                onChange={this.handleChange}
-                checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
-                tabIndex='5'
-              />
-              <label className="radioButtonLabel" htmlFor="college">
-                College
-=======
       <Fragment>
         <div className="searchContainer">
           <form onSubmit={this.handleSubmit} className="searchForm wrapper">
@@ -216,7 +184,6 @@ class Search extends Component {
                 />
                 <label className="radioButtonLabel" htmlFor="trade">
                   Trade School
->>>>>>> master
               </label>
               </div>
 
