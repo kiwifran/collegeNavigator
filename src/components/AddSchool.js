@@ -20,12 +20,14 @@ class AddSchool extends Component {
   handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
-      id: uuid.v4()
     });
   };
 
   // handle submit of form
   handleSubmit = e => {
+    this.setState({
+      id: uuid.v4()
+    })
 
     // RegEx test to ensure search field isn't an empty string
     if (
@@ -60,7 +62,7 @@ class AddSchool extends Component {
   render() {
     return (
       <div className="wrapper">
-        <form className="inputSchoolForm singleContent" onSubmit={this.onSubmit}>
+        <form className="inputSchoolForm singleContent" onSubmit={this.handleSubmit}>
           <div className="inputFieldContainer">
             <label htmlFor="inputSchoolName">Name of Institution:</label>
             <input
@@ -70,7 +72,7 @@ class AddSchool extends Component {
               className="inputSchoolName"
               name="name"
               value={this.state.name}
-              onChange={this.onChange}
+              onChange={this.handleChange}
             />
           </div>
 
@@ -83,7 +85,7 @@ class AddSchool extends Component {
               className="inputSchoolAddress"
               name="address"
               value={this.state.address}
-              onChange={this.onChange}
+              onChange={this.handleChange}
             />
           </div>
           <fieldset className="inputFieldContainerRadio">
@@ -95,7 +97,7 @@ class AddSchool extends Component {
               name="category"
               id="college"
               value="college"
-              onChange={this.onChange}
+              onChange={this.handleChange}
               checked={this.state.category === 'college'}
             />
             <label htmlFor="college">College</label>
@@ -105,7 +107,7 @@ class AddSchool extends Component {
               name="category"
               id="university"
               value="university"
-              onChange={this.onChange}
+              onChange={this.handleChange}
               checked={this.state.category === 'university'}
             />
             <label htmlFor="university">University</label>
@@ -115,11 +117,12 @@ class AddSchool extends Component {
               name="category"
               id="tradeSchool"
               value="tradeSchool"
-              onChange={this.onChange}
+              onChange={this.handleChange}
               checked={this.state.category === 'tradeSchool'}
             />
             <label htmlFor="tradeSchool">Trade School</label>
           </fieldset>
+          
           <div className="inputFieldContainer">
             <label htmlFor="inputSchoolNote">Note (optional):</label>
             <textarea
@@ -128,7 +131,7 @@ class AddSchool extends Component {
               className="inputSchoolNote"
               name="note"
               value={this.state.note}
-              onChange={this.onChange}
+              onChange={this.handleChange}
             />
           </div>
 
