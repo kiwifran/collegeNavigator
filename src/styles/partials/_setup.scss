@@ -93,6 +93,8 @@ img {
 textarea,
 textarea::placeholder {
     font-family: $bodyFont;
+    padding-left: 8px;
+    padding-top: 2px;
 }
 [type="text"],
 textarea {
@@ -101,6 +103,9 @@ textarea {
     
 }
 
+* {
+    box-shadow: 0 0 0 1px red;
+}
 //sweetAlert Settings 
 .swal-modal {
     background:$secondaryColor;
@@ -118,7 +123,11 @@ textarea {
     background-color: $primaryColor;
     color:$white;
 }
-
+@media (max-width:780px) {
+    .generalButton {
+        width: 60%;
+    }
+}
 
 @media (max-width:400px) {
     .wrapper {

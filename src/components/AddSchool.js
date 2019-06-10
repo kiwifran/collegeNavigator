@@ -96,9 +96,9 @@ class AddSchool extends Component {
               type="radio"
               name="category"
               id="radioButtonCollege"
-              value="college"
+              value="College"
               onChange={this.handleChange}
-              checked={this.state.category === 'college'}
+              checked={this.state.category === 'College'}
             />
             <label htmlFor="radioButtonCollege" className="radioButtonLabel">College</label>
             <input
@@ -106,9 +106,9 @@ class AddSchool extends Component {
               type="radio"
               name="category"
               id="universityButtonCollege"
-              value="university"
+              value="University"
               onChange={this.handleChange}
-              checked={this.state.category === 'university'}
+              checked={this.state.category === 'University'}
             />
             <label htmlFor="universityButtonCollege" className="radioButtonLabel">University</label>
             <input
@@ -116,9 +116,9 @@ class AddSchool extends Component {
               type="radio"
               name="category"
               id="radioButtonTrade"
-              value="tradeSchool"
+              value="Trade School"
               onChange={this.handleChange}
-              checked={this.state.category === 'tradeSchool'}
+              checked={this.state.category === 'Trade School'}
             />
             <label htmlFor="radioButtonTrade" className="radioButtonLabel">Trade School</label>
           </fieldset>
