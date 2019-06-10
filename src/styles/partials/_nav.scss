@@ -1,27 +1,54 @@
-
 .nav {
+    @include color($secondaryColor, $white);
+}
+.nav .wrapper {
   @include flex(flex, space-between, center, center);
-  background-color: $secondaryColor;
-      color:$white;
-  &List {
+  .navList {
     width:20%;
     @include flex(flex, space-between, center, center);
   }
   h1 {
     font-size: 30px;
   }
-  &Item {
+  .navItem {
     margin-right: 20px;
     &:last-of-type {
       margin-right: 0;
     }
   }
   
-  &Link {
+  .navLink {
     text-transform: uppercase;
     font-size: 25px;
-    color:$white;
   }  
 }
 
+@media (max-width:1260px) {
+  .nav .wrapper {
+    h1 {
+    font-size: 25px;
+    }
 
+    .navLink {
+      font-size: 20px;
+    }
+  }
+}
+@media (max-width:950px) {
+      .nav .wrapper .navList {
+      width: 30%;
+    }
+}
+@media (max-width:780px) {
+  .nav .wrapper {
+    h1 {
+    font-size: 25px;
+    }
+    .navList {
+      width: 35%;
+    }
+    .navLink {
+      font-size: 18px;
+    }
+  }
+}
