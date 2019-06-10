@@ -12,6 +12,7 @@ class App extends Component {
 
   render() {
     return (
+      // hashrouter for gh-pages
       <HashRouter>
         <Nav />
         <Route exact path="/" component={Search} />
@@ -21,4 +22,5 @@ class App extends Component {
     )
   }
 }
+
 export default App;

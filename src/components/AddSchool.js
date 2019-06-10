@@ -16,14 +16,18 @@ class AddSchool extends Component {
     };
   }
 
-  onChange = e => {
+  // handle change for form change
+  handleChange = e => {
     this.setState({
       [e.target.name]: e.target.value,
       id: uuid.v4()
     });
   };
 
-  onSubmit = e => {
+  // handle submit of form
+  handleSubmit = e => {
+
+    // RegEx test to ensure search field isn't an empty string
     if (
       this.state.name !== '' &&
       this.state.address !== '' &&
@@ -31,6 +35,7 @@ class AddSchool extends Component {
       /^\s*$/.test(this.state.address) === false &&
       this.state.category !== ''
     ) {
+      // push the added school to the database
       const dbRef = firebase.database().ref();
       dbRef.push(this.state);
       this.setState({
@@ -41,6 +46,7 @@ class AddSchool extends Component {
         id: ''
       });
     } else {
+      // alert when all fields aren't completed
       swal({
         title: 'oops',
         text: 'please enter required fields',
@@ -50,9 +56,11 @@ class AddSchool extends Component {
 
     e.preventDefault();
   };
+
   render() {
     return (
-      <form className="inputSchoolForm singleContent" onSubmit={this.onSubmit}>
+      // add school form
+      <form className="inputSchoolForm singleContent" onSubmit={this.handleSubmit}>
         <div className="inputFieldContainer">
           <label htmlFor="inputSchoolName">Name of Institution:</label>
           <input
@@ -62,7 +70,7 @@ class AddSchool extends Component {
             className="inputSchoolName"
             name="name"
             value={this.state.name}
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
         </div>
 
@@ -75,7 +83,7 @@ class AddSchool extends Component {
             className="inputSchoolAddress"
             name="address"
             value={this.state.address}
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
         </div>
         <fieldset className="inputFieldContainerRadio">
@@ -87,7 +95,7 @@ class AddSchool extends Component {
             name="category"
             id="college"
             value="college"
-            onChange={this.onChange}
+            onChange={this.handleChange}
             checked={this.state.category === 'college'}
           />
           <label htmlFor="college">College</label>
@@ -97,7 +105,7 @@ class AddSchool extends Component {
             name="category"
             id="university"
             value="university"
-            onChange={this.onChange}
+            onChange={this.handleChange}
             checked={this.state.category === 'university'}
           />
           <label htmlFor="university">University</label>
@@ -107,7 +115,7 @@ class AddSchool extends Component {
             name="category"
             id="tradeSchool"
             value="tradeSchool"
-            onChange={this.onChange}
+            onChange={this.handleChange}
             checked={this.state.category === 'tradeSchool'}
           />
           <label htmlFor="tradeSchool">Trade School</label>
@@ -120,7 +128,7 @@ class AddSchool extends Component {
             className="inputSchoolNote"
             name="note"
             value={this.state.note}
-            onChange={this.onChange}
+            onChange={this.handleChange}
           />
         </div>
 

@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import firebase from './firebase.js';
-import School from './School.js';
 import jump from 'jump.js';
 import swal from 'sweetalert';
+
+import School from './School.js';
 
 class Search extends Component {
   constructor() {
@@ -32,7 +33,8 @@ class Search extends Component {
         }
       })
       .then(result => {
-        const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i;
+        // RegEx test to filter out undesirable items returned in search
+        const RegEx = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i;
         const schoolsList = result.data.response.venues;
         
         // filter out only relevant information from the API
@@ -41,7 +43,7 @@ class Search extends Component {
 
           return (
             (name === 'University' || name === 'Community College' || name === 'Trade School') &&
-            !regex.test(key.name) &&
+            !RegEx.test(key.name) &&
             key.location.address !== undefined
           )
         })
@@ -134,7 +136,6 @@ class Search extends Component {
           icon: "warning",
         });
       }
-
     }
   };
 

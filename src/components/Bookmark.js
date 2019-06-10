@@ -5,7 +5,8 @@ class Bookmark extends Component {
   constructor() {
     super();
     this.state = {
-      bookmark: 'far fa-bookmark'
+      bookmark: 'far fa-bookmark',
+      ariaBookmark: 'item not bookmarked'
     };
   }
 
@@ -25,7 +26,8 @@ class Bookmark extends Component {
         bookmarkArray.forEach(school => {
           if (school.id === this.props.bookmarkId) {
             this.setState({
-              bookmark: 'fas fa-bookmark'
+              bookmark: 'fas fa-bookmark',
+              ariaBookmark: 'item bookmarked'
             });
           }
         });
@@ -33,8 +35,11 @@ class Bookmark extends Component {
     });
   }
 
+  // handle click for adding a bookmark
   handleClick = (bookmark) => {
+    // check if the search item returned was bookmarked or not
     if (bookmark === 'fas fa-bookmark') {
+      // if it is not bookmarked, be able to add it
       const dbRef = firebase.database().ref();
       dbRef.once('value', response => {
         const data = response.val();
@@ -50,7 +55,8 @@ class Bookmark extends Component {
         bookmarkArray.forEach(school => {
           if (school.id === this.props.bookmarkId) {
             this.setState({
-              bookmark: 'far fa-bookmark'
+              bookmark: 'far fa-bookmark',
+              ariaBookmark: 'item not bookmarked'
             });
             const dbRemove = firebase.database().ref(school.dbKey);
             dbRemove.remove();
@@ -58,8 +64,10 @@ class Bookmark extends Component {
         });
       });
     } else if (bookmark === 'far fa-bookmark') {
+      // if it is bookmarked, remove the bookmark
       this.setState({
-        bookmark: 'fas fa-bookmark'
+        bookmark: 'fas fa-bookmark',
+        ariaBookmark: 'item bookmarked'
       });
       this.props.addNote(this.props.bookmarkId);
     }
@@ -69,7 +77,12 @@ class Bookmark extends Component {
     return (
       <div className="bookmarkPosition">
         <button className="bookmark">
-          <i className={`${this.state.bookmark} bookmarkIcon`} onClick={() => this.handleClick(this.state.bookmark)}/>
+          {/* icon changes based on toggle in state of class name */}
+          <i 
+            className={`${this.state.bookmark} bookmarkIcon`} 
+            aria-label={this.state.ariaBookmark} 
+            onClick={() => this.handleClick(this.state.bookmark)}
+          />
         </button>
       </div>
     );
