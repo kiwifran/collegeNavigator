@@ -34,21 +34,20 @@ class Search extends Component {
       .then(result => {
         const regex = /centre|center|park|building|pool|hall|office of le president|division of|department|campus|residence|faculty|campus|public|room/i;
         const schoolsList = result.data.response.venues;
-        const filteredSchoolList = [];
-
-        schoolsList.forEach(key => {
+        
+        // filter out only relevant information from the API
+        const filteredList = schoolsList.filter(key => {
           const name = key.categories[0].shortName;
-          if (
+
+          return (
             (name === 'University' || name === 'Community College' || name === 'Trade School') &&
             !regex.test(key.name) &&
             key.location.address !== undefined
-          ) {
-            filteredSchoolList.push(key);
-          }
-        });
+          )
+        })
 
         this.setState({
-          schoolsList: filteredSchoolList
+          schoolsList: filteredList
         });
       })
       .catch(error => {
@@ -69,7 +68,7 @@ class Search extends Component {
           console.log('Error', error.message);
         }
 
-        // handle error if no results are returned
+        // error message if no results are returned
         if (error.response.status === 400) {  
           this.setState({
             schoolsList: `We're sorry.  There are zero results for your search.`

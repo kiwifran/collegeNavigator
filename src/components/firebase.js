@@ -1,6 +1,5 @@
 import firebase from 'firebase';
 
-
 const firebaseConfig = {
   apiKey: "AIzaSyA4yDbpMJo_81wiX8tvikLe7fkrVeJuo4w",
   authDomain: "collegenav-2e04d.firebaseapp.com",
@@ -10,6 +9,7 @@ const firebaseConfig = {
   messagingSenderId: "261170856716",
   appId: "1:261170856716:web:a7953ec167b2a338"
 };
+
 // Initialize Firebase
 firebase.initializeApp(firebaseConfig);
 
