@@ -194,12 +194,7 @@ class Search extends Component {
                 name="userInput"
                 id="search"
                 onChange={this.handleChange}
-<<<<<<< HEAD
-                checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
-                tabIndex='6'
-=======
                 value={this.state.userInput}
->>>>>>> master
               />
 
               <label htmlFor="submit" className="visuallyHidden">
