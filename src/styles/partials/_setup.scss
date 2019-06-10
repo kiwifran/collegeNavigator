@@ -55,7 +55,14 @@ a {
     text-decoration: none;
     color:inherit;
 }
+img {
+    width:100%;
+    max-width: 100%;
+    border-radius: 10px;
+    display: block;
+}
 .wrapper {
+    max-width: 1440px;
     margin: 0 auto;
     padding:0 5%;
 }
@@ -67,21 +74,13 @@ a {
     background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
     min-height: 280px;
 }
-.searchContainer .singleContent{
-    position: relative;
-}
-.searchContainer .detailsButton {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
-}
+
 .generalButton {
         width:40%;
         margin-top: 20px;
         padding: 10px 7px;
         border:none;
-        border-radius: 2px;
+        border-radius: 10px;
         @include color($activeColor, $black);
         font-weight: 600;
         &:hover{
@@ -89,7 +88,32 @@ a {
         }
 }
 [type="text"],
+[type="text"]::placeholder,
+textarea,
+textarea::placeholder {
+    font-family: $bodyFont;
+}
+[type="text"],
 textarea {
     border:none;
-    border-radius: 2px;
+    border-radius: 10px;
+    
+}
+
+//sweetAlert Settings 
+.swal-modal {
+    background:$secondaryColor;
+}
+.swal-title,
+.swal-text{
+    color:$white;
+}
+.swal-button--confirm,
+ {
+    background-color: $activeColor;
+    color:$black;
+}
+.swal-button:not([disabled]):hover {
+    background-color: $primaryColor;
+    color:$white;
 }

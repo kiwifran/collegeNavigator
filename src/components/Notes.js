@@ -124,18 +124,17 @@ class Notes extends Component {
 
   render() {
     return (
-      <div className="noteContainer wrapper">
-        <div className="bookmarks">
-          <h2>BOOKMARKS</h2>
+      <div className="noteContainer">
+        <div className="wrapper">
+          <div className="bookmarks">
+            <h2>BOOKMARKS</h2>
+          </div>
+          <button onClick={this.handleScroll} className="addSign">
+            <i className="fas fa-plus"></i>
+            <p>Add Institution</p>
+          </button>
         </div>
-
-        {/* add a school button */}
-        <button onClick={this.handleScroll} className="addSign">
-          <i className="fas fa-plus" aria-hidden="true"></i>
-          <p>Add Institution</p>
-        </button>
-
-        {/* modal */}
+        
         <div className={`modalWrapper ${this.state.modalOpen}`}>
           <div className="detailsOverlay"></div>
 
@@ -191,9 +190,7 @@ class Notes extends Component {
             </form>
           </div>
         </div>
-        {/* modal ends */}
-
-        <div className="notes">
+        <div className="notes wrapper">
           {this.state.bookmarkList.map((item) => {
             return (
               <div key={item.key} className="singleNote singleContent">
@@ -226,7 +223,7 @@ class Notes extends Component {
             }}
           />
         </div>
-
+        
         <AddSchool />
       </div>
     )
