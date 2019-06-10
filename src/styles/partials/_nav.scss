@@ -20,6 +20,10 @@
   .navLink {
     text-transform: uppercase;
     font-size: 25px;
+        &:focus,
+        &:hover {
+          color: $primaryColor;
+        }
   }  
 }
 .hiddenNavList {
