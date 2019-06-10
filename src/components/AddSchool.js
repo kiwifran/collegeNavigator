@@ -95,32 +95,32 @@ class AddSchool extends Component {
               className="radioButtonDot"
               type="radio"
               name="category"
-              id="college"
+              id="radioButtonCollege"
               value="college"
               onChange={this.handleChange}
               checked={this.state.category === 'college'}
             />
-            <label htmlFor="college">College</label>
+            <label htmlFor="radioButtonCollege" className="radioButtonLabel">College</label>
             <input
               className="radioButtonDot"
               type="radio"
               name="category"
-              id="university"
+              id="universityButtonCollege"
               value="university"
               onChange={this.handleChange}
               checked={this.state.category === 'university'}
             />
-            <label htmlFor="university">University</label>
+            <label htmlFor="universityButtonCollege" className="radioButtonLabel">University</label>
             <input
               className="radioButtonDot"
               type="radio"
               name="category"
-              id="tradeSchool"
+              id="radioButtonTrade"
               value="tradeSchool"
               onChange={this.handleChange}
               checked={this.state.category === 'tradeSchool'}
             />
-            <label htmlFor="tradeSchool">Trade School</label>
+            <label htmlFor="radioButtonTrade" className="radioButtonLabel">Trade School</label>
           </fieldset>
           
           <div className="inputFieldContainer">
