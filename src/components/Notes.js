@@ -194,10 +194,13 @@ class Notes extends Component {
           {this.state.bookmarkList.map((item) => {
             return (
               <div key={item.key} className="singleNote singleContent">
-                <p className="schoolName">Institution: {item.name}</p>
-                <p className="address"> Address: {item.address}</p>
-                <p className="category">Category: {item.category}</p>
-                <p className="note"> Note: {item.note}</p>
+                <div className="textWrapper">
+                  <p className="schoolName">Institution: {item.name}</p>
+                  <p className="address"> Address: {item.address}</p>
+                  <p className="category">Category: {item.category}</p>
+                  <p className="note"> Note: {item.note}</p>
+                </div>
+                
 
                 <button className="generalButton" onClick={() => { this.editNote(item.key) }}>
                   <i className="fas fa-pen" aria-hidden="true"></i>Edit
@@ -219,7 +222,7 @@ class Notes extends Component {
               width: 30,
               right: 15,
               border: `3px solid #073330`,
-              background: `rgba(255, 255, 255, 0.548)`,
+              background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
         </div>
