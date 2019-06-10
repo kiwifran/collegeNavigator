@@ -195,6 +195,7 @@ class Search extends Component {
                 id="search"
                 onChange={this.handleChange}
                 value={this.state.userInput}
+                placeholder="enter a city"
               />
 
               <label htmlFor="submit" className="visuallyHidden">

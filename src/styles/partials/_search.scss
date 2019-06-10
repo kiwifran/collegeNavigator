@@ -74,3 +74,28 @@
     text-align: center;
     width: 80%;
 }
+
+@media (max-width:880px) {
+    .smallWrapper {
+        padding: 60px 50px;
+    }
+}
+@media (max-width:780px) {
+
+    .radioButtons {
+        flex-wrap: wrap;
+    }
+    .radioButtonLabel {
+        width: 100%;
+    }
+}
+@media (max-width:500px) {
+    .smallWrapper {
+        padding:10px;
+    }
+    .radioButtonLabel {
+        padding: 3px;
+
+    }
+
+}
