@@ -43,7 +43,6 @@ class Notes extends Component {
     })
   }
 
-<<<<<<< HEAD
   editNote = (key) => {
     const found = this.state.bookmarkList.find(item => item.key === key);
     this.setState({
@@ -55,10 +54,8 @@ class Notes extends Component {
 
     })
   }
+  
   handleSubmit = (event) => {
-=======
-  handleSubmit=(event)=> {
->>>>>>> b5ff2a7cd0d7e247fb033707d4e8e678faa9f076
     event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
 
@@ -102,12 +99,8 @@ class Notes extends Component {
       modalOpen: 'close'
     })
   }
-<<<<<<< HEAD
-  handleScroll = () => {
-=======
 
   handleScroll=()=>{
->>>>>>> b5ff2a7cd0d7e247fb033707d4e8e678faa9f076
     jump('.inputSchoolForm', {
       duration: 1000,
       a11y: true
