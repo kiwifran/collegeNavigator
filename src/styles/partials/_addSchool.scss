@@ -61,3 +61,22 @@
   display: flex;
   flex-direction: column;
 }
+
+@media (max-width:700px) {
+  .inputFieldContainer {
+    flex-wrap: wrap;
+    input,
+    textarea,
+    label {
+      width: 100%;
+    }
+    label{
+      text-align: left;
+    }
+
+  }
+
+  .inputFieldContainerRadio   .radioButtonDot + label {
+    width: 100%;
+  }
+}

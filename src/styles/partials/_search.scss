@@ -88,6 +88,9 @@
     .radioButtonLabel {
         width: 100%;
     }
+    .schoolsListSearchInput {
+        width: 80%;
+    }
 }
 @media (max-width:500px) {
     .smallWrapper {
@@ -98,4 +101,9 @@
 
     }
 
+}
+@media (max-width:400px) {
+    // .userInput {
+    // margin-left: 0;
+    // }
 }

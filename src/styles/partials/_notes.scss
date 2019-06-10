@@ -37,9 +37,13 @@
 }
 .singleNote {
     margin-bottom: 1.5rem;
+    .textWrapper {
+        max-width: 100%;
+    }
     p {
         margin-bottom: 0.7rem;
         word-wrap:break-word;
+        overflow-wrap:break-word;
     }
     button {
         width: 25%;
@@ -66,5 +70,16 @@
         color: $white;
         padding: 10px;
         border-radius: 10px;
+    }
+}
+@media (max-width:1000px) {
+    .singleNote button {
+        width: 40%;
+        margin: 10px;
+    }
+}
+@media(max-width:780px) {
+    .notes {
+        grid-template-columns: 1fr;
     }
 }
