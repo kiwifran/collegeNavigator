@@ -43,24 +43,39 @@ class Notes extends Component {
     })
   }
 
+<<<<<<< HEAD
+  editNote = (key) => {
+    const found = this.state.bookmarkList.find(item => item.key === key);
+    this.setState({
+      modalOpen: 'open',
+      selectedId: key,
+      userName: found.name,
+      userAddress: found.address,
+      userNote: found.note
+
+    })
+  }
+  handleSubmit = (event) => {
+=======
   handleSubmit=(event)=> {
+>>>>>>> b5ff2a7cd0d7e247fb033707d4e8e678faa9f076
     event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
 
-    if (this.state.userName !== ''){
+    if (this.state.userName !== '') {
       dbRef.child('name').set(this.state.userName);
-    } 
-    if (this.state.userAddress !== '')  {
+    }
+    if (this.state.userAddress !== '') {
       dbRef.child('address').set(this.state.userAddress);
     }
-    if (this.state.userNote !== ''){
+    if (this.state.userNote !== '') {
       dbRef.child('note').set(this.state.userNote);
     }
     this.closeModal();
 
     this.setState({
-      userNote:'',
-      userAddress:'',
+      userNote: '',
+      userAddress: '',
       userName: ''
     })
   }
@@ -87,8 +102,12 @@ class Notes extends Component {
       modalOpen: 'close'
     })
   }
+<<<<<<< HEAD
+  handleScroll = () => {
+=======
 
   handleScroll=()=>{
+>>>>>>> b5ff2a7cd0d7e247fb033707d4e8e678faa9f076
     jump('.inputSchoolForm', {
       duration: 1000,
       a11y: true
@@ -98,9 +117,12 @@ class Notes extends Component {
   render() {
     return (
       <div className="noteContainer wrapper">
-        <h2>NOTES</h2>
+        <div className="bookmarks">
+          <h2>BOOKMARKS</h2>
+        </div>
         <button onClick={this.handleScroll} className="addSign">
           <i className="fas fa-plus"></i>
+          <p>Add Institution</p>
         </button>
         <div className={`modalWrapper ${this.state.modalOpen}`}>
           <div className="detailsOverlay"></div>
@@ -113,18 +135,18 @@ class Notes extends Component {
               <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} />
 
               <label htmlFor="address">Address:</label>
-              <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress}/>
+              <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress} />
 
               <label htmlFor="addNote" >Add Note</label>
               <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote"></textarea>
-              <input className="generalButton" type="submit" value="enter"/>
+              <input className="generalButton" type="submit" value="enter" />
             </form>
           </div>
         </div>
         <div className="notes">
           {this.state.bookmarkList.map((item) => {
-            return(
-              <div key={item.key} className="singleNote singleContent">    
+            return (
+              <div key={item.key} className="singleNote singleContent">
                 <p className="schoolName">Institution: {item.name}</p>
                 <p className="address"> Address: {item.address}</p>
                 <p className="note"> Note: {item.note}</p>
@@ -138,17 +160,17 @@ class Notes extends Component {
               </div>
             )
           })}
-          <ScrollUpButton 
+          <ScrollUpButton
             AnimationDuration={500}
             ShowAtPosition={350}
             style={{
-              fill:`#073330`,
+              fill: `#073330`,
               height: 30,
               width: 30,
               right: 15,
               border: `3px solid #073330`,
               background: `rgba(255, 255, 255, 0.548)`,
-              }}
+            }}
           />
         </div>
 
