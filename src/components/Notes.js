@@ -1,8 +1,9 @@
 import React, { Component } from 'react'
 import firebase from './firebase.js'
-import AddSchool from './AddSchool.js'
 import jump from 'jump.js'
-import { CircleArrow as ScrollUpButton } from "react-scroll-up-button"; //Add this line Here
+import { CircleArrow as ScrollUpButton } from 'react-scroll-up-button'; //Add this line Here
+import AddSchool from './AddSchool.js'
+
 class Notes extends Component {
   constructor() {
     super();
@@ -35,23 +36,13 @@ class Notes extends Component {
       })
     })
   }
+
   handleChange = (event) => {
     this.setState({
       [event.target.name]: event.target.value
     })
   }
 
-  editNote = (key) => {
-    const found = this.state.bookmarkList.find(item => item.key === key);
-    this.setState({
-      modalOpen: 'open',
-      selectedId: key,
-      userName: found.name,
-      userAddress: found.address,
-      userNote: found.note
-
-    })
-  }
   handleSubmit=(event)=> {
     event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
@@ -74,6 +65,18 @@ class Notes extends Component {
     })
   }
 
+  editNote = (key) => {
+    const found = this.state.bookmarkList.find(item => item.key === key);
+    this.setState({
+      modalOpen: 'open',
+      selectedId: key,
+      userName: found.name,
+      userAddress: found.address,
+      userNote: found.note
+
+    })
+  }
+
   removeNote = (key) => {
     const dbRef = firebase.database().ref(key);
     dbRef.remove();
@@ -84,12 +87,14 @@ class Notes extends Component {
       modalOpen: 'close'
     })
   }
+
   handleScroll=()=>{
     jump('.inputSchoolForm', {
       duration: 1000,
       a11y: true
     })
   }
+
   render() {
     return (
       <div className="noteContainer wrapper">

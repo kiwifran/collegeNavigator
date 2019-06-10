@@ -66,14 +66,21 @@ class School extends Component {
     }).catch((error) => {
       // if the response error is status 429
       if (error.response.status === 429) {
-        // increase the key counter by one step
-        this.setState({
-          keyCounter: this.state.keyCounter + 1
-        }, () => {
-
-            // call the more info function again using the key new key count in state
-            this.moreInfo(this.state.moreInfoID)
-        })
+        
+        if (this.state.keyCounter < this.state.clientID.length  - 1) {
+          // increase the key counter by one step
+          this.setState({
+            keyCounter: this.state.keyCounter + 1
+          }, () => {
+  
+              // call the more info function again using the key new key count in state
+              this.moreInfo(this.state.moreInfoID)
+          })
+        } else {
+          this.setState({
+            keyCounter: 0
+          })
+        }
       }
 
       // Error
@@ -163,13 +170,13 @@ class School extends Component {
                 <p className="resultAddress">{address} - {city}</p>
                 <p className="resultCountry">{country}</p>
                 
-                  {/* <button className='bookmark' onClick={() => { this.addNote(id) }}><i className="far fa-bookmark"></i></button> */}
-                  <Bookmark bookmarkId={id} addNote={this.addNote}/>
+                <Bookmark bookmarkId={id} addNote={this.addNote}/>
                 
-              <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
+                <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
               </div>
             )
             }) :
+            // error message returned if an arrary of schools isn't returned from the API call
             <div className="noResult singleContent">
               <p className="resultName">{this.props.schoolsList}</p>
             </div>
