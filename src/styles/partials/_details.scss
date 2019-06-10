@@ -77,3 +77,31 @@
     width:80%;
     margin-top: 1rem;
 }
+
+@media(max-width: 630px) {
+    .detailsModal {
+        width: 450px;
+        max-height: 90%;
+        padding: 1rem;
+    }
+
+    .detailsFlex {
+        flex-direction: column;
+    }
+
+    .imgWrapper {
+        width: 55%;
+    }
+
+    .smallInfoWrapper,
+    .descriptionWrapper {
+        width: 100%;
+        font-size: 0.8rem;
+    }
+}
+
+@media (max-width: 460px) {
+    .detailsModal {
+        width: 300px;
+    }
+}

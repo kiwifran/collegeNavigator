@@ -57,3 +57,16 @@
     left: 50%;
     transform: translate(-50%, -50%);
 }
+
+@media (max-width: 920px) {
+  .result {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 590px) {
+  .result {
+    width: 100%;
+    margin: 0.5rem;
+  }
+}
