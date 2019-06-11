@@ -45,14 +45,23 @@
     display:none;
   }
     .radioButtonDot + label {
-      width: 26.5%;
-      text-align: center;
+      width: calc(100% / 3);
       padding:8px 10px;
       border: 1px solid $white;
       border-radius: 2px;
       display: inline-block;
+      transition: 0.2s;
+      box-shadow: 0 5px #999;
       font-weight: 700;
+      text-align: center;
+
     }
+    .radioButtonDot:checked + label {
+    transform: translateY(3px);
+    box-shadow: 0 2px #666;
+    @include color($activeColor, $black);
+    }
+    
   }
 }
 
