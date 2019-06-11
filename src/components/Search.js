@@ -111,9 +111,9 @@ class Search extends Component {
   handleSubmit = e => {
     // requires error handling of things not selected
     e.preventDefault();
-    console.log('submitted')
-    console.log(this.state.userInput);
-    console.log(this.state.institution.length);
+    // console.log('submitted')
+    // console.log(this.state.userInput);
+    // console.log(this.state.institution.length);
     if (this.state.institution.length === 0 || this.state.userInput.length === 0) {
       swal({
         title: "oops",
