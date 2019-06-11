@@ -13,8 +13,8 @@ function Nav() {
             </ul>
             
             <ul className="hiddenNavList">
-            <li className="navItem"><NavLink to="/" className="navLink" aria-label="search" tabIndex='2'><i class="fas fa-search"></i></NavLink></li>
-            <li className="navItem"><NavLink to="/notes" className="navLink" tabIndex='3'><i class="fas fa-clipboard-list"></i></NavLink></li>
+            <li className="navItem"><NavLink to="/" className="navLink" aria-label="search" tabIndex='2'><i className="fas fa-search"></i></NavLink></li>
+            <li className="navItem"><NavLink to="/notes" className="navLink" tabIndex='3' aria-label="bookmarks"><i className="fas fa-clipboard-list"></i></NavLink></li>
             </ul>
           </div>
         </nav>

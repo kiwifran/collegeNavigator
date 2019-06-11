@@ -109,14 +109,11 @@ class Search extends Component {
 
   // handle submit of form
   handleSubmit = e => {
-<<<<<<< HEAD
     // requires error handling of things not selected
     e.preventDefault();
     // console.log('submitted')
     // console.log(this.state.userInput);
     // console.log(this.state.institution.length);
-=======
->>>>>>> master
     if (this.state.institution.length === 0 || this.state.userInput.length === 0) {
       swal({
         title: "oops",

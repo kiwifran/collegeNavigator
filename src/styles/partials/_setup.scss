@@ -101,18 +101,11 @@ textarea {
     border:none;
     border-radius: 10px;
 }
-<<<<<<< HEAD
-
-// * {
-//     box-shadow: 0 0 0 1px red;
-// }
-=======
 //scrollUpButton 
 aside.ScrollUpButton__Container {
     z-index: 999;
 }
 
->>>>>>> master
 //sweetAlert Settings 
 .swal-modal {
     background:$secondaryColor;
@@ -121,14 +114,8 @@ aside.ScrollUpButton__Container {
 .swal-text{
     color:$white;
 }
-<<<<<<< HEAD
-.swal-button--confirm
- {
-    background-color: $activeColor;
-=======
 .swal-button--confirm {
     background-color:$activeColor;
->>>>>>> master
     color:$black;
 }
 .swal-button:not([disabled]):hover {

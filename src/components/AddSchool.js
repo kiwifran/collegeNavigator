@@ -4,8 +4,9 @@ import uuid from 'uuid';
 import swal from 'sweetalert';
 
 class AddSchool extends Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
+    // this.focusHere = React.createRef()
 
     this.state = {
       name: '',
@@ -14,6 +15,11 @@ class AddSchool extends Component {
       category: '',
       id: ''
     };
+  }
+
+  componentDidMount() {
+    // this.focusHere.current.focus()
+    // console.log(this.focusHere)
   }
 
   // handle change for form change
@@ -73,6 +79,7 @@ class AddSchool extends Component {
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
+              // ref={this.focusHere}
             />
           </div>
 
@@ -122,7 +129,7 @@ class AddSchool extends Component {
             />
             <label htmlFor="radioButtonTrade" className="radioButtonLabel">Trade School</label>
           </fieldset>
-          
+
           <div className="inputFieldContainer">
             <label htmlFor="inputSchoolNote">Note (optional):</label>
             <textarea
@@ -146,7 +153,7 @@ class AddSchool extends Component {
           />
         </form>
       </div>
-      
+
     );
   }
 }

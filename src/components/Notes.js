@@ -178,10 +178,10 @@ class Notes extends Component {
             </form>
           </div>
         </div>
-        <div className="notes wrapper">
+        <ul className="notes wrapper">
           {this.state.bookmarkList.map((item) => {
             return (
-              <div key={item.key} className="singleNote singleContent">
+              <li key={item.key} className="singleNote singleContent" tabIndex='0'>
                 <div className="textWrapper">
                   <p className="schoolName">Institution: {item.name}</p>
                   <p className="address"> Address: {item.address}</p>
@@ -197,7 +197,7 @@ class Notes extends Component {
                 <button className="generalButton" onClick={() => { this.removeNote(item.key) }}>
                   <i className="fas fa-trash-alt" aria-hidden="true"></i>Delete
                 </button>
-              </div>
+              </li>
             )
           })}
 
@@ -213,9 +213,12 @@ class Notes extends Component {
               background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
-        </div>
+        </ul>
         
+        {this.state.modalOpen === 'open' ? 
         <AddSchool />
+        : 
+        null }
       </div>
     )
   }
