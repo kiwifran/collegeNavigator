@@ -76,12 +76,11 @@ class Bookmark extends Component {
   render() {
     return (
       <div className="bookmarkPosition">
-        <button className="bookmark">
+        <button className="bookmark" onClick={() => this.handleClick(this.state.bookmark)}>
           {/* icon changes based on toggle in state of class name */}
           <i 
             className={`${this.state.bookmark} bookmarkIcon`} 
             aria-label={this.state.ariaBookmark} 
-            onClick={() => this.handleClick(this.state.bookmark)}
           />
         </button>
       </div>

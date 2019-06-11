@@ -43,6 +43,9 @@
     display: block;
     font-size: 20px;
     font-weight: 700;
+    &:hover {
+        cursor: pointer;
+    }
 }
 .radioButtonDot:checked + label {
     transform: translateY(3px);

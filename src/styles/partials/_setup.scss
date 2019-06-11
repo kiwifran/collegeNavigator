@@ -103,9 +103,9 @@ textarea {
     
 }
 
-* {
-    box-shadow: 0 0 0 1px red;
-}
+// * {
+//     box-shadow: 0 0 0 1px red;
+// }
 //sweetAlert Settings 
 .swal-modal {
     background:$secondaryColor;
@@ -114,7 +114,7 @@ textarea {
 .swal-text{
     color:$white;
 }
-.swal-button--confirm,
+.swal-button--confirm
  {
     background-color: $activeColor;
     color:$black;
