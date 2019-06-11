@@ -29,7 +29,7 @@ class SchoolDetails extends Component {
           <div className="detailsFlex">
 
             {/* close modal button */}
-            <button onClick={this.props.closeMe} className="closeButton" ref={this.x}>
+            <button onClick={this.props.closeMe} className="closeButton" ref={this.x} tabIndex='5'>
               <i className="fas fa-times" aria-label="close modal" />
             </button>
 
@@ -37,13 +37,13 @@ class SchoolDetails extends Component {
             {bestPhoto !== undefined ? (
               <div className="imgWrapper">
                 {/* since I see some photos are not as large as the size of 500x500 I changed it to 400 */}
-                <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`${name}`} />
+                <img src={`${bestPhoto.prefix}400x400${bestPhoto.suffix}`} alt={`${name}`} tabIndex='5'/>
               </div>
             ) : null}
 
             <div className="smallInfoWrapper">
-              <p>{name}</p>
-              <p>{location.formattedAddress}</p>
+              <p tabIndex='5'>{name}</p>
+              <p tabIndex='5'>{location.formattedAddress}</p>
 
               {/* display facebook link if available */}
               {contact.facebook ? (
@@ -51,6 +51,7 @@ class SchoolDetails extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={`https://www.facebook.com/${contact.facebook}`}
+                  tabIndex='5'
                 >
                   <i className="fab fa-facebook" aria-label="Go to facebook" /> {contact.facebookName}
                 </a></p>
@@ -62,6 +63,7 @@ class SchoolDetails extends Component {
                   target="_blank"
                   rel="noopener noreferrer"
                   href={`https://twitter.com/${contact.twitter}`}
+                  tabIndex='5'
                 >
                   <i className="fab fa-twitter" aria-label="Go to twitter" /> @{contact.twitter}
                 </a></p>
@@ -69,14 +71,14 @@ class SchoolDetails extends Component {
 
               {/* display website link if available */}
               {url !== undefined ? (
-                <p><a target="_blank" rel="noopener noreferrer" href={url}>
+                <p><a target="_blank" rel="noopener noreferrer" href={url} tabIndex='5'>
                   <i className="fas fa-link" aria-label="Go to website" /> Website
                 </a></p>
               ) : null}
 
               {/* display address if available */}
               {contact.formattedAddress ? (
-                <p>
+                <p tabIndex='5'>
                   <span>
                     <i className="fas fa-phone" />
                   </span>{' '}
@@ -87,7 +89,7 @@ class SchoolDetails extends Component {
 
             {/* display description if available */}
             <div className="descriptionWrapper">
-              {description !== undefined ? <p>{description}</p> : null}
+              {description !== undefined ? <p tabIndex='5'>{description}</p> : null}
             </div>
             {/* end of wrappers */}
           </div>

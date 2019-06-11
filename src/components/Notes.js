@@ -8,6 +8,7 @@ import AddSchool from './AddSchool.js';
 class Notes extends Component {
   constructor() {
     super();
+    this.focusHere = React.createRef()
     this.state = {
       bookmarkList: [],
       userNote: '',
@@ -17,6 +18,10 @@ class Notes extends Component {
       modalOpen: 'close',
       selectedId: '',
     }
+  }
+
+  componentDidUpdate() {
+    this.focusHere.current.focus()
   }
 
   componentDidMount() {
@@ -134,7 +139,7 @@ class Notes extends Component {
 
             <form action="" className="editForm" onSubmit={this.handleSubmit}>
               <label htmlFor="name">Name of Institution:</label>
-              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} />
+              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} ref={this.focusHere}/>
 
               <label htmlFor="address">Address:</label>
               <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress} />
@@ -215,10 +220,13 @@ class Notes extends Component {
           />
         </ul>
         
-        {this.state.modalOpen === 'open' ? 
+        {/* {this.state.modalOpen === 'open' ? 
         <AddSchool />
         : 
-        null }
+        null } */}
+
+        <AddSchool />
+
       </div>
     )
   }

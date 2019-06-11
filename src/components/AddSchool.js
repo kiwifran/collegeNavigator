@@ -79,7 +79,6 @@ class AddSchool extends Component {
               name="name"
               value={this.state.name}
               onChange={this.handleChange}
-              // ref={this.focusHere}
             />
           </div>
 
