@@ -190,11 +190,14 @@ class School extends Component {
 
         </div>
 
+        {this.state.modalStatus === 'open' ?
+        
         <SchoolDetails
           schoolMoreInfo={this.state.schoolMoreInfo}
           modalStatus={this.state.modalStatus}
           closeMe={this.closeMe}
         />
+        : null}
 
       </Fragment>
     )
