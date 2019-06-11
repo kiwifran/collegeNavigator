@@ -109,6 +109,11 @@ class Search extends Component {
 
   // handle submit of form
   handleSubmit = e => {
+    // requires error handling of things not selected
+    e.preventDefault();
+    // console.log('submitted')
+    // console.log(this.state.userInput);
+    // console.log(this.state.institution.length);
     if (this.state.institution.length === 0 || this.state.userInput.length === 0) {
       swal({
         title: "oops",
@@ -152,6 +157,7 @@ class Search extends Component {
                   value="4bf58dd8d48988d1ae941735"
                   onChange={this.handleChange}
                   checked={this.state.institution === '4bf58dd8d48988d1ae941735'}
+                  tabIndex='4'
                 />
                 <label className="radioButtonLabel" htmlFor="university">
                   University
@@ -165,6 +171,7 @@ class Search extends Component {
                   value="4bf58dd8d48988d1a2941735"
                   onChange={this.handleChange}
                   checked={this.state.institution === '4bf58dd8d48988d1a2941735'}
+                  tabIndex='4'
                 />
                 <label className="radioButtonLabel" htmlFor="college">
                   College
@@ -178,6 +185,7 @@ class Search extends Component {
                   value="4bf58dd8d48988d1ad941735"
                   onChange={this.handleChange}
                   checked={this.state.institution === '4bf58dd8d48988d1ad941735'}
+                  tabIndex='4'
                 />
                 <label className="radioButtonLabel" htmlFor="trade">
                   Trade School
@@ -192,13 +200,14 @@ class Search extends Component {
                 id="search"
                 onChange={this.handleChange}
                 value={this.state.userInput}
+                tabIndex='5'
                 placeholder="enter a city"
               />
 
               <label htmlFor="submit" className="visuallyHidden">
                 Submit Search
             </label>
-              <input className="generalButton" type="submit" id="submit" value="Get Schools List" />
+              <input className="generalButton" type="submit" id="submit" value="Get Schools List" tabIndex='6'/>
             </div>
           </form>
 

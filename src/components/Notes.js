@@ -8,6 +8,7 @@ import AddSchool from './AddSchool.js';
 class Notes extends Component {
   constructor() {
     super();
+    this.focusHere = React.createRef()
     this.state = {
       bookmarkList: [],
       userNote: '',
@@ -17,6 +18,10 @@ class Notes extends Component {
       modalOpen: 'close',
       selectedId: '',
     }
+  }
+
+  componentDidUpdate() {
+    this.focusHere.current.focus()
   }
 
   componentDidMount() {
@@ -134,7 +139,7 @@ class Notes extends Component {
 
             <form action="" className="editForm" onSubmit={this.handleSubmit}>
               <label htmlFor="name">Name of Institution:</label>
-              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} />
+              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} ref={this.focusHere}/>
 
               <label htmlFor="address">Address:</label>
               <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress} />
@@ -178,10 +183,10 @@ class Notes extends Component {
             </form>
           </div>
         </div>
-        <div className="notes wrapper">
+        <ul className="notes wrapper">
           {this.state.bookmarkList.map((item) => {
             return (
-              <div key={item.key} className="singleNote singleContent">
+              <li key={item.key} className="singleNote singleContent" tabIndex='0'>
                 <div className="textWrapper">
                   <p className="schoolName">Institution: {item.name}</p>
                   <p className="address"> Address: {item.address}</p>
@@ -197,7 +202,7 @@ class Notes extends Component {
                 <button className="generalButton" onClick={() => { this.removeNote(item.key) }}>
                   <i className="fas fa-trash-alt" aria-hidden="true"></i>Delete
                 </button>
-              </div>
+              </li>
             )
           })}
 
@@ -213,9 +218,15 @@ class Notes extends Component {
               background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
-        </div>
+        </ul>
         
+        {/* {this.state.modalOpen === 'open' ? 
         <AddSchool />
+        : 
+        null } */}
+
+        <AddSchool />
+
       </div>
     )
   }

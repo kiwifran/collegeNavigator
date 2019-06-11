@@ -41,7 +41,7 @@ class School extends Component {
       modalStatus: 'close'
     })
   }
-  
+
   // make API call for more info
   moreInfo = (id) => {
     // stores the ID in the event this moreInfo function needs to be called again from increased key count
@@ -63,19 +63,19 @@ class School extends Component {
         schoolMoreInfo: schoolMoreInfo,
         modalStatus: 'open'
       })
-      
+
     }).catch((error) => {
       // if the response error is status 429
       if (error.response.status === 429) {
-        
-        if (this.state.keyCounter < this.state.clientID.length  - 1) {
+
+        if (this.state.keyCounter < this.state.clientID.length - 1) {
           // increase the key counter by one step
           this.setState({
             keyCounter: this.state.keyCounter + 1
           }, () => {
-  
-              // call the more info function again using the key new key count in state
-              this.moreInfo(this.state.moreInfoID)
+
+            // call the more info function again using the key new key count in state
+            this.moreInfo(this.state.moreInfoID)
           })
         } else {
           this.setState({
@@ -84,34 +84,36 @@ class School extends Component {
         }
       }
 
+      // console.log(error)
+
       // Error
       if (error.response) {
         // The request was made and the server responded with a status code
         // that falls out of the range of 2xx
-        console.log(error.response.data);
-        console.log(error.response.status);
-        console.log(error.response.headers);
+        // console.log(error.response.data);
+        // console.log(error.response.status);
+        // console.log(error.response.headers);
       } else if (error.request) {
         // The request was made but no response was received
         // `error.request` is an instance of XMLHttpRequest in the browser and an instance of
         // http.ClientRequest in node.js
-        console.log(error.request);
+        // console.log(error.request);
       } else {
         // Something happened in setting up the request that triggered an Error
-        console.log('Error', error.message);
+        // console.log('Error', error.message);
       }
-      console.log(error.config);
+      // console.log(error.config);
     });
   }
 
   // filter results based on change
-  handleChange = e => {    
+  handleChange = e => {
     this.setState({
       userSearch: e.target.value
     })
 
     // if the search query is empty or null reverts to the master list from props
-    if (e.target.value === '' || e.target.value === null) {    
+    if (e.target.value === '' || e.target.value === null) {
       this.setState({
         schoolsList: this.props.schoolsList
       })
@@ -144,55 +146,58 @@ class School extends Component {
               background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
-        {/* only display the filter when a list of schools is returned */}
-        {this.state.schoolsList.length > 0 ?
+          {/* only display the filter when a list of schools is returned */}
+          {this.state.schoolsList.length > 0 ?
             <div className="schoolsListSearchInput singleContent">
-            <label htmlFor="schoolsListSearch">Filter Search:</label>
-            <input
-              type="text"
-              placeholder="search"
-              name="userSearch"
-              value={this.state.userSearch}
-              id="schoolsListSearch"
-              className="schoolsListSearch"
-              onChange={this.handleChange}
-            />
-          </div>
-          : null
-        }
-
-        <div className="schoolsList">
-          {/* checks if the school list is an array otherwise prints a string */}
-          {Array.isArray(this.state.schoolsList) ? this.state.schoolsList.map(school => {
-            const { id, name: schoolName, location } = school;
-            const { address, city, country } = location;
-
-            return (
-              <div key={id} className="result singleContent">
-                <p className="resultName">{schoolName}</p>
-                <p className="resultAddress">{address} - {city}</p>
-                <p className="resultCountry">{country}</p>
-                
-                <Bookmark bookmarkId={id} addNote={this.addNote}/>
-                
-                <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
-              </div>
-            )
-            }) :
-            // error message returned if an arrary of schools isn't returned from the API call
-            <div className="noResult singleContent">
-              <p className="resultName">{this.props.schoolsList}</p>
+              <label htmlFor="schoolsListSearch">Filter Search:</label>
+              <input
+                type="text"
+                placeholder="search"
+                name="userSearch"
+                value={this.state.userSearch}
+                id="schoolsListSearch"
+                className="schoolsListSearch"
+                onChange={this.handleChange}
+              />
             </div>
+            : null
           }
+
+          <ul className="schoolsList" aria-live='polite'>
+            {/* checks if the school list is an array otherwise prints a string */}
+            {Array.isArray(this.state.schoolsList) ? this.state.schoolsList.map(school => {
+              const { id, name: schoolName, location } = school;
+              const { address, city, country } = location;
+
+              return (
+                <li key={id} className="result singleContent" tabIndex='0' aria-hidden='false'>
+                  <p className="resultName">{schoolName}</p>
+                  <p className="resultAddress">{address} - {city}</p>
+                  <p className="resultCountry">{country}</p>
+
+                  <Bookmark bookmarkId={id} addNote={this.addNote} />
+
+                  <button className="generalButton" onClick={() => this.moreInfo(id)}>More Info</button>
+                </li>
+              )
+            }) :
+              // error message returned if an arrary of schools isn't returned from the API call
+              <li className="noResult singleContent">
+                <p className="resultName">{this.props.schoolsList}</p>
+              </li>
+            }
+          </ul>
+
         </div>
 
-      </div>
-
-      <SchoolDetails 
-        schoolMoreInfo={this.state.schoolMoreInfo}
-        modalStatus={this.state.modalStatus}
-        closeMe={this.closeMe}
-      />
+        {this.state.modalStatus === 'open' ?
+        
+        <SchoolDetails
+          schoolMoreInfo={this.state.schoolMoreInfo}
+          modalStatus={this.state.modalStatus}
+          closeMe={this.closeMe}
+        />
+        : null}
 
       </Fragment>
     )
