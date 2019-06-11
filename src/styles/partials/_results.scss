@@ -1,7 +1,6 @@
 .schoolsList {
   @include flex(row, space-between, start, center);
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 .result,
 .noResult {
