@@ -48,18 +48,6 @@ class Notes extends Component {
   }
   
   // handle submit of form
-  editNote = (key) => {
-    const found = this.state.bookmarkList.find(item => item.key === key);
-    this.setState({
-      modalOpen: 'open',
-      selectedId: key,
-      userName: found.name,
-      userAddress: found.address,
-      userNote: found.note,
-      userCategory: found.category
-    })
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
