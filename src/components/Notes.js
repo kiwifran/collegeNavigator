@@ -8,25 +8,33 @@ import AddSchool from './AddSchool.js';
 class Notes extends Component {
   constructor() {
     super();
-    this.focusHere = React.createRef()
+    this.focusHere = React.createRef();
+
     this.state = {
+      // list of all bookmarked items in firebase
       bookmarkList: [],
+      //  user items are the editable inputted data for each school in the form fields
       userNote: '',
       userName: '',
       userAddress: '',
       userCategory: '',
+
+      // class name toggle of modal status
       modalOpen: 'close',
-      selectedId: '',
-    }
+      // the id of the selected school to be edited
+      selectedId: ''
+    };
   }
 
   componentDidUpdate() {
-    this.focusHere.current.focus()
+    // sets focus to to the item
+    this.focusHere.current.focus();
   }
 
   componentDidMount() {
     const dbRef = firebase.database().ref();
-    dbRef.on('value', (response) => {
+    // pulls all data from firebase and listens for change
+    dbRef.on('value', response => {
       const data = response.val();
       const updateBookmark = [];
       for (let item in data) {
@@ -37,83 +45,89 @@ class Notes extends Component {
           id: data[item].id,
           note: data[item].note,
           category: data[item].category
-        })
+        });
       }
       this.setState({
         bookmarkList: updateBookmark
-      })
-    })
+      });
+    });
   }
 
   // handle change for form
-  handleChange = (event) => {
+  handleChange = event => {
     this.setState({
       [event.target.name]: event.target.value
-    })
-  }
-  
+    });
+  };
+
   // handle submit of form
-  handleSubmit = (event) => {
-    event.preventDefault();
+  handleSubmit = e => {
     const dbRef = firebase.database().ref(this.state.selectedId);
 
+    // if the user inputs are not empty then write input into firebase at corresponding data node
     if (this.state.userName !== '') {
       dbRef.child('name').set(this.state.userName);
     }
-    if (this.state.userAddress !== '' ) {
+    if (this.state.userAddress !== '') {
       dbRef.child('address').set(this.state.userAddress);
     }
-    if (this.state.userCategory !== '' ){
+    if (this.state.userCategory !== '') {
       dbRef.child('category').set(this.state.userCategory);
     }
-    if (this.state.userNote !== '' && this.state.userNote !== undefined ) {
+    if (this.state.userNote !== '' && this.state.userNote !== undefined) {
       dbRef.child('note').set(this.state.userNote);
     }
+
+    // close the modal
     this.closeModal();
 
+    // clears the inputs
     this.setState({
       userNote: '',
       userAddress: '',
       userName: '',
       userCategory: ''
-    })
-  }
+    });
+
+    e.preventDefault();
+  };
 
   // edit note function
-  editNote = (key) => {
+  editNote = key => {
+    // finds the note to the edited by it's key
     const found = this.state.bookmarkList.find(item => item.key === key);
+
+    // opens the modal with the corresponding data in the form fields
     this.setState({
       modalOpen: 'open',
       selectedId: key,
       userName: found.name,
       userAddress: found.address,
-      userNote: found.note, 
+      userNote: found.note,
       userCategory: found.category
+    });
+  };
 
-    })
-  }
-
-  // remove the note function from the database
-  removeNote = (key) => {
+  // remove note function from the database
+  removeBookmark = key => {
     const dbRef = firebase.database().ref(key);
     dbRef.remove();
-  }
+  };
 
   // close modal
   closeModal = () => {
     this.setState({
       modalOpen: 'close'
-    })
-  }
-
+    });
+  };
 
   // jump scroll
   handleScroll = () => {
     jump('.inputSchoolForm', {
       duration: 1000,
       a11y: true
-    })
-  }
+    });
+  };
 
   render() {
     return (
@@ -123,26 +137,39 @@ class Notes extends Component {
             <h2>BOOKMARKS</h2>
           </div>
           <button onClick={this.handleScroll} className="addSign">
-            <i className="fas fa-plus"></i>
+            <i className="fas fa-plus" aria-hidden="true" />
             <p>Add Institution</p>
           </button>
         </div>
-        
+
         <div className={`modalWrapper ${this.state.modalOpen}`}>
-          <div className="detailsOverlay"></div>
+          <div className="detailsOverlay" />
 
           <div className="detailsModal">
             {/* close modal button */}
             <button onClick={this.closeModal} className="closeButton">
-              <i className="fas fa-times" aria-label="close modal"></i>
+              <i className="fas fa-times" aria-label="close modal" />
             </button>
 
             <form action="" className="editForm" onSubmit={this.handleSubmit}>
               <label htmlFor="name">Name of Institution:</label>
-              <input type="text" id="name" name="userName" onChange={this.handleChange} value={this.state.userName} ref={this.focusHere}/>
+              <input
+                type="text"
+                id="name"
+                name="userName"
+                onChange={this.handleChange}
+                value={this.state.userName}
+                ref={this.focusHere}
+              />
 
               <label htmlFor="address">Address:</label>
-              <input type="text" id="address" name="userAddress" onChange={this.handleChange} value={this.state.userAddress} />
+              <input
+                type="text"
+                id="address"
+                name="userAddress"
+                onChange={this.handleChange}
+                value={this.state.userAddress}
+              />
 
               <fieldset className="inputFieldContainerRadio">
                 <legend className="visuallyHidden">Category:</legend>
@@ -176,34 +203,43 @@ class Notes extends Component {
                 <label htmlFor="tradeSchool">Trade School</label>
               </fieldset>
 
-              <label htmlFor="addNote" >Add Note</label>
-              <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote"></textarea>
-              
+              <label htmlFor="addNote">Add Note</label>
+              <textarea onChange={this.handleChange} value={this.state.userNote} name="userNote" />
+
               <input className="generalButton" type="submit" value="enter" />
             </form>
           </div>
         </div>
         <ul className="notes wrapper">
-          {this.state.bookmarkList.map((item) => {
+          {this.state.bookmarkList.map(item => {
             return (
-              <li key={item.key} className="singleNote singleContent" tabIndex='0'>
+              <li key={item.key} className="singleNote singleContent" tabIndex="0">
                 <div className="textWrapper">
                   <p className="schoolName">Institution: {item.name}</p>
                   <p className="address"> Address: {item.address}</p>
                   <p className="category">Category: {item.category}</p>
                   <p className="note"> Note: {item.note}</p>
                 </div>
-                
 
-                <button className="generalButton" onClick={() => { this.editNote(item.key) }}>
-                  <i className="fas fa-pen" aria-hidden="true"></i>Edit
+                <button
+                  className="generalButton"
+                  onClick={() => {
+                    this.editNote(item.key);
+                  }}
+                >
+                  <i className="fas fa-pen" aria-hidden="true" />Edit
                 </button>
-                
-                <button className="generalButton" onClick={() => { this.removeNote(item.key) }}>
-                  <i className="fas fa-trash-alt" aria-hidden="true"></i>Delete
+
+                <button
+                  className="generalButton"
+                  onClick={() => {
+                    this.removeBookmark(item.key);
+                  }}
+                >
+                  <i className="fas fa-trash-alt" aria-hidden="true" />Delete
                 </button>
               </li>
-            )
+            );
           })}
 
           <ScrollUpButton
@@ -215,21 +251,15 @@ class Notes extends Component {
               width: 30,
               right: 15,
               border: `3px solid #073330`,
-              background: `rgba(255, 255, 255, 0.848)`,
+              background: `rgba(255, 255, 255, 0.848)`
             }}
           />
         </ul>
-        
-        {/* {this.state.modalOpen === 'open' ? 
-        <AddSchool />
-        : 
-        null } */}
 
         <AddSchool />
-
       </div>
-    )
+    );
   }
 }
 
-export default Notes
+export default Notes;

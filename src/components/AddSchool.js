@@ -4,11 +4,11 @@ import uuid from 'uuid';
 import swal from 'sweetalert';
 
 class AddSchool extends Component {
-  constructor(props) {
-    super(props);
-    // this.focusHere = React.createRef()
+  constructor() {
+    super();
 
     this.state = {
+      // user inputs from the form fields
       name: '',
       address: '',
       note: '',
@@ -17,23 +17,19 @@ class AddSchool extends Component {
     };
   }
 
-  componentDidMount() {
-    // this.focusHere.current.focus()
-    // console.log(this.focusHere)
-  }
-
   // handle change for form change
   handleChange = e => {
     this.setState({
-      [e.target.name]: e.target.value,
+      [e.target.name]: e.target.value
     });
   };
 
   // handle submit of form
   handleSubmit = e => {
     this.setState({
+      // generated an ID from uuid for custom inputs so they match the saved schools from the api
       id: uuid.v4()
-    })
+    });
 
     // RegEx test to ensure search field isn't an empty string
     if (
@@ -106,7 +102,9 @@ class AddSchool extends Component {
               onChange={this.handleChange}
               checked={this.state.category === 'College'}
             />
-            <label htmlFor="radioButtonCollege" className="radioButtonLabel">College</label>
+            <label htmlFor="radioButtonCollege" className="radioButtonLabel">
+              College
+            </label>
             <input
               className="radioButtonDot"
               type="radio"
@@ -116,7 +114,9 @@ class AddSchool extends Component {
               onChange={this.handleChange}
               checked={this.state.category === 'University'}
             />
-            <label htmlFor="universityButtonCollege" className="radioButtonLabel">University</label>
+            <label htmlFor="universityButtonCollege" className="radioButtonLabel">
+              University
+            </label>
             <input
               className="radioButtonDot"
               type="radio"
@@ -126,7 +126,9 @@ class AddSchool extends Component {
               onChange={this.handleChange}
               checked={this.state.category === 'Trade School'}
             />
-            <label htmlFor="radioButtonTrade" className="radioButtonLabel">Trade School</label>
+            <label htmlFor="radioButtonTrade" className="radioButtonLabel">
+              Trade School
+            </label>
           </fieldset>
 
           <div className="inputFieldContainer">
@@ -143,7 +145,7 @@ class AddSchool extends Component {
 
           <label htmlFor="inputSchoolSubmit" className="visuallyHidden">
             Submit
-        </label>
+          </label>
           <input
             type="submit"
             id="inputSchoolSubmit"
@@ -152,7 +154,6 @@ class AddSchool extends Component {
           />
         </form>
       </div>
-
     );
   }
 }
