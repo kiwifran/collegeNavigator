@@ -2,6 +2,8 @@
     background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
     background-position: center center;
     background-size: cover;
+    height: calc(100vh - 80px - 50px);
+
     .singleContent{
         position: relative;
     }
@@ -15,13 +17,10 @@
 .searchForm{
     @include flex(column, center, center, center);
     padding-top: 2rem;
-    min-height: 100vh;
-    
 }
 .smallWrapper {
-    padding:120px 100px;
+    padding:100px 80px;
     border-radius: 10px;
-
     background-color:rgba(0, 0, 0, 0.6);
 }
 .radioButtons {
@@ -103,10 +102,14 @@
         width: 80%;
     }
 }
-@media (max-width: 630px) {
+@media (max-width: 650px) {
+    .smallWrapper {
+        padding: 40px 30px;
+    }
     .userInput {
         margin-left: 0;
     }
+    
 }
 @media (max-width:500px) {
     .smallWrapper {
