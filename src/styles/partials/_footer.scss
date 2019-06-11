@@ -1,9 +1,9 @@
 footer {
-  @include color($black, $primaryColor); 
+  @include color($black, $primaryColor);
   text-align: center;
-  height:  50px;
+  height: 50px;
   padding: 5px 0;
-  p{
+  p {
     line-height: 1;
   }
   a {
@@ -14,7 +14,7 @@ footer {
   }
 }
 
-@media (max-width:400px) {
+@media (max-width: 400px) {
   footer {
     height: auto;
     font-size: 1rem;

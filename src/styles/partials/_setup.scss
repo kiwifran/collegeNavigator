@@ -8,128 +8,133 @@ $white: #f0f8ff;
 $primaryColor: #416bff;
 $secondaryColor: #073330;
 $activeColor: #b1bc2b;
-$black:#0d1b17;
+$black: #0d1b17;
 
 $headerFont: 'Offside', cursive;
 $bodyFont: 'Barlow', sans-serif;
 
-@mixin flex ($flex-direction, $justify-content, $align-items, $text-align) {
-    display:flex;
-    flex-direction: $flex-direction;
-    justify-content: $justify-content;
-    align-items: $align-items;
-    text-align: $text-align;
+@mixin flex($flex-direction, $justify-content, $align-items, $text-align) {
+  display: flex;
+  flex-direction: $flex-direction;
+  justify-content: $justify-content;
+  align-items: $align-items;
+  text-align: $text-align;
 }
-@mixin color($backgroundColor, $fontColor){
-    background-color: $backgroundColor;
-    color:$fontColor;
+@mixin color($backgroundColor, $fontColor) {
+  background-color: $backgroundColor;
+  color: $fontColor;
 }
 html {
-    font-size: 125%;
+  font-size: 125%;
 }
 fieldset {
-    border:none;
+  border: none;
 }
 body {
-    @include color($white, $white);
-    font-family: $bodyFont;
+  @include color($white, $white);
+  font-family: $bodyFont;
 }
 
 ul {
-    margin: 0;
-    padding: 0;
+  margin: 0;
+  padding: 0;
 }
 li {
-    list-style: none;
+  list-style: none;
 }
 
 h1,
 h2 {
-    font-family: $headerFont;
+  font-family: $headerFont;
 }
 p {
-    margin: 0;
+  margin: 0;
 }
 
 a {
-    text-decoration: none;
-    color:inherit;
+  text-decoration: none;
+  color: inherit;
 }
 img {
-    width:100%;
-    max-width: 100%;
-    border-radius: 10px;
-    display: block;
+  width: 100%;
+  max-width: 100%;
+  border-radius: 10px;
+  display: block;
 }
 .wrapper {
-    max-width: 1440px;
-    margin: 0 auto;
-    padding:0 5%;
+  max-width: 1440px;
+  margin: 0 auto;
+  padding: 0 5%;
 }
 .singleContent {
-    padding: 32px 22px;
-    border: 1px solid black;
-    border-radius: 10px;
-    background: rgb(27,65,56);
-    background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
-    min-height: 320px;
+  padding: 32px 22px;
+  border: 1px solid black;
+  border-radius: 10px;
+  background: rgb(27, 65, 56);
+  background: linear-gradient(
+    53deg,
+    rgba(27, 65, 56, 1) 14%,
+    rgba(7, 51, 48, 1) 31%,
+    rgba(13, 27, 23, 1) 69%
+  );
+  min-height: 320px;
 }
 
 .generalButton {
-        width:40%;
-        margin-top: 20px;
-        padding: 10px 7px;
-        border:none;
-        border-radius: 10px;
-        @include color($activeColor, $black);
-        font-weight: 600;
-        &:hover,
-        &:focus {
-            @include color($white, $primaryColor);
-        }
+  width: 40%;
+  margin-top: 20px;
+  padding: 10px 7px;
+  border: none;
+  border-radius: 10px;
+  @include color($activeColor, $black);
+  font-weight: 600;
+  &:hover,
+  &:focus {
+    @include color($white, $primaryColor);
+  }
 }
-[type="text"],
-[type="text"]::placeholder,
+[type='text'],
+[type='text']::placeholder,
 textarea,
 textarea::placeholder {
-    font-family: $bodyFont;
-    padding-left: 8px;
-    padding-top: 2px;
+  font-family: $bodyFont;
+  padding-left: 8px;
+  padding-top: 2px;
 }
-[type="text"],
+[type='text'],
 textarea {
-    border:none;
-    border-radius: 10px;
+  border: none;
+  border-radius: 10px;
 }
-//scrollUpButton 
+//scrollUpButton
 aside.ScrollUpButton__Container {
-    z-index: 999;
+  z-index: 999;
 }
 
-//sweetAlert Settings 
+//sweetAlert Settings
 .swal-modal {
-    background:$secondaryColor;
+  background: $secondaryColor;
 }
 .swal-title,
-.swal-text{
-    color:$white;
+.swal-text {
+  color: $white;
 }
 .swal-button--confirm {
-    background-color:$activeColor;
-    color:$black;
+  background-color: $activeColor;
+  color: $black;
 }
 .swal-button:not([disabled]):hover {
-    background-color: $primaryColor;
-    color:$white;
+  background-color: $primaryColor;
+  color: $white;
 }
-@media (max-width:780px) {
-    .generalButton {
-        width: 60%;
-    }
+@media (max-width: 780px) {
+  .generalButton {
+    width: 60%;
+  }
 }
 
-@media (max-width:400px) {
-    .wrapper {
-        padding:0 2%;
-    }
+@media (max-width: 400px) {
+  .wrapper {
+    padding: 0 2%;
+  }
 }

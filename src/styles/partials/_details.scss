@@ -1,107 +1,120 @@
-
 .modalWrapper.open {
-    display: block;
+  display: block;
 }
+
 .modalWrapper.close {
-    display: none
+  display: none;
 }
+
 //adapted from codepen https://codepen.io/chriscoyier/pen/MeJWoM
 .detailsOverlay {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    z-index: 999;
-    background: rgba(0, 0, 0, 0.6);
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 999;
+  background: rgba(0, 0, 0, 0.6);
 }
 .detailsModal {
-    position: relative;
-    display: block;
-    width: 600px;
-    max-width: 100%;
-    max-height: 100%;
-    position: fixed;
-    z-index: 1000;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    padding:3rem;
-    border-radius: 10px;
-    background: rgb(27,65,56);
-    background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
-    a {
-        &:hover,
-        &:focus {
-            color:$primaryColor;
-        }
+  position: relative;
+  display: block;
+  width: 600px;
+  max-width: 100%;
+  max-height: 100%;
+  position: fixed;
+  z-index: 1000;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  padding: 3rem;
+  border-radius: 10px;
+  background: rgb(27, 65, 56);
+  background: linear-gradient(
+    53deg,
+    rgba(27, 65, 56, 1) 14%,
+    rgba(7, 51, 48, 1) 31%,
+    rgba(13, 27, 23, 1) 69%
+  );
+  a {
+    &:hover,
+    &:focus {
+      color: $primaryColor;
     }
+  }
 }
+
 .smallInfoWrapper p {
-    line-height: 1.5;
-    &:first-child{
-        line-height: 1.2;
-        font-weight: 600;
-        font-size: 1.2rem;
-    }
+  line-height: 1.5;
+  &:first-child {
+    line-height: 1.2;
+    font-weight: 600;
+    font-size: 1.2rem;
+  }
 }
+
 .smallInfoWrapper .contacts p {
-    font-size: 1rem;
-    font-weight: 100;
-    line-height: 1.5;
+  font-size: 1rem;
+  font-weight: 100;
+  line-height: 1.5;
 }
+
 .detailsFlex {
-    @include flex(row, space-between, center, left);
-    flex-wrap:wrap;
+  @include flex(row, space-between, center, left);
+  flex-wrap: wrap;
 }
+
 .closeButton {
-    position: absolute;
-    right:15px;
-    top:10px;
-    font-size: 40px;
-    padding:0;
-    background: none;
-    border:none;
-    color: $activeColor;
-    &:hover {
-        color:$primaryColor;
-    }
+  position: absolute;
+  right: 15px;
+  top: 10px;
+  font-size: 40px;
+  padding: 0;
+  background: none;
+  border: none;
+  color: $activeColor;
+  &:hover {
+    color: $primaryColor;
+  }
 }
+
 .imgWrapper {
-    width:40%;
+  width: 40%;
 }
+
 .smallInfoWrapper {
-    width:51%;
+  width: 51%;
 }
+
 .descriptionWrapper {
-    width:80%;
-    margin-top: 1rem;
+  width: 80%;
+  margin-top: 1rem;
 }
 
-@media(max-width: 630px) {
-    .detailsModal {
-        width: 450px;
-        max-height: 90%;
-        padding: 1rem;
-    }
+@media (max-width: 630px) {
+  .detailsModal {
+    width: 450px;
+    max-height: 90%;
+    padding: 1rem;
+  }
 
-    .detailsFlex {
-        flex-direction: column;
-    }
+  .detailsFlex {
+    flex-direction: column;
+  }
 
-    .imgWrapper {
-        width: 55%;
-    }
+  .imgWrapper {
+    width: 55%;
+  }
 
-    .smallInfoWrapper,
-    .descriptionWrapper {
-        width: 100%;
-        font-size: 0.8rem;
-    }
+  .smallInfoWrapper,
+  .descriptionWrapper {
+    width: 100%;
+    font-size: 0.8rem;
+  }
 }
 
 @media (max-width: 460px) {
-    .detailsModal {
-        width: 300px;
-    }
+  .detailsModal {
+    width: 300px;
+  }
 }

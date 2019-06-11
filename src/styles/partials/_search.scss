@@ -1,151 +1,149 @@
 .searchContainer {
-    background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
-    background-position: center center;
-    background-size: cover;
-    height: calc(100vh - 80px - 50px);
+  background-image: linear-gradient(to bottom, #fff0 80%, $white),
+    url('../assets/searchBackground.jpg');
+  background-position: center center;
+  background-size: cover;
+  height: calc(100vh - 80px - 50px);
 
-    .singleContent{
-        position: relative;
-    }
-    .detailsButton {
+  .singleContent {
+    position: relative;
+  }
+  .detailsButton {
     position: absolute;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
-    }
+  }
 }
-.searchForm{
-    @include flex(column, center, center, center);
-    padding-top: 2rem;
+.searchForm {
+  @include flex(column, center, center, center);
+  padding-top: 2rem;
 }
 .smallWrapper {
-    padding:50px;
-    border-radius: 10px;
-    background-color:rgba(0, 0, 0, 0.6);
+  padding: 50px;
+  border-radius: 10px;
+  background-color: rgba(0, 0, 0, 0.6);
 }
 
 .instructions {
-    margin: 20px 0;
+  margin: 20px 0;
 
-    p:first-of-type {
-      text-transform: uppercase;
-      font-size: 1.5rem;
-      font-weight: 700;
-      line-height: 1.6;  
-    }
+  p:first-of-type {
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.6;
+  }
 }
 
 .radioButtons {
-    @include flex(row, space-between, center, center);
-    width:100%;
-    margin-bottom: 10px;
-    
+  @include flex(row, space-between, center, center);
+  width: 100%;
+  margin-bottom: 10px;
 }
 
 .radioButtonLabel {
-    @include color($secondaryColor, $white);
-    width:calc(100% / 3);
-    padding:8px 10px;
-    text-align: center;
-    border:1px solid $white;
-    border-radius: 2px;
-    transition: 0.2s;
-    box-shadow: 0 5px #999;
-    display: block;
-    font-size: 1.111rem;
-    font-weight: 700;
-    &:hover {
-        cursor: pointer;
-    }
+  @include color($secondaryColor, $white);
+  width: calc(100% / 3);
+  padding: 8px 10px;
+  text-align: center;
+  border: 1px solid $white;
+  border-radius: 2px;
+  transition: 0.2s;
+  box-shadow: 0 5px #999;
+  display: block;
+  font-size: 1.111rem;
+  font-weight: 700;
+  &:hover {
+    cursor: pointer;
+  }
 }
 .radioButtonDot:checked + label {
-    transform: translateY(3px);
-    box-shadow: 0 2px #666;
-    @include color($activeColor, $black);
+  transform: translateY(3px);
+  box-shadow: 0 2px #666;
+  @include color($activeColor, $black);
 }
 .radioButtonDot {
-    position: absolute;
-    right: 100%;
+  position: absolute;
+  right: 100%;
 }
 
-.userInput, 
+.userInput,
 .userInputLabel {
-    margin-top: 20px;
-    font-size: 1.333rem;
+  margin-top: 20px;
+  font-size: 1.333rem;
 }
 
 .userInput {
-    padding: 0 10px;
+  padding: 0 10px;
 }
 
 .userInput {
-    @include color($white, $black);
-    margin-left: 20px;
+  @include color($white, $black);
+  margin-left: 20px;
 }
+
 .schoolsListSearchInput {
-    min-height: auto;
-    width: 50%;
-    margin: 0 auto;
-    @include flex(column, center, center, center)
+  min-height: auto;
+  width: 50%;
+  margin: 0 auto;
+  @include flex(column, center, center, center);
 }
 
 .schoolsListSearch {
-    margin: 15px auto;
-    text-align: center;
-    width: 80%;
+  margin: 15px auto;
+  text-align: center;
+  width: 80%;
 }
 
 @media (max-width: 920px) {
-    .instructions p:first-of-type {
-        font-size: 1.18rem;
-    }
-    .schoolsListSearchInput {
-        width: 100%;
-    }
+  .instructions p:first-of-type {
+    font-size: 1.18rem;
+  }
+  .schoolsListSearchInput {
+    width: 100%;
+  }
 }
 
-@media (max-width:780px) {
-    .smallWrapper {
-        padding: 15px;
-    }
-    .radioButtons {
-        flex-wrap: wrap;
-    }
-    .radioButtonLabel {
-        width: 100%;
-    }
-    .schoolsListSearchInput {
-        width: 80%;
-    }
+@media (max-width: 780px) {
+  .smallWrapper {
+    padding: 15px;
+  }
+  .radioButtons {
+    flex-wrap: wrap;
+  }
+  .radioButtonLabel {
+    width: 100%;
+  }
+  .schoolsListSearchInput {
+    width: 80%;
+  }
 }
 @media (max-width: 650px) {
-    .searchContainer {
-        min-height: 100vh;
-    }
-    .userInput {
-        margin-left: 0;
-    }
-    
+  .searchContainer {
+    min-height: 100vh;
+  }
+  .userInput {
+    margin-left: 0;
+  }
 }
-@media (max-width:500px) {
-    .radioButtonLabel {
-        padding: 3px;
-
-    }
-
+@media (max-width: 500px) {
+  .radioButtonLabel {
+    padding: 3px;
+  }
 }
-@media (max-width:400px) {
-    .radioButtonLabel, 
-    .userInput, 
-    .userInputLabel {
+@media (max-width: 400px) {
+  .radioButtonLabel,
+  .userInput,
+  .userInputLabel {
     font-size: 1rem;
-    }
-    .generalButton,
-    .userInput {
-        padding: 10px;
-        width: 80%;
-    }
-    .generalButton{
-        margin: 10px 0 20px;
-    }
+  }
+  .generalButton,
+  .userInput {
+    padding: 10px;
+    width: 80%;
+  }
+  .generalButton {
+    margin: 10px 0 20px;
+  }
 }

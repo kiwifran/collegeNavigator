@@ -5,23 +5,22 @@
 .result,
 .noResult {
   text-align: center;
- 
 }
 
-li.noResult { 
+li.noResult {
   @include flex(column, center, center, center);
   text-transform: uppercase;
   min-height: auto;
-  margin:1rem auto;
-  width:50%;
+  margin: 1rem auto;
+  width: 50%;
   .resultName {
-    font-size: 1.2rem;      
+    font-size: 1.2rem;
   }
 }
 
 .result {
   width: 30%;
-    margin: 1rem 0.5rem;
+  margin: 1rem 0.5rem;
   position: relative;
   &Name {
     margin-bottom: 12px;
@@ -29,18 +28,18 @@ li.noResult {
     font-weight: 700;
   }
   &:focus {
-    border:3px solid $primaryColor;
+    border: 3px solid $primaryColor;
   }
 }
 
 .bookmarkPosition {
-    position: absolute;
-    right:6px;
-    top:6px;
-    font-size: 1.111rem;
-    &:hover {
-        color: $activeColor;
-    }
+  position: absolute;
+  right: 6px;
+  top: 6px;
+  font-size: 1.111rem;
+  &:hover {
+    color: $activeColor;
+  }
 }
 
 .bookmark {
@@ -53,10 +52,10 @@ li.noResult {
   opacity: 0.8;
 }
 .result .generalButton {
-    position: absolute;
-    bottom: 0;
-    left: 50%;
-    transform: translate(-50%, -50%);
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translate(-50%, -50%);
 }
 
 @media (max-width: 1000px) {
@@ -64,12 +63,12 @@ li.noResult {
     width: calc(50% - 1rem);
   }
 }
-@media (max-width:920px) {
+@media (max-width: 920px) {
   li.noResult {
     width: 100%;
   }
 }
-@media (max-width:780px) {
+@media (max-width: 780px) {
   li.noResult {
     width: 80%;
   }
