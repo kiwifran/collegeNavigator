@@ -143,7 +143,7 @@ class School extends Component {
               width: 30,
               right: 15,
               border: `3px solid #073330`,
-              background: `rgba(255, 255, 255, 0.548)`,
+              background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
           {/* only display the filter when a list of schools is returned */}

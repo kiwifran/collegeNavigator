@@ -2,6 +2,8 @@
     background-image:linear-gradient( to bottom, #fff0 80%, $white), url("../assets/searchBackground.jpg");
     background-position: center center;
     background-size: cover;
+    height: calc(100vh - 80px - 50px);
+
     .singleContent{
         position: relative;
     }
@@ -15,13 +17,10 @@
 .searchForm{
     @include flex(column, center, center, center);
     padding-top: 2rem;
-    min-height: 100vh;
-    
 }
 .smallWrapper {
-    padding:120px 100px;
+    padding:100px 80px;
     border-radius: 10px;
-
     background-color:rgba(0, 0, 0, 0.6);
 }
 .radioButtons {
@@ -41,7 +40,7 @@
     transition: 0.2s;
     box-shadow: 0 5px #999;
     display: block;
-    font-size: 20px;
+    font-size: 1.111rem;
     font-weight: 700;
     &:hover {
         cursor: pointer;
@@ -60,8 +59,13 @@
 .userInput, 
 .userInputLabel {
     margin-top: 20px;
-    font-size: 25px;
+    font-size: 1.333rem;
 }
+
+.userInput {
+    padding: 0 10px;
+}
+
 .userInput {
     @include color($white, $black);
     margin-left: 20px;
@@ -79,6 +83,12 @@
     width: 80%;
 }
 
+@media (max-width: 920px) {
+    .schoolsListSearchInput {
+        width: 100%;
+    }
+}
+
 @media (max-width:880px) {
     .smallWrapper {
         padding: 60px 50px;
@@ -92,14 +102,41 @@
     .radioButtonLabel {
         width: 100%;
     }
+    .schoolsListSearchInput {
+        width: 80%;
+    }
+}
+@media (max-width: 650px) {
+    .smallWrapper {
+        padding: 40px 30px;
+    }
+    .userInput {
+        margin-left: 0;
+    }
+    
 }
 @media (max-width:500px) {
     .smallWrapper {
-        padding:10px;
+        padding: 30px 10px;
     }
     .radioButtonLabel {
         padding: 3px;
 
     }
 
+}
+@media (max-width:400px) {
+    .radioButtonLabel, 
+    .userInput, 
+    .userInputLabel {
+    font-size: 1rem;
+    }
+    .generalButton,
+    .userInput {
+        padding: 10px;
+        width: 80%;
+    }
+    .generalButton{
+        margin: 10px 0 20px;
+    }
 }

@@ -1,14 +1,16 @@
 .nav {
     @include color($secondaryColor, $white);
+    height: 80px;
 }
 .nav .wrapper {
   @include flex(flex, space-between, center, center);
   .navList {
-    width:20%;
+    width:21%;
     @include flex(flex, space-between, center, center);
   }
   h1 {
-    font-size: 30px;
+    font-size: 1.667rem;
+    line-height: 1;
   }
   .navItem {
     margin-right: 20px;
@@ -19,7 +21,7 @@
   
   .navLink {
     text-transform: uppercase;
-    font-size: 25px;
+    font-size: 1.1rem;    
         &:focus,
         &:hover {
           color: $primaryColor;
@@ -33,11 +35,11 @@
 @media (max-width:1260px) {
   .nav .wrapper {
     h1 {
-    font-size: 25px;
+    font-size: 1.333rem;
     }
 
     .navLink {
-      font-size: 20px;
+      font-size: 1.01rem;
     }
   }
 }
@@ -48,9 +50,6 @@
 }
 @media (max-width:780px) {
   .nav .wrapper {
-    h1 {
-    font-size: 25px;
-    }
     .navList {
       display: none;
     }
@@ -59,27 +58,28 @@
     @include flex(row,space-between,center,center);
     width: 15%;
     i {
-      font-size: 30px;
+      font-size: 1.667rem;
     }
   }
 }
 @media (max-width:550px) {
   .hiddenNavList {
     i {
-      font-size: 22px;
+      font-size: 1.122rem;
     }
   }
 }
 @media (max-width:400px) {
+  .nav {
+    height:auto;
+  }
   .nav .wrapper {
     h1 {
-    font-size: 20px;
+    font-size:  1.111rem;
     }
   }
   .hiddenNavList {
     width: 20%;
-    i {
-      font-size: 18px;
-    }
+
   }
 }

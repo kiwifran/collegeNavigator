@@ -48,18 +48,6 @@ class Notes extends Component {
   }
   
   // handle submit of form
-  editNote = (key) => {
-    const found = this.state.bookmarkList.find(item => item.key === key);
-    this.setState({
-      modalOpen: 'open',
-      selectedId: key,
-      userName: found.name,
-      userAddress: found.address,
-      userNote: found.note,
-      userCategory: found.category
-    })
-  }
-
   handleSubmit = (event) => {
     event.preventDefault();
     const dbRef = firebase.database().ref(this.state.selectedId);
@@ -194,10 +182,13 @@ class Notes extends Component {
           {this.state.bookmarkList.map((item) => {
             return (
               <div key={item.key} className="singleNote singleContent">
-                <p className="schoolName">Institution: {item.name}</p>
-                <p className="address"> Address: {item.address}</p>
-                <p className="category">Category: {item.category}</p>
-                <p className="note"> Note: {item.note}</p>
+                <div className="textWrapper">
+                  <p className="schoolName">Institution: {item.name}</p>
+                  <p className="address"> Address: {item.address}</p>
+                  <p className="category">Category: {item.category}</p>
+                  <p className="note"> Note: {item.note}</p>
+                </div>
+                
 
                 <button className="generalButton" onClick={() => { this.editNote(item.key) }}>
                   <i className="fas fa-pen" aria-hidden="true"></i>Edit
@@ -219,7 +210,7 @@ class Notes extends Component {
               width: 30,
               right: 15,
               border: `3px solid #073330`,
-              background: `rgba(255, 255, 255, 0.548)`,
+              background: `rgba(255, 255, 255, 0.848)`,
             }}
           />
         </div>

@@ -8,6 +8,9 @@
         text-align: center;
         color: $black;
     }
+    .wrapper {
+        padding-bottom: 10px;
+    }
 }
 
 .addSign {
@@ -15,7 +18,7 @@
     display: flex;
     margin: 1rem 0;
     padding: 10px;
-    font-size: 20px;
+    font-size:  1.111rem;
     border-radius: 10px;
     background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
     color: $white;
@@ -37,9 +40,13 @@
 }
 .singleNote {
     margin-bottom: 1.5rem;
+    .textWrapper {
+        max-width: 100%;
+    }
     p {
         margin-bottom: 0.7rem;
         word-wrap:break-word;
+        overflow-wrap:break-word;
     }
     button {
         width: 25%;
@@ -53,7 +60,7 @@
 }
 .schoolName {
     margin-bottom: 15px;
-    font-size: 23px;
+    font-size:  1.222rem;
     font-weight: 700;
 }
 
@@ -66,5 +73,19 @@
         color: $white;
         padding: 10px;
         border-radius: 10px;
+    }
+}
+@media (max-width:1000px) {
+    .singleNote button {
+        width: 40%;
+        margin: 10px;
+    }
+    .bookmarks h2 {
+        font-size: 1.1rem;
+    }
+}
+@media(max-width:780px) {
+    .notes {
+        grid-template-columns: 1fr;
     }
 }

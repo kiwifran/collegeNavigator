@@ -72,7 +72,7 @@ img {
     border-radius: 10px;
     background: rgb(27,65,56);
     background: linear-gradient(53deg, rgba(27,65,56,1) 14%, rgba(7,51,48,1) 31%, rgba(13,27,23,1) 69%);
-    min-height: 280px;
+    min-height: 320px;
 }
 
 .generalButton {
@@ -100,12 +100,19 @@ textarea::placeholder {
 textarea {
     border:none;
     border-radius: 10px;
-    
 }
+<<<<<<< HEAD
 
 // * {
 //     box-shadow: 0 0 0 1px red;
 // }
+=======
+//scrollUpButton 
+aside.ScrollUpButton__Container {
+    z-index: 999;
+}
+
+>>>>>>> master
 //sweetAlert Settings 
 .swal-modal {
     background:$secondaryColor;
@@ -114,9 +121,14 @@ textarea {
 .swal-text{
     color:$white;
 }
+<<<<<<< HEAD
 .swal-button--confirm
  {
     background-color: $activeColor;
+=======
+.swal-button--confirm {
+    background-color:$activeColor;
+>>>>>>> master
     color:$black;
 }
 .swal-button:not([disabled]):hover {

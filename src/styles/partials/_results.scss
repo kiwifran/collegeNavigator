@@ -1,7 +1,6 @@
 .schoolsList {
   @include flex(row, space-between, start, center);
   flex-wrap: wrap;
-  margin-top: 40px;
 }
 .result,
 .noResult {
@@ -14,7 +13,7 @@
   text-transform: uppercase;
   
   .resultName {
-    font-size: 40px;
+    font-size: 2.222rem;
   }
 }
 
@@ -23,7 +22,7 @@
   position: relative;
   &Name {
     margin-bottom: 12px;
-    font-size: 24px;
+    font-size: 1.333rem;
     font-weight: 700;
   }
 }
@@ -36,7 +35,7 @@
     position: absolute;
     right:6px;
     top:6px;
-    font-size: 20px;
+    font-size: 1.111rem;
     &:hover {
         color: $activeColor;
     }
@@ -56,4 +55,17 @@
     bottom: 0;
     left: 50%;
     transform: translate(-50%, -50%);
+}
+
+@media (max-width: 1000px) {
+  .result {
+    width: calc(50% - 1rem);
+  }
+}
+
+@media (max-width: 590px) {
+  .result {
+    width: 100%;
+    margin: 0.5rem;
+  }
 }
