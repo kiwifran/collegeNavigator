@@ -4,31 +4,33 @@
 }
 .result,
 .noResult {
-  margin: 1rem 0.5rem;
   text-align: center;
+ 
 }
 
-.noResult {
+li.noResult { 
   @include flex(column, center, center, center);
   text-transform: uppercase;
-  
+  min-height: auto;
+  margin:1rem auto;
+  width:50%;
   .resultName {
-    font-size: 2.222rem;
+    font-size: 1.2rem;      
   }
 }
 
 .result {
   width: 30%;
+    margin: 1rem 0.5rem;
   position: relative;
   &Name {
     margin-bottom: 12px;
     font-size: 1.333rem;
     font-weight: 700;
   }
-}
-.noResult {
-  width:60%;
-  margin:0 auto;
+  &:focus {
+    border:3px solid $primaryColor;
+  }
 }
 
 .bookmarkPosition {
@@ -60,6 +62,16 @@
 @media (max-width: 1000px) {
   .result {
     width: calc(50% - 1rem);
+  }
+}
+@media (max-width:920px) {
+  li.noResult {
+    width: 100%;
+  }
+}
+@media (max-width:780px) {
+  li.noResult {
+    width: 80%;
   }
 }
 
