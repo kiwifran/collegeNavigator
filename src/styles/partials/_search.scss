@@ -19,7 +19,7 @@
     padding-top: 2rem;
 }
 .smallWrapper {
-    padding:100px 80px;
+    padding:50px;
     border-radius: 10px;
     background-color:rgba(0, 0, 0, 0.6);
 }
@@ -96,18 +96,18 @@
 }
 
 @media (max-width: 920px) {
+    .instructions p:first-of-type {
+        font-size: 1.18rem;
+    }
     .schoolsListSearchInput {
         width: 100%;
     }
 }
 
-@media (max-width:880px) {
-    .smallWrapper {
-        padding: 60px 50px;
-    }
-}
 @media (max-width:780px) {
-
+    .smallWrapper {
+        padding: 15px;
+    }
     .radioButtons {
         flex-wrap: wrap;
     }
@@ -119,8 +119,8 @@
     }
 }
 @media (max-width: 650px) {
-    .smallWrapper {
-        padding: 40px 30px;
+    .searchContainer {
+        min-height: 100vh;
     }
     .userInput {
         margin-left: 0;
@@ -128,9 +128,6 @@
     
 }
 @media (max-width:500px) {
-    .smallWrapper {
-        padding: 30px 10px;
-    }
     .radioButtonLabel {
         padding: 3px;
 
@@ -138,10 +135,6 @@
 
 }
 @media (max-width:400px) {
-    .searchContainer {
-        height: auto;
-    }
-
     .radioButtonLabel, 
     .userInput, 
     .userInputLabel {
