@@ -169,7 +169,7 @@ class School extends Component {
             }}
           />
           {/* only display the filter when a list of schools is returned */}
-          {this.state.schoolsList.length > 0 ? (
+          {this.props.schoolsList.length > 0 ? (
             <div className="schoolsListSearchInput singleContent">
               <label htmlFor="schoolsListSearch">Filter Search:</label>
               <input
